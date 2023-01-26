@@ -3,9 +3,26 @@
 
 ```bash
 # --net=host --shm-size 1g -e VNC_OFFSET=99 
-docker run -it --rm \
-  --tmpfs /run --tmpfs /run/lock --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
-  --cap-add SYS_BOOT --cap-add SYS_ADMIN ctd2
+# --cap-add SYS_BOOT --cap-add SYS_ADMIN
+# 
+# /_ext/working/_ee/fk-edgecore-indocker/files/usr/local/bin
+#  -v $(pwd)/entrypoint:/usr/local/bin/entrypoint
+docker run -it --rm --name edgecore \
+  --tmpfs /run --tmpfs /run/lock --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup:rw --privileged registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore
+
+# headless @ mac23-199 in ~ |02:04:06  
+$ docker  exec -it edgecore bash
+root@6ef39458218d:/# edgecore --config /edgecore-conf.yml
+
+
+# 调试containerd-fuse-overlayfs
+/usr/local/bin/containerd-fuse-overlayfs-grpc /run/containerd-fuse-overlayfs.sock /var/lib/containerd-fuse-overlayfs
+##$ modprobe fuse
+modprobe: FATAL: Module fuse not found in directory /lib/modules/5.4.73-1-pve
+##改--privileged >> OK
+root@5c32e87ce4c1:/# systemctl -a |grep sys-fs
+  sys-fs-fuse-connections.mount              loaded    active     mounted   FUSE Control File System 
+
 ```
 
 - root@d331bf31808f:/etc# cat /etc/containerd/cri-base.json 

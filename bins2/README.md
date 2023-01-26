@@ -4,8 +4,9 @@
 $ curl -O -fSL https://ghproxy.com/https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-linux-amd64.tar.gz
 $ curl -O -fSL https://ghproxy.com/https://github.com/opencontainers/runc/releases/download/v1.1.4/runc.amd64
 # curl -O -fSL https://ghproxy.com/https://github.com/containerd/fuse-overlayfs-snapshotter/releases/download/v1.0.5/containerd-fuse-overlayfs-1.0.5-linux-amd64.tar.gz
+# https://ghproxy.com/https://github.com/containerd/nerdctl/releases/download/v1.1.0/nerdctl-1.1.0-linux-amd64.tar.gz
 
-$ tree -h |grep -E ".tar.gz|.tgz" > tree.txt
+$ tree -h |grep -E ".tar.gz|.tgz" |sort > tree.txt
 ```
 
 ## vers

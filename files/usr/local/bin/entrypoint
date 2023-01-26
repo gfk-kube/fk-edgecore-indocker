@@ -406,7 +406,7 @@ configure_containerd
 configure_proxy
 fix_kmsg
 fix_mount
-fix_cgroup
+# fix_cgroup
 fix_machine_id
 fix_product_name
 fix_product_uuid

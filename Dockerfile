@@ -67,16 +67,8 @@ RUN echo "Installing Packages ..." \
     # && ln -s "$(which systemd)" /sbin/init
 
 
-# all configs are 0644 (rw- r-- r--)
-# copy> add
-ADD files/etc /etc
-# COPY files/etc/* /etc/
-# COPY files/etc/containerd/* /etc/containerd/
-# COPY files/etc/sysctl.d/* /etc/sysctl.d/
-# COPY files/etc/systemd/system/* /etc/systemd/system/
-
 # bins
-RUN mkdir -p /opt/cni/bin
+RUN mkdir -p /opt/cni/bin /kind/
 # COPY ./bins/containerd/* /usr/local/bin/
 # COPY ./bins/cni/cni-plugs/* /opt/cni/bin/
 # COPY ./bins/runc/* /usr/local/sbin/
@@ -86,11 +78,22 @@ COPY ./bins2/containerd-1.6.15-linux-amd64/bin/* /usr/local/bin/
 COPY ./bins2/cni-plugins-linux-amd64-v1.2.0/* /opt/cni/bin/
 COPY ./bins2/runc.amd64 /usr/local/sbin/runc
 COPY ./bins2/crictl-v1.26.0-linux-amd64/crictl /usr/local/bin/
-COPY ./bins2/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /
 COPY ./bins2/containerd-fuse-overlayfs-1.0.5-linux-amd64/containerd-fuse-overlayfs-grpc /usr/local/bin/
-
+COPY ./bins2/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
+COPY ./bins2/nerdctl-1.1.0-linux-amd64/nerdctl /usr/local/bin/docker
+# 
 COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
-# COPY ./files/edgecore.yaml /
+COPY ./files/edgecore-conf.yml /
+
+
+# all configs are 0644 (rw- r-- r--)
+# copy> add
+ADD files/etc /etc
+# COPY files/etc/* /etc/
+# COPY files/etc/containerd/* /etc/containerd/
+# COPY files/etc/sysctl.d/* /etc/sysctl.d/
+# COPY files/etc/systemd/system/* /etc/systemd/system/
+
 
 RUN echo "Installing containerd ..." \
     && rm -f /usr/local/bin/containerd-stress /usr/local/bin/containerd-shim-runc-v1 \
@@ -121,6 +124,6 @@ ENV container docker
 STOPSIGNAL SIGRTMIN+3
 
 # NOTE: this is *only* for documentation, the entrypoint is overridden later
-# ENTRYPOINT [ "/usr/local/bin/entrypoint", "/sbin/init" ]
+ENTRYPOINT [ "/usr/local/bin/entrypoint", "/sbin/init" ]
 # ENTRYPOINT [ "/lib/systemd/systemd"]
-ENTRYPOINT [ "/sbin/init"]
+# ENTRYPOINT [ "/sbin/init"]
