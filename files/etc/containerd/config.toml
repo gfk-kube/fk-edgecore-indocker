@@ -21,7 +21,7 @@ version = 2
 
 [plugins."io.containerd.grpc.v1.cri"]
   # use fixed sandbox image
-  sandbox_image = "kubeedge/pause:3.1"
+  sandbox_image = "registry.cn-shenzhen.aliyuncs.com/infrastlabs/pause:3.1"
   # allow hugepages controller to be missing
   # see https://github.com/containerd/cri/pull/1501
   tolerate_missing_hugepages_controller = true

@@ -10,20 +10,9 @@
 ARG BASE_IMAGE=registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core
 FROM $BASE_IMAGE as build
 
-RUN mkdir /kind/
-
+# RUN mkdir /kind/
 # Configure crictl binary from upstream
-ARG CRICTL_URL="https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.23.0/crictl-v1.23.0-linux-arm.tar.gz"
-
-# copy in static files
-# all scripts are 0755 (rwx r-x r-x)
-COPY files/usr/local/bin/* /usr/local/bin/
-
-# all configs are 0644 (rw- r-- r--)
-COPY files/etc/* /etc/
-COPY files/etc/containerd/* /etc/containerd/
-COPY files/etc/sysctl.d/* /etc/sysctl.d/
-COPY files/etc/systemd/system/* /etc/systemd/system/
+# ARG CRICTL_URL="https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.23.0/crictl-v1.23.0-linux-arm.tar.gz"
 
 # Install dependencies, first from apt, then from release tarballs.
 # NOTE: we use one RUN to minimize layers.
@@ -55,6 +44,10 @@ COPY files/etc/systemd/system/* /etc/systemd/system/
 # This is plenty after we've done initial setup for a node, but before we are
 # likely to try to export logs etc.
 
+# copy in static files
+# all scripts are 0755 (rwx r-x r-x)
+COPY files/usr/local/bin/* /usr/local/bin/
+
 RUN echo "Installing Packages ..." \
     && DEBIAN_FRONTEND=noninteractive clean-install \
       systemd \
@@ -73,15 +66,23 @@ RUN echo "Installing Packages ..." \
     && echo "ReadKMsg=no" >> /etc/systemd/journald.conf 
     # && ln -s "$(which systemd)" /sbin/init
 
-COPY ./runc/* /usr/local/sbin/
-COPY ./containerd/* /usr/local/bin/
-COPY ./crictl /usr/local/bin/
 
+# all configs are 0644 (rw- r-- r--)
+COPY files/etc/* /etc/
+COPY files/etc/containerd/* /etc/containerd/
+COPY files/etc/sysctl.d/* /etc/sysctl.d/
+COPY files/etc/systemd/system/* /etc/systemd/system/
+
+# bins
 RUN mkdir -p /opt/cni/bin
-COPY ./cni/cni-plugs/* /opt/cni/bin/
-COPY ./cni/10-containerd-net.conflist /etc/cni/net.d/
-COPY ./edgecore /
-# COPY ./edgecore.yaml /
+COPY ./bins/containerd/* /usr/local/bin/
+COPY ./bins/cni/cni-plugs/* /opt/cni/bin/
+COPY ./bins/runc/* /usr/local/sbin/
+COPY ./bins/crictl /usr/local/bin/
+
+COPY ./bins/cni/10-containerd-net.conflist /etc/cni/net.d/
+COPY ./bins/edgecore /
+# COPY ./bins/edgecore.yaml /
 
 RUN echo "Installing containerd ..." \
     && rm -f /usr/local/bin/containerd-stress /usr/local/bin/containerd-shim-runc-v1 \
@@ -95,9 +96,10 @@ RUN echo "Installing containerd ..." \
     # && runc --version \
 
 RUN echo "Adjusting systemd-tmpfiles timer" \
-    && sed -i /usr/lib/systemd/system/systemd-tmpfiles-clean.timer -e 's#OnBootSec=.*#OnBootSec=1min#' \
-    && echo "Disabling udev" \
-    && systemctl disable udev.service
+    && sed -i /usr/lib/systemd/system/systemd-tmpfiles-clean.timer -e 's#OnBootSec=.*#OnBootSec=1min#' 
+    # Failed to disable unit, unit udev.service does not exist.
+    # && echo "Disabling udev" \
+    # && systemctl disable udev.service
 
 # squash
 # FROM scratch
@@ -111,4 +113,6 @@ ENV container docker
 STOPSIGNAL SIGRTMIN+3
 
 # NOTE: this is *only* for documentation, the entrypoint is overridden later
-ENTRYPOINT [ "/usr/local/bin/entrypoint", "/sbin/init" ]
+# ENTRYPOINT [ "/usr/local/bin/entrypoint", "/sbin/init" ]
+# ENTRYPOINT [ "/lib/systemd/systemd"]
+ENTRYPOINT [ "/sbin/init"]

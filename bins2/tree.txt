@@ -1,0 +1,9 @@
+.
+|-- [ 39M]  cni-plugins-linux-amd64-v1.2.0.tgz
+|-- [125M]  cri-containerd-cni-1.6.15-linux-amd64.tar.gz
+|-- [ 22M]  crictl-v1.26.0-linux-amd64.tar.gz
+|-- [ 52M]  kubeedge-v1.10.3-linux-amd64.tar.gz
+|-- [224M]  nerdctl-full-1.1.0-linux-amd64.tar.gz
+`-- [   0]  tree.txt
+
+0 directories, 6 files

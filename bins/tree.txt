@@ -1,0 +1,35 @@
+.
+├── [4.0K]  cni
+│   ├── [ 409]  10-containerd-net.conflist
+│   └── [4.0K]  cni-plugs
+│       ├── [3.5M]  bandwidth
+│       ├── [3.8M]  bridge
+│       ├── [8.2M]  dhcp
+│       ├── [3.9M]  firewall
+│       ├── [3.5M]  host-device
+│       ├── [3.0M]  host-local
+│       ├── [3.6M]  ipvlan
+│       ├── [3.1M]  loopback
+│       ├── [3.6M]  macvlan
+│       ├── [3.4M]  portmap
+│       ├── [3.8M]  ptp
+│       ├── [3.2M]  sbr
+│       ├── [2.6M]  static
+│       ├── [3.2M]  tuning
+│       ├── [3.6M]  vlan
+│       └── [3.3M]  vrf
+├── [4.0K]  containerd
+│   ├── [ 30M]  containerd
+│   ├── [5.2M]  containerd-shim
+│   ├── [7.1M]  containerd-shim-runc-v1
+│   ├── [7.1M]  containerd-shim-runc-v2
+│   ├── [ 14M]  containerd-stress
+│   └── [ 16M]  ctr
+├── [8.4M]  containerd-fuse-overlayfs-grpc
+├── [ 38M]  crictl
+├── [ 52M]  edgecore
+├── [4.0K]  runc
+│   └── [7.8M]  runc
+└── [   0]  tree.txt
+
+4 directories, 28 files

@@ -1,12 +1,16 @@
-cni/cni-plugs
-/containerd
+/bins/containerd
+/bins/cni/cni-plugs
+/bins/runc/runc
+/bins/containerd-fuse-overlayfs-grpc
+/bins/crictl
+/bins/edgecore
+/bins2/*
+!/bins2/*.txt
+!/bins2/*.sh
+
 /releases/bin
 /releases/*.toml
 containerd-1.5.9.linux-arm.tar.gz*
-/runc/runc
 
-containerd-fuse-overlayfs-grpc
-crictl
-edgecore
 *.bak
 
