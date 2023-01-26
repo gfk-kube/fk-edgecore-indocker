@@ -1,0 +1,23 @@
+/bins/containerd
+/bins/cni/cni-plugs
+/bins/runc/runc
+/bins/containerd-fuse-overlayfs-grpc
+/bins/crictl
+/bins/edgecore
+
+/bins2/down*
+# !/bins2/*.txt
+# !/bins2/*.sh
+# !/bins2/*.md
+# !/bins2/Dockerfile*
+
+/imgs/multiplat-builder/down*
+/imgs/multiplat-builder/rootfs
+/imgs/multiplat-builder/_outhere.sh
+
+/releases/bin
+/releases/*.toml
+containerd-1.5.9.linux-arm.tar.gz*
+
+*.bak
+
