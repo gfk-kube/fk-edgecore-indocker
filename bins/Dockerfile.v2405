@@ -1,0 +1,25 @@
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak
+
+# 不做多arch, 直接一把包圆给到其它img使用
+# ARG TARGETPLATFORM
+
+# ADD ./tplat.sh /bin/tplat
+# RUN chmod +x /bin/tplat
+# ENV \
+#   # GITHUB=https://ghproxy.com/https://github.com
+#   GITHUB=https://hub.yzuu.cf
+
+
+# -------------------
+#   31M	down/down00_cfssl_x64
+#   74M	down/down01_tools
+#   356M	down/down02_containerd
+#   212M	down/down03_k3s
+#   711M	down/down04_k8s
+
+ADD ./down/down00_cfssl_x64 /down/down00_cfssl_x64
+ADD ./down/down01_tools /down/down01_tools
+ADD ./down/down02_containerd /down/down02_containerd
+ADD ./down/down03_k3s /down/down03_k3s
+# ADD ./down/down04_k8s /down/down04_k8s
+ADD ./down/.list.txt /down/.list.txt
