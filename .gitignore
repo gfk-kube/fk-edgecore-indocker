@@ -7,6 +7,7 @@
 /bins2/*
 !/bins2/*.txt
 !/bins2/*.sh
+!/bins2/*.md
 
 /releases/bin
 /releases/*.toml

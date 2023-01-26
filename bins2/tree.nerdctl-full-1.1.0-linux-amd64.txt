@@ -1,0 +1,78 @@
+nerdctl-full-1.1.0-linux-amd64
+├── [4.0K]  bin
+│   ├── [ 24M]  buildctl
+│   ├── [ 23M]  buildg
+│   ├── [ 38M]  buildkitd
+│   ├── [3.4M]  bypass4netns
+│   ├── [4.9M]  bypass4netnsd
+│   ├── [ 53M]  containerd
+│   ├── [9.7M]  containerd-fuse-overlayfs-grpc
+│   ├── [ 21K]  containerd-rootless-setuptool.sh
+│   ├── [6.9K]  containerd-rootless.sh
+│   ├── [9.3M]  containerd-shim-runc-v2
+│   ├── [ 58M]  containerd-stargz-grpc
+│   ├── [ 19M]  ctd-decoder
+│   ├── [ 27M]  ctr
+│   ├── [ 28M]  ctr-enc
+│   ├── [ 29M]  ctr-remote
+│   ├── [1.7M]  fuse-overlayfs
+│   ├── [ 77M]  ipfs
+│   ├── [ 27M]  nerdctl
+│   ├── [9.4M]  rootlessctl
+│   ├── [ 11M]  rootlesskit
+│   ├── [ 13M]  runc
+│   ├── [2.2M]  slirp4netns
+│   └── [850K]  tini
+├── [4.0K]  lib
+│   └── [4.0K]  systemd
+│       └── [4.0K]  system
+│           ├── [1.3K]  buildkit.service
+│           ├── [1.2K]  containerd.service
+│           └── [ 312]  stargz-snapshotter.service
+├── [4.0K]  libexec
+│   └── [4.0K]  cni
+│       ├── [3.6M]  bandwidth
+│       ├── [4.0M]  bridge
+│       ├── [9.3M]  dhcp
+│       ├── [4.1M]  firewall
+│       ├── [3.6M]  host-device
+│       ├── [3.1M]  host-local
+│       ├── [3.7M]  ipvlan
+│       ├── [3.1M]  loopback
+│       ├── [3.8M]  macvlan
+│       ├── [3.5M]  portmap
+│       ├── [3.9M]  ptp
+│       ├── [3.3M]  sbr
+│       ├── [2.7M]  static
+│       ├── [3.2M]  tuning
+│       ├── [3.7M]  vlan
+│       └── [3.4M]  vrf
+└── [4.0K]  share
+    └── [4.0K]  doc
+        ├── [4.0K]  nerdctl
+        │   ├── [4.0K]  docs
+        │   │   ├── [2.5K]  builder-debug.md
+        │   │   ├── [3.9K]  build.md
+        │   │   ├── [3.9K]  cni.md
+        │   │   ├── [1.8K]  compose.md
+        │   │   ├── [3.0K]  config.md
+        │   │   ├── [7.2K]  cosign.md
+        │   │   ├── [2.4K]  dir.md
+        │   │   ├── [ 787]  experimental.md
+        │   │   ├── [ 14K]  faq.md
+        │   │   ├── [1.2K]  freebsd.md
+        │   │   ├── [2.4K]  gpu.md
+        │   │   ├── [ 13K]  ipfs.md
+        │   │   ├── [1.7K]  multi-platform.md
+        │   │   ├── [2.5K]  nydus.md
+        │   │   ├── [3.2K]  ocicrypt.md
+        │   │   ├── [1.8K]  overlaybd.md
+        │   │   ├── [ 15K]  registry.md
+        │   │   ├── [5.0K]  rootless.md
+        │   │   └── [ 10K]  stargz.md
+        │   └── [ 76K]  README.md
+        └── [4.0K]  nerdctl-full
+            ├── [1.1K]  README.md
+            └── [5.7K]  SHA256SUMS
+
+11 directories, 64 files
