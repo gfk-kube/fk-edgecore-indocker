@@ -1,0 +1,54 @@
+cri-containerd-cni-1.6.15-linux-amd64
+├── [4.0K]  etc
+│   ├── [4.0K]  cni
+│   │   └── [4.0K]  net.d
+│   │       └── [ 604]  10-containerd-net.conflist
+│   ├── [  57]  crictl.yaml
+│   └── [4.0K]  systemd
+│       └── [4.0K]  system
+│           └── [1.2K]  containerd.service
+├── [4.0K]  opt
+│   ├── [4.0K]  cni
+│   │   └── [4.0K]  bin
+│   │       ├── [3.6M]  bandwidth
+│   │       ├── [4.1M]  bridge
+│   │       ├── [9.7M]  dhcp
+│   │       ├── [4.2M]  firewall
+│   │       ├── [3.7M]  host-device
+│   │       ├── [3.1M]  host-local
+│   │       ├── [3.8M]  ipvlan
+│   │       ├── [3.2M]  loopback
+│   │       ├── [3.8M]  macvlan
+│   │       ├── [3.5M]  portmap
+│   │       ├── [3.9M]  ptp
+│   │       ├── [3.4M]  sbr
+│   │       ├── [2.7M]  static
+│   │       ├── [3.3M]  tuning
+│   │       ├── [3.8M]  vlan
+│   │       └── [3.4M]  vrf
+│   └── [4.0K]  containerd
+│       └── [4.0K]  cluster
+│           ├── [4.0K]  gce
+│           │   ├── [4.0K]  cloud-init
+│           │   │   ├── [6.1K]  master.yaml
+│           │   │   └── [6.0K]  node.yaml
+│           │   ├── [ 491]  cni.template
+│           │   ├── [9.2K]  configure.sh
+│           │   └── [1.1K]  env
+│           └── [  29]  version
+└── [4.0K]  usr
+    └── [4.0K]  local
+        ├── [4.0K]  bin
+        │   ├── [ 49M]  containerd
+        │   ├── [6.9M]  containerd-shim
+        │   ├── [8.9M]  containerd-shim-runc-v1
+        │   ├── [8.9M]  containerd-shim-runc-v2
+        │   ├── [ 22M]  containerd-stress
+        │   ├── [ 31M]  crictl
+        │   ├── [ 33M]  critest
+        │   ├── [ 24M]  ctd-decoder
+        │   └── [ 25M]  ctr
+        └── [4.0K]  sbin
+            └── [ 13M]  runc
+
+16 directories, 35 files
