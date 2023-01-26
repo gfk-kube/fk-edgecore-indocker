@@ -1,17 +1,4 @@
 # Copyright 2018 The Kubernetes Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # kind node base image
 #
 # For systemd + docker configuration used below, see the following references:
@@ -19,7 +6,8 @@
 
 # start from ubuntu, this image is reasonably small as a starting point
 # for a kubernetes node image, it doesn't contain much we don't need
-ARG BASE_IMAGE=ubuntu:21.10
+# ARG BASE_IMAGE=ubuntu:21.10
+ARG BASE_IMAGE=registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core
 FROM $BASE_IMAGE as build
 
 RUN mkdir /kind/
@@ -29,13 +17,13 @@ ARG CRICTL_URL="https://github.com/kubernetes-sigs/cri-tools/releases/download/v
 
 # copy in static files
 # all scripts are 0755 (rwx r-x r-x)
-COPY --chmod=0755 files/usr/local/bin/* /usr/local/bin/
+COPY files/usr/local/bin/* /usr/local/bin/
 
 # all configs are 0644 (rw- r-- r--)
-COPY --chmod=0644 files/etc/* /etc/
-COPY --chmod=0644 files/etc/containerd/* /etc/containerd/
-COPY --chmod=0644 files/etc/sysctl.d/* /etc/sysctl.d/
-COPY --chmod=0644 files/etc/systemd/system/* /etc/systemd/system/
+COPY files/etc/* /etc/
+COPY files/etc/containerd/* /etc/containerd/
+COPY files/etc/sysctl.d/* /etc/sysctl.d/
+COPY files/etc/systemd/system/* /etc/systemd/system/
 
 # Install dependencies, first from apt, then from release tarballs.
 # NOTE: we use one RUN to minimize layers.
@@ -82,24 +70,18 @@ RUN echo "Installing Packages ..." \
     && rm -f /lib/systemd/system/sockets.target.wants/*udev* \
     && rm -f /lib/systemd/system/sockets.target.wants/*initctl* \
     && rm -f /lib/systemd/system/basic.target.wants/* \
-    && echo "ReadKMsg=no" >> /etc/systemd/journald.conf \
-    && ln -s "$(which systemd)" /sbin/init
+    && echo "ReadKMsg=no" >> /etc/systemd/journald.conf 
+    # && ln -s "$(which systemd)" /sbin/init
 
-COPY --chmod=755 ./runc/* /usr/local/sbin/
-
-COPY --chmod=755 ./containerd/* /usr/local/bin/
-
-COPY --chmod=755 ./crictl /usr/local/bin/
+COPY ./runc/* /usr/local/sbin/
+COPY ./containerd/* /usr/local/bin/
+COPY ./crictl /usr/local/bin/
 
 RUN mkdir -p /opt/cni/bin
-
-COPY --chmod=755 ./cni/cni-plugs/* /opt/cni/bin/
-
-COPY --chmod=755 ./cni/10-containerd-net.conflist /etc/cni/net.d/
-
-COPY --chmod=755 ./edgecore /
-
-COPY --chmod=755 ./edgecore.yaml /
+COPY ./cni/cni-plugs/* /opt/cni/bin/
+COPY ./cni/10-containerd-net.conflist /etc/cni/net.d/
+COPY ./edgecore /
+# COPY ./edgecore.yaml /
 
 RUN echo "Installing containerd ..." \
     && rm -f /usr/local/bin/containerd-stress /usr/local/bin/containerd-shim-runc-v1 \
@@ -108,10 +90,9 @@ RUN echo "Installing containerd ..." \
         | jq '.hooks.createContainer[.hooks.createContainer| length] |= . + {"path": "/usr/local/bin/mount-product-files"}' \
         | jq 'del(.process.rlimits)' \
         > /etc/containerd/cri-base.json \
-    && containerd --version \
-    && runc --version \
     && systemctl enable containerd
-
+    # && containerd --version \
+    # && runc --version \
 
 RUN echo "Adjusting systemd-tmpfiles timer" \
     && sed -i /usr/lib/systemd/system/systemd-tmpfiles-clean.timer -e 's#OnBootSec=.*#OnBootSec=1min#' \
@@ -119,8 +100,8 @@ RUN echo "Adjusting systemd-tmpfiles timer" \
     && systemctl disable udev.service
 
 # squash
-FROM scratch
-COPY --from=build / /
+# FROM scratch
+# COPY --from=build / /
 
 # tell systemd that it is in docker (it will check for the container env)
 # https://systemd.io/CONTAINER_INTERFACE/
