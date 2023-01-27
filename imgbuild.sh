@@ -20,5 +20,14 @@ img="edgecore:latest"
 # docker buildx build $plat --push -t $ns/$img -f src/Dockerfile.compile . 
 
 #dockerBuild
-docker build -t $repo/$ns/$img .
-docker push $repo/$ns/$img
+case "$1" in
+bins)
+    img="edgecore:bins"
+    docker build -t $repo/$ns/$img -f Dockerfile.bins .
+    docker push $repo/$ns/$img
+    ;;
+*)
+    docker build -t $repo/$ns/$img .
+    docker push $repo/$ns/$img
+    ;;
+esac
