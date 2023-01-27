@@ -107,7 +107,8 @@ RUN echo "Installing containerd ..." \
     # && runc --version \
 
 RUN echo "Adjusting systemd-tmpfiles timer" \
-    && sed -i /usr/lib/systemd/system/systemd-tmpfiles-clean.timer -e 's#OnBootSec=.*#OnBootSec=1min#' 
+    && sed -i /usr/lib/systemd/system/systemd-tmpfiles-clean.timer -e 's#OnBootSec=.*#OnBootSec=1min#'; \
+    systemctl enable supervisor
     # Failed to disable unit, unit udev.service does not exist.
     # && echo "Disabling udev" \
     # && systemctl disable udev.service
