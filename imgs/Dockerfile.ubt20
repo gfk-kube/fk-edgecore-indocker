@@ -1,8 +1,7 @@
 
 FROM ubuntu:20.04
 ENV \
-  DEBIAN_FRONTEND=noninteractive \
-  LOCALE_INCLUDE="zh_CN zh_HK zh_TW en en_AU fr fr_CA pt pt_BR es ar cs de it ru nl tr is sv uk ja ko th vi"
+  DEBIAN_FRONTEND=noninteractive
 # mirrors.tuna.tsinghua.edu.cn
 # mirrors.ustc.edu.cn
 # mirrors.aliyun.com #mirrors.163.com
