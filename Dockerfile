@@ -53,7 +53,10 @@ RUN mkdir -p /opt/cni/bin /kind/
 # COPY ./bins2/amd64/nerdctl-1.1.0-linux-amd64/nerdctl /usr/local/bin/docker
 # COPY ./bins2/amd64/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
 COPY --from=trans /rootfs /
-RUN find /usr/local/bin /opt/cni/bin
+RUN \
+  ln -s /usr/local/kedge/kubeedge-v1.10.3-linux-*/edge/edgecore /usr/local/bin/; \
+  ln -s /usr/local/kedge/kubeedge-v1.10.3-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
+  find /usr/local/bin /opt/cni/bin /usr/local/kedge/
 # 
 COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
 COPY ./files/edgecore-conf.yml /

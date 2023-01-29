@@ -19,7 +19,7 @@ tree -L 2
 
 
 ################
-mkdir -p /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ /rootfs/opt/cni/bin/
+mkdir -p /rootfs/usr/local/kedge /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ /rootfs/opt/cni/bin/
 # ctd
 \cp -a $arch/containerd-1.6.15-linux-$arch/bin/* /rootfs/usr/local/bin/
 \cp -a $arch/containerd-fuse-overlayfs-1.0.5-linux-$arch/containerd-fuse-overlayfs-grpc /rootfs/usr/local/bin/
@@ -30,8 +30,9 @@ mkdir -p /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ /rootfs/opt/cni/bin/
 \cp -a $arch/nerdctl-1.1.0-linux-$arch/nerdctl /rootfs/usr/local/bin/docker
 
 # k3s,kedge
-test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s.$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s
-\cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch/edge/edgecore /rootfs/usr/local/bin/
+test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s
+\cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch /rootfs/usr/local/kedge/
+\cp -a $arch/kubeedge-v1.12.1-linux-$arch/kubeedge-v1.12.1-linux-$arch /rootfs/usr/local/kedge/
 
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1
 chmod 755 /rootfs/usr/local/sbin/runc /rootfs/usr/local/bin/k3s 

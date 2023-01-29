@@ -2,14 +2,20 @@
 **Run**
 
 ```bash
+docker pull --platform=arm64 registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:multi-v2
 # --net=host --shm-size 1g -e VNC_OFFSET=99 
 # --cap-add SYS_BOOT --cap-add SYS_ADMIN
 # 
 # /_ext/working/_ee/fk-edgecore-indocker/files/usr/local/bin
 #  -v $(pwd)/entrypoint:/usr/local/bin/entrypoint
-docker run -it --rm --name edgecore \
-  --tmpfs /run --tmpfs /run/lock --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup:rw --privileged registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore
+#  cgroup_v2: --cgroupns=host (docker 20.10+)
+docker run --platform=arm64 -it --rm --name edgecore \
+  --tmpfs /run --tmpfs /run/lock --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup:rw --privileged registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:multi-v2
 
+
+kc get secret -nkubeedge tokensecret -o=jsonpath='{.data.tokendata}' | base64 -d
+tk=..
+sed -i -e "s|token: .*|token: ${tk}|g" conf.yml
 # headless @ mac23-199 in ~ |02:04:06  
 $ docker  exec -it edgecore bash
 root@6ef39458218d:/# edgecore --config /edgecore-conf.yml
