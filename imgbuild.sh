@@ -22,12 +22,13 @@ img="edgecore:latest"
 #dockerBuild
 case "$1" in
 bins)
+    # cd bins2
     img="edgecore:bins"
-    docker build -t $repo/$ns/$img -f Dockerfile.bins .
+    docker build -t $repo/$ns/$img -f bins2/Dockerfile .
     docker push $repo/$ns/$img
     ;;
 *)
-    docker build -t $repo/$ns/$img .
+    docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img .
     docker push $repo/$ns/$img
     ;;
 esac

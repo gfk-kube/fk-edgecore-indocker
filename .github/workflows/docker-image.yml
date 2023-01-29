@@ -34,4 +34,4 @@ jobs:
           export DOCKER_REGISTRY_PW_dockerhub=${{ secrets.DOCKER_REGISTRY_PW_DOCKERHUB }}
 
           # BUILD
-          echo core; sh buildx.sh #compile
+          sh buildx.sh #compile

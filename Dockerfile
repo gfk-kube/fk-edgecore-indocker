@@ -1,48 +1,24 @@
-# Copyright 2018 The Kubernetes Authors.
-# kind node base image
-#
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins as bins
+# FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak as trans ##ERR no-arm
+# FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine as trans
+# TODO image-syncer>> 复合IMG的同步;
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core as trans
+  WORKDIR /down
+  COPY --from=bins /down /down
+  ARG TARGETPLATFORM=linux/arm64
+  ADD _trans.sh /down/
+  RUN bash /down/_trans.sh; echo 1
+
+
 # For systemd + docker configuration used below, see the following references:
 # https://systemd.io/CONTAINER_INTERFACE/
-
-# start from ubuntu, this image is reasonably small as a starting point
-# for a kubernetes node image, it doesn't contain much we don't need
-# ARG BASE_IMAGE=ubuntu:21.10
-ARG BASE_IMAGE=registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core
-FROM $BASE_IMAGE as build
-
+# ARG BASE_IMAGE=ubuntu:21.10 >> headless:core multi复合img<amd64,arm64>
+# TODO: 当前ali上该img是纯x64的?? >> image-sync同步multiArch
+# FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core
+FROM infrastlabs/docker-headless:core
+ARG TARGETPLATFORM=linux/arm64
 # RUN mkdir /kind/
-# Configure crictl binary from upstream
-# ARG CRICTL_URL="https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.23.0/crictl-v1.23.0-linux-arm.tar.gz"
-
-# Install dependencies, first from apt, then from release tarballs.
-# NOTE: we use one RUN to minimize layers.
-#
-# First we must ensure that our util scripts are executable.
-#
-# The base image already has a basic userspace + apt but we need to install more packages.
-# Packages installed are broken down into (each on a line):
-# - packages needed to run services (systemd)
-# - packages needed for kubernetes components
-# - packages needed by the container runtime
-# - misc packages kind uses itself
-# - packages that provide semi-core kubernetes functionality
-# After installing packages we cleanup by:
-# - removing unwanted systemd services
-# - disabling kmsg in journald (these log entries would be confusing)
-#
-# Then we install containerd from our nightly build infrastructure, as this
-# build for multiple architectures and allows us to upgrade to patched releases
-# more quickly.
-#
-# Next we download and extract crictl and CNI plugin binaries from upstream.
-#
-# Next we ensure the /etc/kubernetes/manifests directory exists. Normally
-# a kubeadm debian / rpm package would ensure that this exists but we install
-# freshly built binaries directly when we build the node image.
-#
-# Finally we adjust tempfiles cleanup to be 1 minute after "boot" instead of 15m
-# This is plenty after we've done initial setup for a node, but before we are
-# likely to try to export logs etc.
+# RUN echo ${TARGETPLATFORM#*/} #不可解析
 
 # copy in static files
 # all scripts are 0755 (rwx r-x r-x)
@@ -59,28 +35,25 @@ RUN echo "Installing Packages ..." \
     && find /lib/systemd/system/sysinit.target.wants/ -name "systemd-tmpfiles-setup.service" -delete \
     && rm -f /lib/systemd/system/multi-user.target.wants/* \
     && rm -f /etc/systemd/system/*.wants/* \
+    && rm -f /lib/systemd/system/basic.target.wants/* \
     && rm -f /lib/systemd/system/local-fs.target.wants/* \
     && rm -f /lib/systemd/system/sockets.target.wants/*udev* \
     && rm -f /lib/systemd/system/sockets.target.wants/*initctl* \
-    && rm -f /lib/systemd/system/basic.target.wants/* \
     && echo "ReadKMsg=no" >> /etc/systemd/journald.conf 
     # && ln -s "$(which systemd)" /sbin/init
 
 
 # bins
 RUN mkdir -p /opt/cni/bin /kind/
-# COPY ./bins/containerd/* /usr/local/bin/
-# COPY ./bins/cni/cni-plugs/* /opt/cni/bin/
-# COPY ./bins/runc/* /usr/local/sbin/
-# COPY ./bins/crictl /usr/local/bin/
-# COPY ./bins/edgecore /
-COPY ./bins2/containerd-1.6.15-linux-amd64/bin/* /usr/local/bin/
-COPY ./bins2/cni-plugins-linux-amd64-v1.2.0/* /opt/cni/bin/
-COPY ./bins2/runc.amd64 /usr/local/sbin/runc
-COPY ./bins2/crictl-v1.26.0-linux-amd64/crictl /usr/local/bin/
-COPY ./bins2/containerd-fuse-overlayfs-1.0.5-linux-amd64/containerd-fuse-overlayfs-grpc /usr/local/bin/
-COPY ./bins2/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
-COPY ./bins2/nerdctl-1.1.0-linux-amd64/nerdctl /usr/local/bin/docker
+# COPY ./bins2/amd64/containerd-1.6.15-linux-amd64/bin/* /usr/local/bin/
+# COPY ./bins2/amd64/containerd-fuse-overlayfs-1.0.5-linux-amd64/containerd-fuse-overlayfs-grpc /usr/local/bin/
+# COPY ./bins2/amd64/cni-plugins-linux-amd64-v1.2.0/* /opt/cni/bin/
+# COPY ./bins2/amd64/runc.amd64 /usr/local/sbin/runc
+# COPY ./bins2/amd64/crictl-v1.26.0-linux-amd64/crictl /usr/local/bin/
+# COPY ./bins2/amd64/nerdctl-1.1.0-linux-amd64/nerdctl /usr/local/bin/docker
+# COPY ./bins2/amd64/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
+COPY --from=trans /rootfs /
+RUN find /usr/local/bin /opt/cni/bin
 # 
 COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
 COPY ./files/edgecore-conf.yml /
@@ -89,11 +62,6 @@ COPY ./files/edgecore-conf.yml /
 # all configs are 0644 (rw- r-- r--)
 # copy> add
 ADD files/etc /etc
-# COPY files/etc/* /etc/
-# COPY files/etc/containerd/* /etc/containerd/
-# COPY files/etc/sysctl.d/* /etc/sysctl.d/
-# COPY files/etc/systemd/system/* /etc/systemd/system/
-
 
 RUN echo "Installing containerd ..." \
     && rm -f /usr/local/bin/containerd-stress /usr/local/bin/containerd-shim-runc-v1 \
@@ -112,10 +80,6 @@ RUN echo "Adjusting systemd-tmpfiles timer" \
     # Failed to disable unit, unit udev.service does not exist.
     # && echo "Disabling udev" \
     # && systemctl disable udev.service
-
-# squash
-# FROM scratch
-# COPY --from=build / /
 
 # tell systemd that it is in docker (it will check for the container env)
 # https://systemd.io/CONTAINER_INTERFACE/

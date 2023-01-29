@@ -8,6 +8,7 @@
 !/bins2/*.txt
 !/bins2/*.sh
 !/bins2/*.md
+!/bins2/Dockerfile
 
 /releases/bin
 /releases/*.toml
