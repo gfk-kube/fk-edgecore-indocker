@@ -1,0 +1,89 @@
+# centos7.9.2009 ##fat-centos: FROM jrei/systemd-centos:7
+# cent7无arm64!!
+# replaceRef: https://zhuanlan.zhihu.com/p/591977368
+# https://hub.docker.com/_/rockylinux/tags #8.7_arm64_33.75 MB ##10M+
+# https://hub.docker.com/_/almalinux/tags #8.7_arm64_34.26 MB ##1M+
+FROM centos:7
+
+# http://mirrors.163.com/.help/CentOS7-Base-163.repo
+# http://mirrors.aliyun.com/repo/Centos-7.repo
+
+# dp-centos-init: libselinux-python selinux-policy rsyslog 
+# mysql: numactl.x86_64
+# service: initscripts
+# TODO: vim, git
+RUN curl http://mirrors.163.com/.help/CentOS7-Base-163.repo -o /etc/yum.repos.d/CentOS-Base.repo \
+  && yum -y clean all && yum -y makecache \
+  \
+  && yum -y install iproute net-tools \
+  sudo psmisc sysstat tree tmux lrzsz which wget openssl \
+  zip unzip \
+  # libselinux-python selinux-policy rsyslog \
+  # numactl.x86_64 initscripts \
+  && yum -y clean all 
+# RUN systemctl enable sshd \
+#   && chmod +x /etc/rc.d/rc.local && systemctl enable rc-local
+
+# SDK-java
+# COPY --from=jdk8 /usr/local/soft/java/jdk1.8.0_202 /usr/local/soft/java/jdk1.8.0_202
+ARG JAVA_HOME="/usr/local/soft/java/jdk1.8.0_202"
+ENV JAVA_HOME="$JAVA_HOME" \
+    PATH="$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH" \
+    JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+
+# SDK-node
+# RUN cd /tmp; wget https://npm.taobao.org/mirrors/node/v10.15.3/node-v10.15.3-linux-x64.tar.gz; \
+#   mkdir -p /usr/local/soft/node; tar -zxf node-v10.15.3-linux-x64.tar.gz -C /usr/local/soft/node;
+ARG NODE_HOME="/usr/local/soft/node/node-v10.15.3-linux-x64"
+ENV NODE_HOME="$NODE_HOME" \
+    PATH="$NODE_HOME/bin:$PATH"
+
+
+# CONFIG
+# COPY --chown=root:root ./conf/.vimrc /root/
+# COPY --chown=root:root ./conf/profile-attach /etc/profile-attach
+# COPY --chown=root:root ./tini-amd64 /sbin/tini
+RUN \
+  # .vimrc # default:echo -e;
+  echo "set fileencodings=utf-8,gb2312,gbk,gb18030\n\
+set termencoding=utf-8\n\
+set fileformats=unix\n\
+set encoding=prc\n\
+" > /root/.vimrc; \
+  #JAVA
+  echo "#JAVA\n\
+export JAVA_HOME=/usr/local/soft/java/jdk1.8.0_202\n\
+export PATH=\"$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH\"
+export JAVA_TOOL_OPTIONS=\"-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap\"\n\
+" > /etc/profile-attach; \
+  # tini
+  curl -o /sbin/tini -fSL https://ghproxy.com/https://github.com/krallin/tini/releases/download/v0.19.0/tini-amd64;
+
+# LANG
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=zh_CN:zh \
+    LC_ALL=zh_CN.UTF-8
+RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UTF-8 \
+  && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && echo "source /etc/profile-attach" >> /etc/profile \
+  && echo "source /etc/profile" >> /root/.bashrc; \
+  chmod +x /sbin/tini
+
+# 普通应用跑: 容器内uid=9021 gid=9021(与宿主机一致);
+# 不设定密码，默认sudo全免密(外置adaptor.sh处理安装，在启动前剔除sudo权限): TODO: 剔除sudo免密后 restart问题; gosu?
+RUN user=pciapp; uid=9021; \
+  group=pciapp; gid=9021; \
+  groupadd -g $gid $group; \
+  useradd -u $uid -g $gid -m -s /bin/bash $user; \
+  echo "$user ALL=(root) NOPASSWD: ALL" >> /etc/sudoers; \
+  \
+  echo "source /etc/profile" >> /home/$user/.bashrc
+
+USER pciapp
+# WORKDIR /root
+# tini: https://www.5axxw.com/wiki/content/01ppi2
+ENTRYPOINT ["/sbin/tini","--"]
+# Run your program under Tini
+# or docker run your-image /your/program ...
+# CMD ["/your/program", "-and", "-its", "arguments"]
+CMD ["bash"]
