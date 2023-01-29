@@ -5,8 +5,8 @@ export |grep DOCKER_REG
 repo=registry.cn-shenzhen.aliyuncs.com
 echo "${DOCKER_REGISTRY_PW_infrastSubUser2}" |docker login --username=${DOCKER_REGISTRY_USER_infrastSubUser2} --password-stdin $repo
 
-# repoHub=docker.io
-# echo "${DOCKER_REGISTRY_PW_dockerhub}" |docker login --username=${DOCKER_REGISTRY_USER_dockerhub} --password-stdin $repoHub
+repoHub=docker.io
+echo "${DOCKER_REGISTRY_PW_dockerhub}" |docker login --username=${DOCKER_REGISTRY_USER_dockerhub} --password-stdin $repoHub
         
 ns=infrastlabs
 ver=v2
@@ -15,8 +15,8 @@ base)
     echo "base"
     ;;
 *)
-    # repo=registry-1.docker.io
-    repo="registry.cn-shenzhen.aliyuncs.com"
+    repo=registry-1.docker.io
+    # repo="registry.cn-shenzhen.aliyuncs.com"
     img="edgecore:multi-$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
