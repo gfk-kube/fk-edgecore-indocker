@@ -1,0 +1,11 @@
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak
+
+# 不做多arch, 直接一把包圆给到其它img使用
+# ARG TARGETPLATFORM
+WORKDIR /down
+# ADD ./data/java8u202_x64.tar.gz /down/
+# ADD>COPY 前者会解压包
+COPY ./imgs/data/*.tar.xz /down/
+COPY ./imgs/data/*.tar.gz /down/
+RUN ls -lh; find /down;
+
