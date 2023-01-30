@@ -1,0 +1,14 @@
+registry.cn-shenzhen.aliyuncs.com:
+  username: xxx #ali
+  password: xxxxxxxxx #ali
+# registry.hub.docker.com:
+#   username: xxx
+#   password: xxxxxxxxxx
+# quay.io:
+#   username: xxx
+#   password: xxxxxxxxx
+#   insecure: true
+# quay.io/coreos:
+#   username: abc
+#   password: xxxxxxxxx
+#   insecure: true
