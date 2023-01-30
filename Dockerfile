@@ -1,4 +1,4 @@
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins as bins
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2 as bins
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak as trans ##ERR no-arm
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine as trans
 # TODO image-syncer>> 复合IMG的同步;
@@ -54,8 +54,8 @@ RUN mkdir -p /opt/cni/bin /kind/
 # COPY ./bins2/amd64/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
 COPY --from=trans /rootfs /
 RUN \
-  ln -s /usr/local/kedge/kubeedge-v1.10.3-linux-*/edge/edgecore /usr/local/bin/; \
-  ln -s /usr/local/kedge/kubeedge-v1.10.3-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
+  ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/edge/edgecore /usr/local/bin/; \
+  ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
   find /usr/local/bin /opt/cni/bin /usr/local/kedge/
 # 
 COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
