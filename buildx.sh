@@ -15,8 +15,8 @@ base)
     echo "base"
     ;;
 *)
-    repo=registry-1.docker.io
-    # repo="registry.cn-shenzhen.aliyuncs.com"
+    # repo=registry-1.docker.io
+    repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
     img="edgecore:multi-$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
