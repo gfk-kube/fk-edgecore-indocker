@@ -32,13 +32,19 @@ RUN tplat amd64 https://ghproxy.com/https://github.com/kubernetes-sigs/cri-tools
 # k3s 1.22.17 48.9M
 RUN tplat amd64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.22.17%2Bk3s1/k3s; \
   tplat arm64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.22.17%2Bk3s1/k3s-arm64
-
 # kedge 1.10.3 52.0M|93.7M
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.10.3/kubeedge-v1.10.3-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.10.3/kubeedge-v1.10.3-linux-arm64.tar.gz
-
 # kedge 1.12.1 64.6M|116M
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.12.1/kubeedge-v1.12.1-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.12.1/kubeedge-v1.12.1-linux-arm64.tar.gz
+
+# image-syncer 7.1M ##arm64: start with v131 @Oct 20, 2021
+RUN tplat amd64 https://ghproxy.com/https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-arm64.tar.gz
+# registry 5.8M
+RUN tplat amd64 https://ghproxy.com/https://github.com/distribution/distribution/releases/download/v2.8.1/registry_2.8.1_linux_amd64.tar.gz; \
+  tplat amd64 https://ghproxy.com/https://github.com/distribution/distribution/releases/download/v2.8.1/registry_2.8.1_linux_arm64.tar.gz
+
 
 RUN ls -lh; find; tree -h;

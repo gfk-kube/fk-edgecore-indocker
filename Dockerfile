@@ -5,7 +5,7 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins as bins
 FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core as trans
   WORKDIR /down
   COPY --from=bins /down /down
-  ARG TARGETPLATFORM=linux/arm64
+  ARG TARGETPLATFORM
   ADD _trans.sh /down/
   RUN bash /down/_trans.sh; echo 1
 
@@ -16,7 +16,7 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core as trans
 # TODO: 当前ali上该img是纯x64的?? >> image-sync同步multiArch
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core
 FROM infrastlabs/docker-headless:core
-ARG TARGETPLATFORM=linux/arm64
+ARG TARGETPLATFORM
 # RUN mkdir /kind/
 # RUN echo ${TARGETPLATFORM#*/} #不可解析
 
