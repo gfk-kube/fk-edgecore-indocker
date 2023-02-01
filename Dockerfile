@@ -54,6 +54,8 @@ RUN mkdir -p /opt/cni/bin /kind/
 # COPY ./bins2/amd64/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
 COPY --from=trans /rootfs /
 RUN \
+  # 默认版本: k3s-v1.22.17 + kedge-v1.13.0
+  ln - /local/bin/k3s-v1.22.17 /local/bin/k3s; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/edge/edgecore /usr/local/bin/; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
   find /usr/local/bin /opt/cni/bin /usr/local/kedge/

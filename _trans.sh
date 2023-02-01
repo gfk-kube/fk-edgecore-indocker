@@ -34,8 +34,12 @@ mkdir -p /rootfs/usr/local/kedge /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ 
 # \cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch /rootfs/usr/local/kedge/
 # \cp -a $arch/kubeedge-v1.12.1-linux-$arch/kubeedge-v1.12.1-linux-$arch /rootfs/usr/local/kedge/
 
-# down_k3s_v1.23.15/
-test "amd64" == "$arch" && k3=down_k3s_v1.23.15/$arch/k3s || k3=down_k3s_v1.23.15/$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s
+# v1.22.17; down_k3s_v1.23.15/
+test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.22.17
+test "amd64" == "$arch" && k3=down_k3s_v1.23.15/$arch/k3s || k3=down_k3s_v1.23.15/$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.23.15
+# kedge: x3版本
+\cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch /rootfs/usr/local/kedge/
+\cp -a $arch/kubeedge-v1.12.1-linux-$arch/kubeedge-v1.12.1-linux-$arch /rootfs/usr/local/kedge/
 \cp -a $arch/kubeedge-v1.13.0-linux-$arch/kubeedge-v1.13.0-linux-$arch /rootfs/usr/local/kedge/
 
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1

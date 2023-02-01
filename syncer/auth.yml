@@ -1,9 +1,9 @@
 registry.cn-shenzhen.aliyuncs.com:
   username: xxx #ali
   password: xxxxxxxxx #ali
-# registry.hub.docker.com:
-#   username: xxx
-#   password: xxxxxxxxxx
+registry.hub.docker.com:
+  username: xxx #hub
+  password: xxxxxxxxxx #hub
 # quay.io:
 #   username: xxx
 #   password: xxxxxxxxx

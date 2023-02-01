@@ -1,0 +1,7 @@
+# quay.io/coreos/kube-rbac-proxy: quay.io/ruohe/kube-rbac-proxy
+# quay.io/coreos/kube-rbac-proxy:v1.0: quay.io/ruohe/kube-rbac-proxy
+# quay.io/coreos/kube-rbac-proxy:v1.0,v2.0: quay.io/ruohe/kube-rbac-proxy
+
+# from registry.hub.docker.com/library/docker:20.10.18
+docker:20.10.18: registry.cn-shenzhen.aliyuncs.com/infrasync/docker
+

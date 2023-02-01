@@ -1,7 +1,11 @@
-# quay.io/coreos/kube-rbac-proxy: quay.io/ruohe/kube-rbac-proxy
-# quay.io/coreos/kube-rbac-proxy:v1.0: quay.io/ruohe/kube-rbac-proxy
-# quay.io/coreos/kube-rbac-proxy:v1.0,v2.0: quay.io/ruohe/kube-rbac-proxy
-
-# from registry.hub.docker.com/library/docker:20.10.18
-docker:20.10.18: registry.cn-shenzhen.aliyuncs.com/infrasync/docker
-
+alpine:3.14.8: registry.cn-shenzhen.aliyuncs.com/infrasync/alpine:3.14.8
+ubuntu:20.04: registry.cn-shenzhen.aliyuncs.com/infrasync/ubuntu:20.04
+almalinux:8.7: registry.cn-shenzhen.aliyuncs.com/infrasync/almalinux:8.7
+docker:20.10.18: registry.cn-shenzhen.aliyuncs.com/infrasync/docker:20.10.18
+kubernetesui/dashboard:v2.5.1: registry.cn-shenzhen.aliyuncs.com/infrasync/kubernetesui-dashboard:v2.5.1
+kubernetesui/metrics-scraper:v1.0.7: registry.cn-shenzhen.aliyuncs.com/infrasync/kubernetesui-metrics-scraper:v1.0.7
+rancher/pause:3.2: registry.cn-shenzhen.aliyuncs.com/infrasync/rancher-pause:3.2
+rancher/coredns-coredns:1.8.0: registry.cn-shenzhen.aliyuncs.com/infrasync/rancher-coredns-coredns:1.8.0
+dyrnq/metrics-server:v0.4.5: registry.cn-shenzhen.aliyuncs.com/infrasync/dyrnq-metrics-server:v0.4.5
+rancher/local-path-provisioner:v0.0.23: registry.cn-shenzhen.aliyuncs.com/infrasync/rancher-local-path-provisioner:v0.0.23
+kubeedge/edgemesh-agent:v1.13.0: registry.cn-shenzhen.aliyuncs.com/infrasync/kubeedge-edgemesh-agent:v1.13.0

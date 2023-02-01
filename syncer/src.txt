@@ -1,0 +1,17 @@
+alpine:3.14.8  #3 months ago 2.7M
+ubuntu:20.04 #15 hours ago 26.23 MB
+almalinux:8.7 #两月前 68.14 MB
+# docker:20.10.18 #20.10.18|20.10.18-cli 4月前 46.12 MB
+#kdash
+# kubernetesui/dashboard:v2.5.1 # a year ago
+# kubernetesui/metrics-scraper:v1.0.7 #两年前 #v108 arch乱/无arm
+#rancher
+rancher/pause:3.2 #两年前 3.1 #4年前
+# rancher/coredns-coredns:1.8.0 # a year ago 
+# dyrnq/metrics-server:v0.4.5 #12 hours ago cron??
+# rancher/local-path-provisioner:v0.0.23 #3月前 13.25 MB #v009 :4 years ago
+#kedge
+# kubeedge/edgemesh-agent:v1.13.0 #13 days ago 22M
+
+
+

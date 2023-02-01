@@ -27,7 +27,7 @@ modules:
     gpuPluginEnabled: false
     hostnameOverride: node193-ctr.kedge
     nodeIP: 172.0.0.1 #193
-    podSandboxImage: registry.cn-shenzhen.aliyuncs.com/infrastlabs/pause:3.1
+    podSandboxImage: registry.cn-shenzhen.aliyuncs.com/infrasync/rancher-pause:3.2
     remoteImageEndpoint: unix:///run/containerd/containerd.sock
     remoteRuntimeEndpoint: unix:///run/containerd/containerd.sock
     runtimeType: containerd #docker

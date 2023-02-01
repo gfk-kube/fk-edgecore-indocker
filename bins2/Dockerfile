@@ -59,5 +59,10 @@ WORKDIR /down/down_k3s_v1.23.15
 RUN tplat amd64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.15%2Bk3s1/k3s; \
   tplat arm64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.15%2Bk3s1/k3s-arm64
 
+# cfssl #https://blog.csdn.net/never_late/article/details/128570360
+# # https://github.com/cloudflare/cfssl/releases/download/v1.4.1/cfssl_1.4.1_linux_amd64
+# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64
+# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64
+# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl-certinfo_1.6.3_linux_amd64
 
 RUN ls -lh; find; tree -h;
