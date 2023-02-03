@@ -59,10 +59,20 @@ WORKDIR /down/down_k3s_v1.23.15
 RUN tplat amd64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.15%2Bk3s1/k3s; \
   tplat arm64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.15%2Bk3s1/k3s-arm64
 
-# cfssl #https://blog.csdn.net/never_late/article/details/128570360
+# cfssl (只有x64的:win,nux,darwin) #https://blog.csdn.net/never_late/article/details/128570360
 # # https://github.com/cloudflare/cfssl/releases/download/v1.4.1/cfssl_1.4.1_linux_amd64
-# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64
-# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64
-# https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl-certinfo_1.6.3_linux_amd64
+WORKDIR /down/down_cfssl_x64
+RUN tplat amd64 https://ghproxy.com/https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64; \
+  tplat amd64 https://ghproxy.com/https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64; \
+  tplat amd64 https://ghproxy.com/https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl-certinfo_1.6.3_linux_amd64
+
+# dcp_v2 v2.10.2@Aug 27, 2022; 24.5 MB >>  v2.11.0@Sep 14, 2022; 42.5 MB
+WORKDIR /down
+RUN tplat amd64 https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64; \
+  tplat arm64 https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-aarch64
+
+# go:supervisord x64 10.6M; arm64 3.22M
+RUN tplat amd64 https://ghproxy.com/https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_64-bit.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_ARM64.tar.gz
 
 RUN ls -lh; find; tree -h;
