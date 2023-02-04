@@ -1,5 +1,6 @@
 # explicitly use v2 config format
 version = 2
+root = "/var/lib/containerd" #for dcp-scale sed
 
 [plugins."io.containerd.grpc.v1.cri".containerd]
   # save disk space when using a single snapshotter

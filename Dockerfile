@@ -1,4 +1,4 @@
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2 as bins
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.1 as bins
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak as trans ##ERR no-arm
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine as trans
 # TODO image-syncer>> 复合IMG的同步;
@@ -55,12 +55,18 @@ RUN mkdir -p /opt/cni/bin /kind/
 COPY --from=trans /rootfs /
 RUN \
   # 默认版本: k3s-v1.22.17 + kedge-v1.13.0
-  ln - /local/bin/k3s-v1.22.17 /local/bin/k3s; \
+  ln -s /usr/local/bin/k3s-v1.22.17 /usr/local/bin/k3s; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/edge/edgecore /usr/local/bin/; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
+  \
+  ln -s /usr/local/cfssl/cfssl_1.6.3_linux_amd64 /usr/local/bin/cfssl; \
+  ln -s /usr/local/cfssl/cfssljson_1.6.3_linux_amd64 /usr/local/bin/cfssljson; \
+  ln -s /usr/local/cfssl/cfssl-certinfo_1.6.3_linux_amd64 /usr/local/bin/cfssl-certinfo; \
+  ln -s /usr/local/bin/docker-compose /usr/local/bin/dcp; \
   find /usr/local/bin /opt/cni/bin /usr/local/kedge/
 # 
-COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
+# COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
+COPY ./files/bridge-nerdctl-cpout.conflist /etc/cni/net.d/
 COPY ./files/edgecore-conf.yml /
 
 
