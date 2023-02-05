@@ -9,6 +9,7 @@ kubernetesui/metrics-scraper:v1.0.7 #两年前 #v108 arch乱/无arm
 rancher/pause:3.2 #两年前 3.1 #4年前
 # rancher/coredns-coredns:1.8.0 # a year ago 
 # dyrnq/metrics-server:v0.4.5 #12 hours ago cron??
+dyrnq/metrics-server:v0.6.2
 # rancher/local-path-provisioner:v0.0.23 #3月前 13.25 MB #v009 :4 years ago
 #kedge
 kubeedge/edgemesh-agent:v1.13.0 #13 days ago 22M
