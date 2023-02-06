@@ -4,6 +4,10 @@ registry.cn-shenzhen.aliyuncs.com:
 registry.hub.docker.com:
   username: xxx #hub
   password: xxxxxxxxxx #hub
+# registry.172.25.21.60:8143:
+deploy.xxx.com.ssl:8143: #DST2_DOMAIN
+  username: xxx #dpRegistry
+  password: xxxxxxxxxx #dpRegistry
 # quay.io:
 #   username: xxx
 #   password: xxxxxxxxx
