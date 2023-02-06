@@ -27,6 +27,11 @@ bins)
     docker build -t $repo/$ns/$img -f bins2/Dockerfile .
     docker push $repo/$ns/$img
     ;;
+alma)
+    img="env-centos:alma8.7-v1"
+    docker build -t $repo/$ns/$img -f imgs/Dockerfile.alma .
+    docker push $repo/$ns/$img
+    ;;
 *)
     docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img .
     docker push $repo/$ns/$img

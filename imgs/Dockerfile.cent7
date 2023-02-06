@@ -1,8 +1,4 @@
 # centos7.9.2009 ##fat-centos: FROM jrei/systemd-centos:7
-# cent7无arm64!!
-# replaceRef: https://zhuanlan.zhihu.com/p/591977368
-# https://hub.docker.com/_/rockylinux/tags #8.7_arm64_33.75 MB ##10M+
-# https://hub.docker.com/_/almalinux/tags #8.7_arm64_34.26 MB ##1M+
 FROM centos:7
 
 # http://mirrors.163.com/.help/CentOS7-Base-163.repo
