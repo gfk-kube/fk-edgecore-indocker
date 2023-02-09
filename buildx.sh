@@ -11,8 +11,33 @@ echo "${DOCKER_REGISTRY_PW_dockerhub}" |docker login --username=${DOCKER_REGISTR
 ns=infrastlabs
 ver=v1.13.0-k2217-v2.1 #v2
 case "$1" in
-base)
-    echo "base"
+alma)
+    echo "baseImgs>> alma"
+    ver=v2
+    repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
+    img="env-centos:alma8.7-$ver"
+    # cache
+    ali="registry.cn-shenzhen.aliyuncs.com"
+    cimg="env-centos-cache:alma8.7-$ver"
+    cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
+
+    plat="--platform linux/amd64,linux/arm64" ##,linux/arm
+    args="--build-arg FULL=/.."
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.alma . 
+    ;;
+alma-sdk)
+    echo "baseImgs>> alma-sdk"
+    ver=v2
+    repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
+    img="env-centos:alma8.7-sdk-$ver"
+    # cache
+    ali="registry.cn-shenzhen.aliyuncs.com"
+    cimg="env-centos-cache:alma8.7-sdk-$ver"
+    cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
+
+    plat="--platform linux/amd64,linux/arm64" ##,linux/arm
+    args="--build-arg FULL=/.."
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.alma-sdk . 
     ;;
 *)
     # repo=registry-1.docker.io

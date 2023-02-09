@@ -1,0 +1,65 @@
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-data as data
+WORKDIR /down
+RUN apk update; apk add xz
+# find /down; >> zx解压到源文件目录的
+# test -z "$(echo $TARGETPLATFORM |grep arm)" && arch=amd64 || arch=arm64; \
+ARG TARGETPLATFORM
+# amd64,arm64各自解压;
+RUN mkdir -p unpack; \
+  test -z "$(echo $TARGETPLATFORM |grep arm)" && arch=amd64 || arch=arm64; \
+  test "arm64" == "$arch" && exit 0; \
+  \
+  xz -d node-v14.20.0-linux-x64.tar.xz; tar -xf node-v14.20.0-linux-x64.tar -C unpack; \
+  tar -zxf jdk-8u202-linux-x64.tar.gz; mv jdk1.8.0_202 unpack/jdk1.8.0_202_x64;
+RUN \
+  test -z "$(echo $TARGETPLATFORM |grep arm)" && arch=amd64 || arch=arm64; \
+  test "amd64" == "$arch" && exit 0; \
+  \
+  xz -d node-v14.20.0-linux-arm64.tar.xz; tar -xf node-v14.20.0-linux-arm64.tar -C unpack; \
+  tar -zxf jdk-8u202-linux-arm64-vfp-hflt.tar.gz; mv jdk1.8.0_202 unpack/jdk1.8.0_202_arm64
+RUN ls -lh; du -sh *; du -sh unpack/*
+
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-v2
+# COPY --from=jdk8 /usr/local/soft/java/jdk1.8.0_202 /usr/local/soft/java/jdk1.8.0_202
+# COPY --from=data /down/unpack/* /usr/local/soft/ #COPY xx/* yy>> 会把子目录下的内容merge到yy
+COPY --from=data /down/unpack /usr/local/soft
+
+# SDK-java
+ARG JAVA_HOME="/usr/local/soft/jdk1.8.0_202"
+ENV JAVA_HOME="$JAVA_HOME" \
+    PATH="$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH" \
+    JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+# SDK-node
+ARG NODE_HOME="/usr/local/soft/node-v14.20.0-linux"
+ENV NODE_HOME="$NODE_HOME" \
+    PATH="$NODE_HOME/bin:$PATH"
+
+# CONFIG
+# 161M	unpack/jdk1.8.0_202_arm64
+# 388M	unpack/jdk1.8.0_202_x64
+# 108M	unpack/node-v14.20.0-linux-arm64
+# 109M	unpack/node-v14.20.0-linux-x64
+ARG TARGETPLATFORM
+USER root
+RUN \
+  # amd64> x64
+  test -z "$(echo $TARGETPLATFORM |grep arm)" && arch=x64 || arch=arm64; \
+  ln -s $JAVA_HOME"_$arch" $JAVA_HOME; \
+  ln -s $NODE_HOME"-$arch" $NODE_HOME; \
+  ls -lh /usr/local/soft/; \
+  #JAVA
+  echo -e "#JAVA\n\
+export JAVA_HOME=/usr/local/soft/jdk1.8.0_202\n\
+export PATH=\"$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH\"\n\
+export JAVA_TOOL_OPTIONS=\"-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap\"\n\
+\n\
+export NODE_HOME=\"/usr/local/soft/node-v14.20.0-linux\"\n\
+export PATH=\"$NODE_HOME/bin:$PATH\"\n\
+" > /etc/profile-attach; \
+  echo "source /etc/profile-attach" >> /etc/profile; \
+  source /etc/profile; java -version; node -v; npm -v
+
+USER pciapp
+WORKDIR /app
+ENTRYPOINT ["/sbin/tini","--"]
+CMD ["bash"]

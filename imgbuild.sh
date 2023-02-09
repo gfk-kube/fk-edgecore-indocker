@@ -32,6 +32,16 @@ alma)
     docker build -t $repo/$ns/$img -f imgs/Dockerfile.alma .
     docker push $repo/$ns/$img
     ;;
+alma-sdk) #--build-arg TARGETPLATFORM="linux/amd64" 
+    img="env-centos:alma8.7-sdk-v1"
+    docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img -f imgs/Dockerfile.alma-sdk .
+    docker push $repo/$ns/$img
+    ;;
+alma-sdk-data) #x64下本地制作，(本地x64/arm64的包，存于img内)
+    img="env-centos:alma8.7-sdk-data"
+    docker build -t $repo/$ns/$img -f imgs/Dockerfile.alma-sdk-data .
+    docker push $repo/$ns/$img
+    ;;
 *)
     docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img .
     docker push $repo/$ns/$img
