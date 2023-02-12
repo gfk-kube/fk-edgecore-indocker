@@ -32,13 +32,13 @@ RUN tplat amd64 https://ghproxy.com/https://github.com/kubernetes-sigs/cri-tools
 # k3s 1.22.17 48.9M
 RUN tplat amd64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.22.17%2Bk3s1/k3s; \
   tplat arm64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.22.17%2Bk3s1/k3s-arm64
+
 # kedge 1.10.3 52.0M|93.7M
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.10.3/kubeedge-v1.10.3-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.10.3/kubeedge-v1.10.3-linux-arm64.tar.gz
 # kedge 1.12.1 64.6M|116M
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.12.1/kubeedge-v1.12.1-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.12.1/kubeedge-v1.12.1-linux-arm64.tar.gz
-
 # kedge 1.13.0 66.6M|120M
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.13.0/kubeedge-v1.13.0-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.13.0/kubeedge-v1.13.0-linux-arm64.tar.gz
@@ -75,4 +75,18 @@ RUN tplat amd64 https://ghproxy.com/https://github.com/docker/compose/releases/d
 RUN tplat amd64 https://ghproxy.com/https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_64-bit.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_ARM64.tar.gz
 
+# kedge 1.11.2 63.5M|
+# curl -O -fSL https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.11.2/kubeedge-v1.11.2-linux-amd64.tar.gz
+RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.11.2/kubeedge-v1.11.2-linux-amd64.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.11.2/kubeedge-v1.11.2-linux-arm64.tar.gz
+
 RUN ls -lh; find; tree -h;
+
+# DOCKER: export DOCKER_HOST=arm64.docker.local:2375
+# https://github.com/StefanScherer/docker-cli-builder
+# curl -O -fSL https://ghproxy.com/https://github.com/StefanScherer/docker-cli-builder/releases/download/18.09.6/docker.exe
+# curl -O -fSL https://ghproxy.com/https://github.com/StefanScherer/docker-cli-builder/releases/download/20.10.9/docker.exe
+# KUBECTL:
+# https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md
+# https://storage.googleapis.com/kubernetes-release/release/v1.22.17/kubernetes-client-windows-amd64.tar.gz
+# C:\Users\Administrator\.kube\config #hosts: server.k8s.local
