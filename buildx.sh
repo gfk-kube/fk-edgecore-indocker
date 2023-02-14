@@ -14,7 +14,7 @@ case "$1" in
 alma)
     echo "baseImgs>> alma"
     ver=v2
-    repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
+    repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-centos:alma8.7-$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
@@ -28,7 +28,8 @@ alma)
 alma-sdk)
     echo "baseImgs>> alma-sdk"
     ver=v2
-    repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
+    # repo="registry.cn-shenzhen.aliyuncs.com"
+    repo=registry-1.docker.io #改推hub: ali仓可推multi,但之后syncer取不了: ERR: unsupported manifest type: application/vnd.oci.image.index.v1+json
     img="env-centos:alma8.7-sdk-$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
