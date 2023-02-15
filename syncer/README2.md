@@ -15,6 +15,24 @@ export DOCKER_REGISTRY_PW_dpinner=xxxx
 EOF
 ```
 
+## undock (oci,从img中取出文件)
+
+- https://github.com/crazy-max/undock/releases/download/v0.4.0/undock_0.4.0_windows_amd64.zip
+- https://github.com/crazy-max/undock/releases/download/v0.4.0/undock_0.4.0_linux_amd64.tar.gz
+
+```bash
+# https://crazymax.dev/undock/usage/examples/
+undock.exe --rm-dist --all registry.cn-shenzhen.aliyuncs.com/infrasync/alpine:3.14.8 ./dist3
+
+# --include /bin/busybox 取不到@win
+# bin 可以
+# bin/busybox 也可以 (win下不能带/)
+undock.exe --include bin/busybox --rm-dist --all registry.cn-shenzhen.aliyuncs.com/infrasync/alpine:3.14.8 ./dist4
+
+# try ociImage: ubuntu:20.04
+undock.exe --include bin --rm-dist --all ubuntu:20.04 ./ubt1
+```
+
 ## test推私服(tls)
 
 ```bash
