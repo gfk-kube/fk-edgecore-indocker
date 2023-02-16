@@ -28,8 +28,11 @@ alma)
 alma-sdk)
     echo "baseImgs>> alma-sdk"
     ver=v2
-    # repo="registry.cn-shenzhen.aliyuncs.com"
-    repo=registry-1.docker.io #改推hub: ali仓可推multi,但之后syncer取不了: ERR: unsupported manifest type: application/vnd.oci.image.index.v1+json
+    
+    #推hub: github ac:推不上去, 6h-timeout fail
+    #ali仓：可推multi,但之后syncer取不了(OCI.image)>> (2.16号晚)自改syncer已支持
+    repo="registry.cn-shenzhen.aliyuncs.com"
+    # repo=registry-1.docker.io 
     img="env-centos:alma8.7-sdk-$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
