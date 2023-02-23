@@ -9,7 +9,7 @@ repoHub=docker.io
 echo "${DOCKER_REGISTRY_PW_dockerhub}" |docker login --username=${DOCKER_REGISTRY_USER_dockerhub} --password-stdin $repoHub
         
 ns=infrastlabs
-ver=v1.13.0-k2217-v2.1 #v2
+ver=v1.13.0-k2217-v2.2 #v2
 case "$1" in
 alma)
     echo "baseImgs>> alma"
