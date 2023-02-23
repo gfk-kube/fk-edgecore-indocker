@@ -23,7 +23,7 @@ img="edgecore:latest"
 case "$1" in
 bins)
     # cd bins2
-    img="edgecore:bins-v2.1"
+    img="edgecore:bins-v2.2"
     docker build -t $repo/$ns/$img -f bins2/Dockerfile .
     docker push $repo/$ns/$img
     ;;
