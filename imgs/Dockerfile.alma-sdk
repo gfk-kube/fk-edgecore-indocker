@@ -19,7 +19,7 @@ RUN \
   tar -zxf jdk-8u202-linux-arm64-vfp-hflt.tar.gz; mv jdk1.8.0_202 unpack/jdk1.8.0_202_arm64
 RUN ls -lh; du -sh *; du -sh unpack/*
 
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-v2
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-v2.1
 # COPY --from=jdk8 /usr/local/soft/java/jdk1.8.0_202 /usr/local/soft/java/jdk1.8.0_202
 # COPY --from=data /down/unpack/* /usr/local/soft/ #COPY xx/* yy>> 会把子目录下的内容merge到yy
 COPY --from=data /down/unpack /usr/local/soft

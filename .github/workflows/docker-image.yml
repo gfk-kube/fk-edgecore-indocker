@@ -35,5 +35,5 @@ jobs:
 
           # BUILD
           # sh buildx.sh #compile
-          # sh buildx.sh alma
+          sh buildx.sh alma
           sh buildx.sh alma-sdk
