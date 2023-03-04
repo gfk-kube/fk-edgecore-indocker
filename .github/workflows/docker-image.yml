@@ -34,6 +34,6 @@ jobs:
           export DOCKER_REGISTRY_PW_dockerhub=${{ secrets.DOCKER_REGISTRY_PW_DOCKERHUB }}
 
           # BUILD
-          # sh buildx.sh #compile
-          sh buildx.sh alma
-          sh buildx.sh alma-sdk
+          sh buildx.sh #compile
+          # sh buildx.sh alma
+          # sh buildx.sh alma-sdk
