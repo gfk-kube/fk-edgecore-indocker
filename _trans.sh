@@ -60,9 +60,9 @@ test "amd64" == "$arch" && k3=down_k3s_v1.23.15/$arch/k3s || k3=down_k3s_v1.23.1
   # cloud/csidriver/csidriver
   # cloud/iptablesmanager/iptablesmanager
   # version
-du -sh /usr/local/kedge/
-find /usr/local/kedge/ -type f |grep -Ev "cloudcore|edgecore" |sort |xargs rm -rf
-du -sh /usr/local/kedge/
+du -sh /rootfs/usr/local/kedge/
+find /rootfs/usr/local/kedge/ -type f |grep -Ev "cloudcore|edgecore" |sort |xargs rm -rf
+du -sh /rootfs/usr/local/kedge/
 
 # alter,view
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1
