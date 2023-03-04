@@ -67,5 +67,5 @@ du -sh /usr/local/kedge/
 # alter,view
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1
 chmod 755 /rootfs/usr/local/sbin/runc /rootfs/usr/local/bin/k3s 
-tree /rootfs
+tree -h /rootfs
 ls -lh /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ /rootfs/opt/cni/bin/
