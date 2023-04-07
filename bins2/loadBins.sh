@@ -1,6 +1,6 @@
 #!/bin/bash
 
-img=registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins
+img=registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.2
 docker pull $img
 
 # ok: oldRef
@@ -21,7 +21,7 @@ ls |grep -E ".tgz$|.tar.gz$" |while read one; do
 done
 cd $old
 }
-unpack amd64
-unpack arm64
+# unpack amd64
+# unpack arm64
 
 tree -L 2
