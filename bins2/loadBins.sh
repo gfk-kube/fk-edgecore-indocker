@@ -1,6 +1,6 @@
 #!/bin/bash
 
-img=registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.2
+img=registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.3
 docker pull $img
 
 # ok: oldRef
