@@ -1,4 +1,27 @@
 
+**Build**
+
+- imgbuild.sh bins #@23.199 国内env初始 二进制包img
+- gitac>> sh buildx.sh #compile<x64,arm64双镜像>
+
+```bash
+# v2.2(多版本)
+containerd-1.6.15;containerd-fuse-overlayfs-1.0.5;cni-plugins-linux-arm64-v1.2.0;runc_v1.1.4;nerdctl-1.1.0;crictl-v1.26.0;
+k3s: v1.22.17;v1.23.15;v1.23.16
+kedge: v1.10.3;v1.11.2;v1.12.1;v1.13.0;
+# 
+cfssl_1.6.3
+registry_2.8.1
+image-syncer-v1.3.1
+go_supervisord_0.7.3
+docker-compose_v2.10.2
+
+# v2.3(定版本, +k8s)
+k8s: v1.23.17
+k3s: v1.23.17-k3s1
+kedge: v1.13.0
+```
+
 **Run**
 
 ```bash
