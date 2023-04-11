@@ -80,7 +80,22 @@ RUN tplat amd64 https://ghproxy.com/https://github.com/ochinchina/supervisord/re
 RUN tplat amd64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.11.2/kubeedge-v1.11.2-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/kubeedge/kubeedge/releases/download/v1.11.2/kubeedge-v1.11.2-linux-arm64.tar.gz
 
-RUN ls -lh; find; tree -h;
+
+
+# k3s v1.23.17 62M
+WORKDIR /down/down_k3s_v1.23.17
+RUN tplat amd64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.17%2Bk3s1/k3s; \
+  tplat arm64 https://ghproxy.com/https://github.com/k3s-io/k3s/releases/download/v1.23.17%2Bk3s1/k3s-arm64
+
+# 原生kubernetes: server < node < client
+WORKDIR /down/down_k8s_v1.23.17
+RUN tplat amd64 https://dl.k8s.io/v1.23.17/kubernetes-server-linux-amd64.tar.gz; \
+  tplat arm64 https://dl.k8s.io/v1.23.17/kubernetes-server-linux-arm64.tar.gz
+# 原生kubernetes: +etcd_v354
+RUN tplat amd64 https://ghproxy.com/https://github.com/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-amd64.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-arm64.tar.gz
+
+RUN cd /down; ls -lh; find; tree -h;
 
 # DOCKER: export DOCKER_HOST=arm64.docker.local:2375
 # https://github.com/StefanScherer/docker-cli-builder

@@ -31,7 +31,7 @@ RUN echo "Installing Packages ..." \
       libseccomp2 pigz \
       bash ca-certificates curl rsync \
       nfs-common fuse-overlayfs \
-      jq \
+      jq bash-completion \
     && find /lib/systemd/system/sysinit.target.wants/ -name "systemd-tmpfiles-setup.service" -delete \
     && rm -f /lib/systemd/system/multi-user.target.wants/* \
     && rm -f /etc/systemd/system/*.wants/* \
@@ -54,8 +54,8 @@ RUN mkdir -p /opt/cni/bin /kind/
 # COPY ./bins2/amd64/kubeedge-v1.10.3-linux-amd64/kubeedge-v1.10.3-linux-amd64/edge/edgecore /usr/local/bin/
 COPY --from=trans /rootfs /
 RUN \
-  # 默认版本: k3s-v1.22.17 + kedge-v1.13.0
-  ln -s /usr/local/bin/k3s-v1.22.17 /usr/local/bin/k3s; \
+  # 默认版本: k3s-v1.23.17 + kedge-v1.13.0
+  ln -s /usr/local/bin/k3s-v1.23.17 /usr/local/bin/k3s; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/edge/edgecore /usr/local/bin/; \
   ln -s /usr/local/kedge/kubeedge-v1.13.0-linux-*/cloud/cloudcore/cloudcore /usr/local/bin/; \
   \

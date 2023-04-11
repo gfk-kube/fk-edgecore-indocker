@@ -12,13 +12,16 @@ ls |grep -E ".tgz$|.tar.gz$" |while read one; do
 done
 cd $old
 }
-unpack $arch #xx.tar.gz all in /down/
+# WORKDIR /down
+cd /down/down_k8s_v1.23.17; unpack $arch
+cd /down; unpack $arch #xx.tar.gz all in /down/
 # unpack arm64
 
 tree -L 2
 
 
 ################
+cd /down;
 mkdir -p /rootfs/usr/local/cfssl /rootfs/usr/local/kedge /rootfs/usr/local/bin/ /rootfs/usr/local/sbin/ /rootfs/opt/cni/bin/
 # cri: ctd,fuse-overlayfs,cni,runc
 \cp -a $arch/containerd-1.6.15-linux-$arch/bin/* /rootfs/usr/local/bin/
@@ -45,14 +48,28 @@ test "amd64" == "$arch" && file=$arch/supervisord_0.7.3_Linux_64-bit/supervisord
 chmod +x /rootfs/usr/local/bin/*
 
 
-# k3s,kedge
-# v1.22.17; down_k3s_v1.23.15/
-test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.22.17
-test "amd64" == "$arch" && k3=down_k3s_v1.23.15/$arch/k3s || k3=down_k3s_v1.23.15/$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.23.15
+# k8s,k3s,kedge
+# k8s (_ex_bin:597M; bin:475M>pack126M;)
+old=$(pwd); cd down_k8s_v1.23.17/$arch/kubernetes-server-linux-$arch/kubernetes/server/bin
+  rm -rf ../LICENSES; mkdir -p ../_ex_bin/
+  mv *.tar *docker_tag ../_ex_bin/
+  mv mounter kubectl-convert kubeadm kube-log-runner  kube-aggregator  apiextensions-apiserver ../_ex_bin/
+  du -sh ../*; find ../; tree -h ../ #view
+  mkdir -p /rootfs/usr/local/k8s/server/bin/; \cp -a * /rootfs/usr/local/k8s/server/bin/
+cd $old
+# etcd 23M,etcdctl 18M, --etcdutl 16M
+mkdir -p /rootfs/usr/local/k8s/etcd/bin/; 
+\cp -a down_k8s_v1.23.17/$arch/etcd-v3.5.4-linux-$arch/etcd-v3.5.4-linux-$arch/etcd /rootfs/usr/local/k8s/etcd/bin/
+\cp -a down_k8s_v1.23.17/$arch/etcd-v3.5.4-linux-$arch/etcd-v3.5.4-linux-$arch/etcdctl /rootfs/usr/local/k8s/etcd/bin/
+
+# k3s: v1.22.17; down_k3s_v1.23.17/
+# test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.22.17
+test "amd64" == "$arch" && k3=down_k3s_v1.23.17/$arch/k3s || k3=down_k3s_v1.23.17/$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.23.17
+
 # kedge: x3版本
-\cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch /rootfs/usr/local/kedge/
-\cp -a $arch/kubeedge-v1.11.2-linux-$arch/kubeedge-v1.11.2-linux-$arch /rootfs/usr/local/kedge/
-\cp -a $arch/kubeedge-v1.12.1-linux-$arch/kubeedge-v1.12.1-linux-$arch /rootfs/usr/local/kedge/
+# \cp -a $arch/kubeedge-v1.10.3-linux-$arch/kubeedge-v1.10.3-linux-$arch /rootfs/usr/local/kedge/
+# \cp -a $arch/kubeedge-v1.11.2-linux-$arch/kubeedge-v1.11.2-linux-$arch /rootfs/usr/local/kedge/
+# \cp -a $arch/kubeedge-v1.12.1-linux-$arch/kubeedge-v1.12.1-linux-$arch /rootfs/usr/local/kedge/
 \cp -a $arch/kubeedge-v1.13.0-linux-$arch/kubeedge-v1.13.0-linux-$arch /rootfs/usr/local/kedge/
 # clear kedge
   # cloud/admission/admission
