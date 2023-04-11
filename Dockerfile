@@ -1,4 +1,4 @@
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.3 as bins
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.4 as bins
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak as trans ##ERR no-arm
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine as trans
 # TODO image-syncer>> 复合IMG的同步;
