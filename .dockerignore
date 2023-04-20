@@ -5,3 +5,5 @@ bins2/*.tar.gz
 bins2/_ex
 bins2/amd64
 bins2/arm64
+bins2/down_*
+**/usr/local/bin/*-org
