@@ -24,6 +24,7 @@ ARG TARGETPLATFORM
 # all scripts are 0755 (rwx r-x r-x)
 COPY files/usr/local/bin/* /usr/local/bin/
 
+# +bash-completion dnsutils(dig,nslookup)
 RUN echo "Installing Packages ..." \
     && DEBIAN_FRONTEND=noninteractive clean-install \
       systemd \
@@ -31,7 +32,7 @@ RUN echo "Installing Packages ..." \
       libseccomp2 pigz \
       bash ca-certificates curl rsync \
       nfs-common fuse-overlayfs \
-      jq bash-completion \
+      jq bash-completion dnsutils \
     && find /lib/systemd/system/sysinit.target.wants/ -name "systemd-tmpfiles-setup.service" -delete \
     && rm -f /lib/systemd/system/multi-user.target.wants/* \
     && rm -f /etc/systemd/system/*.wants/* \

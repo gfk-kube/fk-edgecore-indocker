@@ -95,6 +95,21 @@ RUN tplat amd64 https://dl.k8s.io/v1.23.17/kubernetes-server-linux-amd64.tar.gz;
 RUN tplat amd64 https://ghproxy.com/https://github.com/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-amd64.tar.gz; \
   tplat arm64 https://ghproxy.com/https://github.com/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-arm64.tar.gz
 
+# flannel v0.21.4
+RUN tplat amd64 https://ghproxy.com/https://github.com/flannel-io/flannel/releases/download/v0.21.4/flannel-v0.21.4-linux-amd64.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/flannel-io/flannel/releases/download/v0.21.4/flannel-v0.21.4-linux-arm64.tar.gz
+RUN tplat amd64 https://ghproxy.com/https://github.com/flannel-io/cni-plugin/releases/download/v1.1.2/cni-plugin-flannel-linux-amd64-v1.1.2.tgz; \
+  tplat arm64 https://ghproxy.com/https://github.com/flannel-io/cni-plugin/releases/download/v1.1.2/cni-plugin-flannel-linux-arm64-v1.1.2.tgz
+
+# ee: coredns-ipin, edgecore-fix-offline-pods
+WORKDIR /down/down_gitee
+RUN echo a.12; \
+  tplat amd64 https://gitee.com/g-k8s/fk-coredns-ipindn/releases/download/v1.8.0/coredns-x64.tar.gz; \
+  tplat arm64 https://gitee.com/g-k8s/fk-coredns-ipindn/releases/download/v1.8.0/coredns-arm64.tar.gz
+RUN tplat amd64 https://gitee.com/g-k8s/kubeedge-lite/releases/download/v1.13.0-01/edgecore-x64.tar.gz; \
+  tplat arm64 https://gitee.com/g-k8s/kubeedge-lite/releases/download/v1.13.0-01/edgecore-arm64.tar.gz
+
+
 RUN cd /down; ls -lh; find; tree -h;
 
 # DOCKER: export DOCKER_HOST=arm64.docker.local:2375

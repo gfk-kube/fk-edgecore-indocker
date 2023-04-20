@@ -15,6 +15,7 @@ cd $old
 # WORKDIR /down
 cd /down/down_k8s_v1.23.17; unpack $arch
 cd /down; unpack $arch #xx.tar.gz all in /down/
+cd /down/down_gitee; unpack $arch
 # unpack arm64
 
 tree -L 2
@@ -61,6 +62,12 @@ cd $old
 mkdir -p /rootfs/usr/local/k8s/etcd/bin/; 
 \cp -a down_k8s_v1.23.17/$arch/etcd-v3.5.4-linux-$arch/etcd-v3.5.4-linux-$arch/etcd /rootfs/usr/local/k8s/etcd/bin/
 \cp -a down_k8s_v1.23.17/$arch/etcd-v3.5.4-linux-$arch/etcd-v3.5.4-linux-$arch/etcdctl /rootfs/usr/local/k8s/etcd/bin/
+# flanneld/flannel 11M: flannel-v0.21.4-linux-arm64
+mkdir -p /rootfs/usr/local/k8s/cni/bin/; 
+\cp -a down_k8s_v1.23.17/$arch/flannel-v0.21.4-linux-$arch/flanneld /rootfs/usr/local/k8s/cni/bin/
+# cni-plugin-flannel-linux-$arch-v1.1.2/flannel-$arch
+\cp -a down_k8s_v1.23.17/$arch/cni-plugin-flannel-linux-$arch-v1.1.2/flannel-$arch /rootfs/usr/local/k8s/cni/bin/flannel
+
 
 # k3s: v1.22.17; down_k3s_v1.23.17/
 # test "amd64" == "$arch" && k3=$arch/k3s || k3=$arch/k3s-$arch ; \cp -a $k3 /rootfs/usr/local/bin/k3s-v1.22.17
@@ -80,6 +87,17 @@ test "amd64" == "$arch" && k3=down_k3s_v1.23.17/$arch/k3s || k3=down_k3s_v1.23.1
 du -sh /rootfs/usr/local/kedge/
 find /rootfs/usr/local/kedge/ -type f |grep -Ev "cloudcore|edgecore" |sort |xargs rm -rf
 du -sh /rootfs/usr/local/kedge/
+
+# ee: coredns-ipin, edgecore-fix-offline-pods
+# https://gitee.com/g-k8s/fk-coredns-ipindn/releases/tag/v1.8.0
+# https://gitee.com/g-k8s/kubeedge-lite/releases/tag/v1.13.0-01
+arch2=$arch; test "amd64" == "$arch" && arch2="x64"
+# coredns
+\cp -a down_gitee/$arch/coredns-$arch2/coredns-$arch2 /rootfs/usr/local/bin/coredns
+# edgecore
+mv /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore \
+ /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore-org
+\cp -a down_gitee/$arch/edgecore-$arch2/edgecore-$arch2 /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore
 
 # alter,view
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1
