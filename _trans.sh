@@ -15,7 +15,7 @@ cd $old
 # WORKDIR /down
 cd /down/down_k8s_v1.23.17; unpack $arch
 cd /down; unpack $arch #xx.tar.gz all in /down/
-cd /down/down_gitee; unpack $arch
+# cd /down/down_gitee; unpack $arch
 # unpack arm64
 
 tree -L 2
@@ -89,15 +89,16 @@ find /rootfs/usr/local/kedge/ -type f |grep -Ev "cloudcore|edgecore" |sort |xarg
 du -sh /rootfs/usr/local/kedge/
 
 # ee: coredns-ipin, edgecore-fix-offline-pods
-# https://gitee.com/g-k8s/fk-coredns-ipindn/releases/tag/v1.8.0
-# https://gitee.com/g-k8s/kubeedge-lite/releases/tag/v1.13.0-01
-arch2=$arch; test "amd64" == "$arch" && arch2="x64"
-# coredns
-\cp -a down_gitee/$arch/coredns-$arch2/coredns-$arch2 /rootfs/usr/local/bin/coredns
-# edgecore
-mv /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore \
- /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore-org
-\cp -a down_gitee/$arch/edgecore-$arch2/edgecore-$arch2 /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore
+# TODO: mv /Dockerfile
+# # https://gitee.com/g-k8s/fk-coredns-ipindn/releases/tag/v1.8.0
+# # https://gitee.com/g-k8s/kubeedge-lite/releases/tag/v1.13.0-01
+# arch2=$arch; test "amd64" == "$arch" && arch2="x64"
+# # coredns
+# \cp -a down_gitee/$arch/coredns-$arch2/coredns-$arch2 /rootfs/usr/local/bin/coredns
+# # edgecore
+# mv /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore \
+#  /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore-org
+# \cp -a down_gitee/$arch/edgecore-$arch2/edgecore-$arch2 /rootfs/usr/local/kedge/kubeedge-v1.13.0-linux-amd64/edge/edgecore
 
 # alter,view
 rm -f /rootfs/usr/local/bin/containerd-stress /rootfs/usr/local/bin/containerd-shim-runc-v1

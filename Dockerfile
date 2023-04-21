@@ -1,3 +1,5 @@
+FROM postfinance/kubelet-csr-approver:v1.0.0 as approver
+FROM dyrnq/metrics-server:v0.6.2 as metrics
 FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:bins-v2.4 as bins
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine-ext:weak as trans ##ERR no-arm
 # FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/alpine as trans
@@ -65,12 +67,27 @@ RUN \
   ln -s /usr/local/cfssl/cfssl-certinfo_1.6.3_linux_amd64 /usr/local/bin/cfssl-certinfo; \
   ln -s /usr/local/bin/docker-compose /usr/local/bin/dcp; \
   find /usr/local/bin /opt/cni/bin /usr/local/kedge/
-# 
+
+
+# ref-img
+COPY --from=approver /ko-app/kubelet-csr-approver /usr/local/bin/kubelet-csr-approver
+COPY --from=metrics /metrics-server /usr/local/bin/metrics-server
+# ee: coredns-ipin, edgecore-fix-offline-pods, nginx-v1.22.0
+# TODO
+# WORKDIR /down_offline_gitee
+# RUN echo a.12; \
+#   tplat amd64 https://gitee.com/g-k8s/fk-coredns-ipindn/releases/download/v1.8.0/coredns-x64.tar.gz; \
+#   tplat arm64 https://gitee.com/g-k8s/fk-coredns-ipindn/releases/download/v1.8.0/coredns-arm64.tar.gz
+# RUN tplat amd64 https://gitee.com/g-k8s/kubeedge-lite/releases/download/v1.13.0-01/edgecore-x64.tar.gz; \
+#   tplat arm64 https://gitee.com/g-k8s/kubeedge-lite/releases/download/v1.13.0-01/edgecore-arm64.tar.gz
+# RUN tplat amd64 https://gitee.com/g-mids/build-nginx/releases/download/v23.02.15/nginx-x64-v1.22.0.tar.gz; \
+#   tplat arm64 https://gitee.com/g-mids/build-nginx/releases/download/v23.02.15/nginx-arm64-v1.22.0.tar.gz
+
+
+
 # COPY ./files/10-containerd-net.conflist /etc/cni/net.d/
 COPY ./files/bridge-nerdctl-cpout.conflist /etc/cni/net.d/
 COPY ./files/edgecore-conf.yml /
-
-
 # all configs are 0644 (rw- r-- r--)
 # copy> add
 ADD files/etc /etc
