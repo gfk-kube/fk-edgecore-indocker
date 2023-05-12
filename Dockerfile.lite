@@ -83,8 +83,11 @@ RUN \
   sed -i "s/font/axin/g" /root/.bashrc;
 
 
-ENV TIMEZONE=Asia/Shanghai \
- LANG=C.UTF-8
+ENV \
+  TERM=xterm \
+  SHELL=/bin/bash \
+  TIMEZONE=Asia/Shanghai \
+  LANG=C.UTF-8
 RUN \
   TIMEZONE=Asia/Shanghai; \
   ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone; \
