@@ -21,6 +21,9 @@ RUN tplat amd64 https://ghproxy.com/https://github.com/containernetworking/plugi
 # runc 9210k
 RUN tplat amd64 https://ghproxy.com/https://github.com/opencontainers/runc/releases/download/v1.1.4/runc.amd64; \
   tplat arm64 https://ghproxy.com/https://github.com/opencontainers/runc/releases/download/v1.1.4/runc.arm64
+# 23.10 +buildkit
+RUN tplat amd64 https://ghproxy.com/https://github.com/moby/buildkit/releases/download/v0.12.2/buildkit-v0.12.2.linux-amd64.tar.gz; \
+  tplat arm64 https://ghproxy.com/https://github.com/moby/buildkit/releases/download/v0.12.2/buildkit-v0.12.2.linux-arm64.tar.gz
 
 # nerdctl 10.3M
 RUN tplat amd64 https://ghproxy.com/https://github.com/containerd/nerdctl/releases/download/v1.1.0/nerdctl-1.1.0-linux-amd64.tar.gz; \
