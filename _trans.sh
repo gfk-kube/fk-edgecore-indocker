@@ -32,7 +32,8 @@ mkdir -p /rootfs/usr/local/cfssl /rootfs/usr/local/kedge /rootfs/usr/local/bin/ 
 # cri_tools: crictl,nerdctl
 \cp -a $arch/crictl-v1.26.0-linux-$arch/crictl /rootfs/usr/local/bin/
 \cp -a $arch/nerdctl-1.1.0-linux-$arch/nerdctl /rootfs/usr/local/bin/docker
-
+# 23.10 +buildkit
+\cp -a $arch/buildkit-v0.12.2.linux-$arch/bin/* /rootfs/usr/local/bin/
 
 # 23.2.4: +cfssl,dcp,gosv
 if [ "amd64" == "$arch" ]; then #只有x64版本
