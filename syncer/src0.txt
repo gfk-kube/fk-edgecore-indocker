@@ -1,3 +1,7 @@
 #coredns/coredns:1.8.0 # a year ago 
 #infrastlabs/env-centos:alma8.7-sdk-v2 #github ac:暂不能推到dockerhub.
-registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-v2
+# registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-v2
+
+# docker-baseimage-gui
+tonistiigi/xx
+alpine:3.15
