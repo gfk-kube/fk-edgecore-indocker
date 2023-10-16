@@ -78,7 +78,7 @@ cat images.yml
 
 # test "" == "$1" && errExit "please with src.txt"
 tlsPrivate=true2
-test "true" == "" && src=src.txt || src=src0.txt
+test "true" == "" && src=src.txt || src=src2.txt
 DOCKER_REGISTRY_DST2_DOMAIN="server.k8s.local"
 genImgList $src #$1
 startSync
