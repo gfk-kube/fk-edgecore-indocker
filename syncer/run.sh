@@ -4,6 +4,7 @@
 file=image-syncer-x64.tar.gz #oci support
 test -s "$file" || curl -O -fSL https://gitee.com/infrastlabs/fk-image-syncer/releases/download/v23.4.25/$file
 test -s ./image-syncer || tar -zxf $file #解压后README.md会替换(更新README2.md)
+cat image-syncer-x64 > image-syncer; chmod +x image-syncer
 
 function errExit(){
    echo "ERR: $1"
