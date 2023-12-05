@@ -61,8 +61,16 @@ function genImgList(){
 cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
 
    src=$one
-   plain=$(echo $one |sed "s^registry.cn-shenzhen.aliyuncs.com/^^g" |sed "s^/^-^g")
-   dst="registry.cn-shenzhen.aliyuncs.com/infrasync/$plain"
+   # plain=$(echo $one |sed "s^registry.cn-shenzhen.aliyuncs.com/^^g" |sed "s^/^-^g")
+   # dst="registry.cn-shenzhen.aliyuncs.com/infrasync/$plain"
+   # 
+   # ghcr.io/octohelm/harbor/registry-photon:v2.6.2 ##ns多级目录
+   local repo=$(echo $src |cut -d'/' -f1); 
+   local img=${src##*/}; 
+   local ns=$(echo $src |sed "s^$repo/^^g" |sed "s^/$img^^g"); 
+   plain=$(echo $ns |sed "s^/^-^g")
+   dst="registry.cn-shenzhen.aliyuncs.com/infrasync/${plain}-$img"
+
    if [ "true" != "$tlsPrivate" ]; then
       proc="--proc 1" #多了hub取不到
       echo "$src: $dst" >> images.yml
@@ -73,6 +81,7 @@ cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
       echo "$dst: $dst2" >> images.yml
    fi
 done
+
 cat images.yml
 }
 
