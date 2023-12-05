@@ -90,4 +90,4 @@ syncAliyun=true
 test "true" == "" && src=src.txt || src=src2.txt
 DOCKER_REGISTRY_DST2_DOMAIN="server.k8s.local"
 genImgList $src #$1
-startSync
+startSync #amd64,arm64
