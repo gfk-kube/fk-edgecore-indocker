@@ -3,5 +3,8 @@
 # registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-v2
 
 # docker-baseimage-gui
-tonistiigi/xx
-alpine:3.15
+# tonistiigi/xx
+# alpine:3.15
+
+# 
+ghcr.io/octohelm/harbor/registry-photon:v2.6.2
