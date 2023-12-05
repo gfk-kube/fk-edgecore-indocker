@@ -71,7 +71,7 @@ cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
    plain=$(echo $ns |sed "s^/^-^g")
    dst="registry.cn-shenzhen.aliyuncs.com/infrasync/${plain}-$img"
 
-   if [ "true" != "$tlsPrivate" ]; then
+   if [ "true" == "$syncAliyun" ]; then
       proc="--proc 1" #多了hub取不到
       echo "$src: $dst" >> images.yml
    else
@@ -86,7 +86,7 @@ cat images.yml
 }
 
 # test "" == "$1" && errExit "please with src.txt"
-tlsPrivate=true2
+syncAliyun=true
 test "true" == "" && src=src.txt || src=src2.txt
 DOCKER_REGISTRY_DST2_DOMAIN="server.k8s.local"
 genImgList $src #$1
