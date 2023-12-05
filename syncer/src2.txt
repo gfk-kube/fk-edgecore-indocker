@@ -6,5 +6,16 @@
 # tonistiigi/xx
 # alpine:3.15
 
-# 
+# harbor v262 @octohelm/harbor
+ghcr.io/octohelm/harbor/harbor-exporter:v2.6.2
+ghcr.io/octohelm/harbor/redis-photon:v2.6.2
+ghcr.io/octohelm/harbor/trivy-adapter-photon:v2.6.2
+ghcr.io/octohelm/harbor/harbor-registryctl:v2.6.2
 ghcr.io/octohelm/harbor/registry-photon:v2.6.2
+ghcr.io/octohelm/harbor/nginx-photon:v2.6.2
+ghcr.io/octohelm/harbor/harbor-log:v2.6.2
+ghcr.io/octohelm/harbor/harbor-jobservice:v2.6.2
+ghcr.io/octohelm/harbor/harbor-core:v2.6.2
+ghcr.io/octohelm/harbor/harbor-portal:v2.6.2
+ghcr.io/octohelm/harbor/harbor-db:v2.6.2
+ghcr.io/octohelm/harbor/prepare:v2.6.2
