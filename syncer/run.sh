@@ -1,3 +1,6 @@
+#!/bin/bash
+cur=$(cd "$(dirname "$0")"; pwd)
+cd $cur
 
 # file=image-syncer-v1.3.1-linux-amd64.tar.gz
 # test -s "$file" || curl -O -fSL https://ghproxy.com/https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/$file
