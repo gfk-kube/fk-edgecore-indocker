@@ -20,4 +20,5 @@ ghcr.io/octohelm/harbor/harbor-portal:v2.6.2
 ghcr.io/octohelm/harbor/harbor-db:v2.6.2
 ghcr.io/octohelm/harbor/prepare:v2.6.2
 #redis-photon:v2.6.2 err@23.2-arm ==> org's redis:7.0.0
-redis:7.0.0
+#redis:7.0.0 ==> redis:7.0.0: registry.cn-shenzhen.aliyuncs.com/infrasync/redis:7.0.0-redis:7.0.0
+registry-1.docker.io/library/redis:7.0.0 #解析已与sync.sh对齐: $repo/$ns/$img
