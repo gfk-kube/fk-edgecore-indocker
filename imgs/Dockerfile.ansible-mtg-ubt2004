@@ -28,7 +28,7 @@ FROM willhallonline/ansible:2.9-ubuntu-20.04
 ARG TARGETPLATFORM
 ENV \
   DEBIAN_FRONTEND=noninteractive
-RUN export DOMAIN="mirrors.ustc.edu.cn"; \
+RUN export DOMAIN="mirrors.tuna.tsinghua.edu.cn"; \
   test -z "$(echo $TARGETPLATFORM |grep arm)" && target=ubuntu || target=ubuntu-ports; \
   echo "deb http://${DOMAIN}/$target focal main restricted universe multiverse" > /etc/apt/sources.list \
   && echo "deb http://${DOMAIN}/$target focal-updates main restricted universe multiverse">> /etc/apt/sources.list; \
