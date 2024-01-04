@@ -46,7 +46,8 @@ RUN mkdir -p /etc/ssh; echo -e """\
 Host *\n\
   ConnectTimeout 5\n\
   StrictHostKeyChecking no\n\
-""" > /etc/ssh/ssh_config
+""" > /etc/ssh/ssh_config; \
+  cat /etc/ssh/ssh_config
 
 # deployer's use:
 RUN ln -s /bin/bash /usr/bin/sh
