@@ -35,6 +35,7 @@ RUN apk --no-cache add \
         openssl-dev \
         build-base && \
     pip install --upgrade pip cffi && \
+    # ERR: #13 30.70 Hint: = is not a valid operator. Did you mean == ?
     pip install ansible=-2.7.11 && \
     pip install mitogen && \
     pip install --upgrade pywinrm && \
