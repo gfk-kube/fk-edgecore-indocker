@@ -78,8 +78,9 @@ Host *\n\
   ConnectTimeout 5\n\
   StrictHostKeyChecking no\n\
 """ > /etc/ssh/ssh_config; \
-  cat /etc/ssh/ssh_config; \
-  sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
+  cat /etc/ssh/ssh_config; 
+  # /etc/supervisord.conf not exist
+  # sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
 
 # deployer's use:
 RUN rm -f /usr/bin/sh; \
