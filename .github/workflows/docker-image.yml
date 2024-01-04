@@ -39,7 +39,7 @@ jobs:
           # sh buildx.sh alma-sdk
           # 
           # sh buildx.sh ansible
-          # sh buildx.sh ansible-mitogen
-          sh buildx.sh ansible-ubt2004
+          sh buildx.sh ansible-mitogen
+          # sh buildx.sh ansible-ubt2004
           # 
           # sh buildx.sh syncer #imgSync
