@@ -44,6 +44,20 @@ alma-sdk)
     args="--build-arg FULL=/.."
     docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.alma-sdk . 
     ;;
+ansible)
+    echo "baseImgs>> ansible"
+    ver=v2.4.6
+    repo="registry.cn-shenzhen.aliyuncs.com"
+    img="env-ansible:alpine3.7-$ver"
+    # cache
+    ali="registry.cn-shenzhen.aliyuncs.com"
+    cimg="env-ansible-cache:alpine3.7-$ver"
+    cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
+
+    plat="--platform linux/amd64,linux/arm64" ##,linux/arm
+    args="--build-arg FULL=/.."
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible . 
+    ;;
 syncer)
     echo "syncer: imgSync"
     bash syncer/run.sh
