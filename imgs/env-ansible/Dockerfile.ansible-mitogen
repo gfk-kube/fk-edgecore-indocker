@@ -1,0 +1,167 @@
+# ref: alpine-dockerfile/env/env-ansible/Dockerfile.x64-alpine
+# FROM bitnami/etcd:3.3.15 as etcd
+FROM pachyderm/etcd:v3.5.2 as etcd
+# 124.48 MB
+# FROM williamyeh/ansible:centos7
+# 34.07 MB #err: inventory.yml's format
+# FROM williamyeh/ansible:1.9-alpine3
+# 56 MB #err: variable ansible >> mitogen
+# FROM williamyeh/ansible:alpine3
+
+# 3rd> third; third: upx, tini err;
+# FROM infrastlabs/x11-base:alpine-compile as perp
+# FROM infrastlabs/x11-base:fluxbox as third
+FROM infrastlabs/x11-base:rootfs as rfs
+# merge
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3-mitogen-base as merge
+  COPY --from=etcd /usr/local/bin/ /rootfs/usr/local/bin/
+  # COPY --from=perp /rootfs/usr/local/static/perp/ /rootfs/usr/local/static/perp/
+  # COPY --from=third /rootfs/files1/usr/local/static/3rd/ /rootfs/usr/local/static/3rd/
+  COPY --from=rfs /rootfs/files1/usr/local/static/perp/ /rootfs/usr/local/static/perp/
+  COPY --from=rfs /rootfs/files1/usr/local/static/3rd/  /rootfs/usr/local/static/3rd/
+  # 3rd: bin> gosu, upx, yq; sbin> frpc/frps, tini
+  RUN rm -f /rootfs/usr/local/static/3rd/sbin/frp*; \
+    du -sh /rootfs/usr/local/static/*;
+    
+# Ansible 2.5 引入了一个新的 YAML 回调插件
+#  https://www.coder.work/article/6354015
+#  alpine 3.6; ansible-2.3.0.0-r1
+#  alpine3.7-ansible-2.4.6.0-r1
+#  alpine3.8-ansible-2.6.20-r0
+# FROM alpine:3.8
+# https://github.com/willhallonline/docker-ansible
+# x64 only 239M
+# FROM willhallonline/ansible:2.9-alpine-3.14
+# multi self-build 243M
+# ###base: alpine3.10-v2.8py3-mitogen-base >> alpine3.10-v2.10.16py3-mitogen-base >> alpine3.14-v2.10.17py3-mitogen-base
+#  alpine310: v2.10.16> v2.10.7; 实装: v2.10.17; pull-layer:186M;
+#  alpine314: 
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3-mitogen-base
+
+# # RUN export domain="mirrors.aliyun.com"; \
+# RUN export domain="mirrors.ustc.edu.cn"; \
+#   echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
+#   echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+
+# libevent ncurses vim #total: 17.163 MB
+# total: 8.614 MB
+RUN apk add --no-cache \
+  zip gzip \
+  ca-certificates tzdata curl wget \
+  sed grep gawk findutils sudo tree unzip procps htop \
+  expect shadow xterm bash bash-completion coreutils busybox-extras openssl 
+
+# crond 4.5 >> crond -f;
+RUN apk add --no-cache \
+  lighttpd lighttpd-mod_auth dcron \
+  jq lftp
+
+
+# rdeck-ansible 不能识别Nodes; 347MB > 357MB
+# https://blog.csdn.net/qq_21127151/article/details/133525293
+#  included @alpine3.14-v2.10.17py3-mitogen-base
+# RUN pip install jinja2==2.10.1; \
+#   pip install markupsafe==1.1.1;
+
+# notes: ${tag}-v210corebase
+# # pip3 install ansible==2.10.7 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# #  alpine314: ansible-base img[143M]基础上，加装ansible (stdout_callback = yaml格式化需要; 再装无需gcc编译)
+# #  ansi2.10.7: alpine314上也是1.10.x的最后可pip下载版
+# #  +layer:48.52MB; unpacked-img:251MB> 506MB
+# RUN pip3 install ansible==2.10.7 && \
+#     rm -rf /var/cache/apk/* && \
+#     rm -rf /root/.cache/pip && \
+#     rm -rf /root/.cargo
+
+# ansible.cfg: stdout_callback=yaml
+# https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html#ansible-collections-community-general-yaml-callback
+RUN ansible-galaxy collection install community.general
+
+
+
+# mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
+#   pip install mitogen
+# +ansible: [3.7-py2, 3.8-py3]
+# RUN apk add --no-cache ansible  ##219MB
+
+
+# # +supervisor[3.8-py2]
+# RUN apk add --no-cache supervisor ##219MB> 264MB
+# # RUN apk add --no-cache py2-pip; \
+# #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+#############
+# glibc-225有效; glibc-235无效
+# https://github.com/FansinZhao/alpine-glibc/blob/master/Dockerfile
+# wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk
+# apk add glibc-2.35-r1.apk  --allow-untrusted
+# 
+# wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk
+# apk add glibc-2.25-r0.apk --allow-untrusted
+# source /etc/profile
+# java
+# java -version
+# 
+# use java8+glibc225@alpine311 for slim-size>> alpine314 >> alpine310
+#  x64: ok;
+#  arm64: 无效
+  # dcp-rundeck:/srv/local/rundeck/rdeck# java -version
+  # bash: /srv/local/rundeck/rdeck/jdk/bin/java: No such file or directory
+#############
+# https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/
+# glibc-2.31-r0-aarch64.apk 3.11 MB 2021-05-18T15:12:42Z
+# glibc-2.31-r0-armhf.apk   2.34 MB 2021-05-18T15:13:01Z
+# glibc-2.31-r0-x86_64.apk  4.19 MB
+RUN \
+  # export GITHUB=https://hub.yzuu.cf; \
+  export GITHUB=https://github.com; \
+  # file=glibc-2.25-r0.apk; \
+  # wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/$file; \
+  arch=x86_64; test ! -z "$(uname -a |grep aarch64)" && arch=aarch64; \
+  file=glibc-2.31-r0-$arch.apk; \
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  apk add $file --allow-untrusted; \
+  rm -f $file;
+  # \
+  # # glibc-bin-2.31-r0-aarch64.apk  glibc-dev-2.31-r0-aarch64.apk 
+  # file=glibc-bin-2.31-r0-$arch.apk; \
+  # wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  # apk add $file --allow-untrusted; \
+  # rm -f $file; \
+  # \
+  # # glibc-i18n-2.31-r0-aarch64.apk ; deps: glibc-bin
+  # file=glibc-i18n-2.31-r0-$arch.apk; \
+  # wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  # apk add $file --allow-untrusted; \
+  # rm -f $file;
+
+# ENV PS1='\h:\w\$ '
+ENV PS1="[\u@\h \W]\\$ "
+RUN export TIMEZONE=Asia/Shanghai; \
+  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone; \
+  echo "export TERM=xterm" >> /etc/profile; \
+  echo -e "source /etc/profile\nalias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
+
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
+# [root@host-21-60 deployer]# cat /etc/ssh/ssh_config |egrep -v "^#|^$"
+RUN mkdir -p /etc/ssh; echo -e """\
+Host *\n\
+  ConnectTimeout 5\n\
+  StrictHostKeyChecking no\n\
+""" > /etc/ssh/ssh_config; \
+  cat /etc/ssh/ssh_config;
+  # sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
+
+# deployer's use:
+RUN ln -s /bin/bash /usr/bin/sh
+
+# etcd-v3.3.15> v3.5.2
+# COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
+# COPY --from=etcd /usr/local/bin/ /usr/local/bin/
+COPY --from=merge /rootfs /
+ENV ETCDCTL_API=3
+
+# mitogen: /usr/lib/python2.7/site-packages
+# ADD ansible-mitogen.tar.gz /usr/lib/python2.7/site-packages
+
