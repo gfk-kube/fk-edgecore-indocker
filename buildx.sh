@@ -81,7 +81,8 @@ ansible-mitogen-alpine38)
     # ver=alpine3.8-v2.6.20
     # 
     # ver=alpine3.8-v2.5.15-mitogen-base
-    ver=alpine3.8-v2.7.11-mitogen-base
+    # ver=alpine3.8-v2.7.11-mitogen-base
+    ver=alpine3.8-v2.8-mitogen-base
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
@@ -91,7 +92,7 @@ ansible-mitogen-alpine38)
 
     plat="--platform linux/amd64,linux/arm64 --provenance=false" ##,linux/arm
     args="--build-arg FULL=/.."
-    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine38-ansi27 . 
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine38-ansi28 . 
     ;;
 ansible-ubt2004)
     echo "baseImgs>> ansible-mitogen-ubt2004"
