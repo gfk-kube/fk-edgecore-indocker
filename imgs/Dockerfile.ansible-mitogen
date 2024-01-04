@@ -66,7 +66,7 @@ ENV PS1="[\u@\h \W]\\$ "
 RUN export TIMEZONE=Asia/Shanghai; \
   ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone; \
   echo "export TERM=xterm" >> /etc/profile; \
-  echo -e "alias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
+  echo -e "source /etc/profile\nalias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
 
 # RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
 # RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
