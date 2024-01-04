@@ -55,7 +55,9 @@ RUN apk add --no-cache supervisor ##219MB> 264MB
 # 
 # use java8+glibc225@alpine311 for slim-size
 RUN \
-  wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk; \
+  # export GITHUB=https://hub.yzuu.cf; \
+  export GITHUB=https://github.com; \
+  wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk; \
   apk add glibc-2.25-r0.apk --allow-untrusted; \
   rm -f glibc-2.25-r0.apk;
 
