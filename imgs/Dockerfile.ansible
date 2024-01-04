@@ -37,7 +37,7 @@ RUN apk add --no-cache \
 # +ansible: [3.7-py2, 3.8-py3]
 RUN apk add --no-cache ansible  ##219MB
 # +supervisor[3.8-py2]
-RUN apk add --no-cache supervisor ##219MB> 
+RUN apk add --no-cache supervisor ##219MB> 264MB
 # RUN apk add --no-cache py2-pip; \
 #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
