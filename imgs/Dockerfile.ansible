@@ -42,7 +42,7 @@ RUN export TIMEZONE=Asia/Shanghai; \
 # RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
 # RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
 # [root@host-21-60 deployer]# cat /etc/ssh/ssh_config |egrep -v "^#|^$"
-RUN mkdir -p /etc/ssh; echo -e """
+RUN mkdir -p /etc/ssh; echo -e """\
 Host *\n\
   ConnectTimeout 5\n\
   StrictHostKeyChecking no\n\
