@@ -1,0 +1,73 @@
+# ref: alpine-dockerfile/env/env-ansible/Dockerfile.x64-alpine
+# FROM bitnami/etcd:3.3.15 as etcd
+FROM pachyderm/etcd:v3.5.2 as etcd
+# 124.48 MB
+# FROM williamyeh/ansible:centos7
+# 34.07 MB #err: inventory.yml's format
+# FROM williamyeh/ansible:1.9-alpine3
+# 56 MB #err: variable ansible >> mitogen
+# FROM williamyeh/ansible:alpine3
+
+# Ansible 2.5 引入了一个新的 YAML 回调插件
+#  https://www.coder.work/article/6354015
+#  alpine 3.6; ansible-2.3.0.0-r1
+#  alpine3.7-ansible-2.4.6.0-r1
+#  alpine3.8-ansible-2.6.20-r0
+# FROM alpine:3.8
+FROM willhallonline/ansible:2.9-alpine-3.14
+
+# RUN export domain="mirrors.aliyun.com"; \
+RUN export domain="mirrors.ustc.edu.cn"; \
+  echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+
+# libevent ncurses vim #total: 17.163 MB
+# total: 8.614 MB
+RUN apk add --no-cache \
+  ca-certificates tzdata curl wget \
+  sed grep gawk findutils sudo tree unzip procps htop \
+  expect shadow xterm bash bash-completion coreutils busybox-extras openssl 
+
+# crond 4.5 >> crond -f;
+RUN apk add --no-cache \
+  lighttpd lighttpd-mod_auth dcron \
+  jq lftp
+
+# mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
+#   pip install mitogen
+# +ansible: [3.7-py2, 3.8-py3]
+# RUN apk add --no-cache ansible  ##219MB
+# +supervisor[3.8-py2]
+RUN apk add --no-cache supervisor ##219MB> 264MB
+# RUN apk add --no-cache py2-pip; \
+#   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+# ENV PS1='\h:\w\$ '
+ENV PS1="[\u@\h \W]\\$ "
+RUN export TIMEZONE=Asia/Shanghai; \
+  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone; \
+  echo "export TERM=xterm" >> /etc/profile; \
+  echo -e "alias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
+
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
+# [root@host-21-60 deployer]# cat /etc/ssh/ssh_config |egrep -v "^#|^$"
+RUN mkdir -p /etc/ssh; echo -e """\
+Host *\n\
+  ConnectTimeout 5\n\
+  StrictHostKeyChecking no\n\
+""" > /etc/ssh/ssh_config; \
+  cat /etc/ssh/ssh_config; \
+  sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
+
+# deployer's use:
+RUN ln -s /bin/bash /usr/bin/sh
+
+# etcd-v3.3.15> v3.5.2
+# COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
+COPY --from=etcd /usr/local/bin/ /usr/local/bin/
+ENV ETCDCTL_API=3
+
+# mitogen: /usr/lib/python2.7/site-packages
+# ADD ansible-mitogen.tar.gz /usr/lib/python2.7/site-packages
+
