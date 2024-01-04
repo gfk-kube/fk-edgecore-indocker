@@ -14,33 +14,53 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 #  alpine3.7-ansible-2.4.6.0-r1
 #  alpine3.8-ansible-2.6.20-r0
 # FROM alpine:3.8
-FROM willhallonline/ansible:2.9-alpine-3.14
+# FROM willhallonline/ansible:2.9-alpine-3.14
+FROM willhallonline/ansible:2.9-ubuntu-20.04
 
-# RUN export domain="mirrors.aliyun.com"; \
-RUN export domain="mirrors.ustc.edu.cn"; \
-  echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
-  echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+# # RUN export domain="mirrors.aliyun.com"; \
+# RUN export domain="mirrors.ustc.edu.cn"; \
+#   echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
+#   echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+
+# mirrors.tuna.tsinghua.edu.cn
+# mirrors.ustc.edu.cn
+# mirrors.163.com
+ARG TARGETPLATFORM
+ENV \
+  DEBIAN_FRONTEND=noninteractive
+RUN export DOMAIN="mirrors.ustc.edu.cn"; \
+  test -z "$(echo $TARGETPLATFORM |grep arm)" && target=ubuntu || target=ubuntu-ports; \
+  echo "deb http://${DOMAIN}/$target focal main restricted universe multiverse" > /etc/apt/sources.list \
+  && echo "deb http://${DOMAIN}/$target focal-updates main restricted universe multiverse">> /etc/apt/sources.list; \
+    \
+  echo 'apt update -qq && apt install -yq --no-install-recommends $@ && apt clean && rm -rf /var/lib/apt/lists/*; ' > /usr/local/bin/apt.sh \
+    && chmod +x /usr/local/bin/apt.sh; \
 
 # libevent ncurses vim #total: 17.163 MB
 # total: 8.614 MB
-RUN apk add --no-cache \
-  ca-certificates tzdata curl wget \
-  sed grep gawk findutils sudo tree unzip procps htop \
-  expect shadow xterm bash bash-completion coreutils busybox-extras openssl 
+# RUN apk add --no-cache \
+#   ca-certificates tzdata curl wget \
+#   sed grep gawk findutils sudo tree unzip procps htop \
+#   expect shadow xterm bash bash-completion coreutils busybox-extras openssl 
+RUN apt.sh \
+  htop rsync tree tmux lrzsz psmisc fuse net-tools netcat iputils-ping \
+  procps sudo iproute2 iptables zip unzip xz-utils vim-tiny \
+  \
+  cron lighttpd lftp jq supervisor;
 
 # crond 4.5 >> crond -f;
-RUN apk add --no-cache \
-  lighttpd lighttpd-mod_auth dcron \
-  jq lftp
+# RUN apk add --no-cache \
+#   lighttpd lighttpd-mod_auth dcron \
+#   jq lftp
 
-# mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
-#   pip install mitogen
-# +ansible: [3.7-py2, 3.8-py3]
-# RUN apk add --no-cache ansible  ##219MB
-# +supervisor[3.8-py2]
-RUN apk add --no-cache supervisor ##219MB> 264MB
-# RUN apk add --no-cache py2-pip; \
-#   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# # mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
+# #   pip install mitogen
+# # +ansible: [3.7-py2, 3.8-py3]
+# # RUN apk add --no-cache ansible  ##219MB
+# # +supervisor[3.8-py2]
+# RUN apk add --no-cache supervisor ##219MB> 264MB
+# # RUN apk add --no-cache py2-pip; \
+# #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # ENV PS1='\h:\w\$ '
 ENV PS1="[\u@\h \W]\\$ "
