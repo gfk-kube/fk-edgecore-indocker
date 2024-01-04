@@ -34,8 +34,9 @@ RUN apk add --no-cache \
 
 # mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
 #   pip install mitogen
-# +ansible
-RUN apk add --no-cache supervisor ansible
+# +ansible: [3.7-py2, 3.8-py3]
+# +supervisor[3.8-py2]
+RUN apk add --no-cache ansible
 # RUN apk add --no-cache py2-pip; \
 #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
@@ -54,8 +55,8 @@ Host *\n\
   ConnectTimeout 5\n\
   StrictHostKeyChecking no\n\
 """ > /etc/ssh/ssh_config; \
-  cat /etc/ssh/ssh_config; \
-  sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
+  cat /etc/ssh/ssh_config;
+  #sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
 
 # deployer's use:
 RUN ln -s /bin/bash /usr/bin/sh
