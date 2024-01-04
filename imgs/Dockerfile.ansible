@@ -40,7 +40,13 @@ RUN export TIMEZONE=Asia/Shanghai; \
   echo -e "alias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
 
 # RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
-RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
+# [root@host-21-60 deployer]# cat /etc/ssh/ssh_config |egrep -v "^#|^$"
+RUN mkdir -p /etc/ssh; echo -e """
+Host *\n\
+  ConnectTimeout 5\n\
+  StrictHostKeyChecking no\n\
+""" > /etc/ssh/ssh_config
 
 # deployer's use:
 RUN ln -s /bin/bash /usr/bin/sh
