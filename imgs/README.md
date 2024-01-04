@@ -69,10 +69,11 @@ useradd -u $uid -g $gid -m -s /bin/bash $user
 
 ```bash
 # ubt2004-v2.9.27-mitogen: 599MB> 683MB
-# alpine3.14-v2.9.27-mitogen: 239MB> 333MB
+# alpine3.14-v2.9.27-mitogen: 239MB> 333MB >> 340MB(glibc225)
 # 
 host-21-60:~ # docker images |grep ansi
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                    ubt2004-v2.9.27-mitogen                         766b12e136f7        54 seconds ago      683MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible   alpine3.14-v2.9.27-mitogen   3976919cab44        10 minutes ago      340MB ##23.195 pull
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                    alpine3.14-v2.9.27-mitogen                      a348e450b179        5 hours ago         333MB
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                    alpine3.8-v2.6.20                               5ed978dd5e53        6 hours ago         264MB
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                    alpine3.7-v2.4.6                                cafcd07b252d        7 hours ago         153MB
