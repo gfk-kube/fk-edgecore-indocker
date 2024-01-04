@@ -97,8 +97,40 @@ standard_init_linux.go:207: exec user process caused "exec format error"
 
 
 # ARM Releases
+# https://github.com/willhallonline/docker-ansible
 There is some support for Arm architecture.
     linux/arm64 (Macbook and AWS Graviton) to latest and alpine image tags.
     linux/arm/v7 and linux/arm/v6 to arm image tag (Raspberry Pi).
 
+[root@arm-ky10-23-2 opsdeploy]# docker run -it --rm willhallonline/ansible:alpine sh
+/ansible # ansible --version
+ansible [core 2.15.4]
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.10/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.10.13 (main, Aug 26 2023, 11:33:35) [GCC 12.2.1 20220924] (/usr/bin/python3)
+  jinja version = 3.1.2
+  libyaml = False
+/ansible # apk update
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.17/main/aarch64/APKINDEX.tar.gz
+
+[root@arm-ky10-23-2 opsdeploy]# docker run -it --rm willhallonline/ansible:2.15-alpine-3.14 sh
+Unable to find image 'willhallonline/ansible:2.15-alpine-3.14' locally
+2.15-alpine-3.14: Pulling from willhallonline/ansible
+f7dab3ab2d6e: Already exists 
+128b6e8f4dca: Pull complete  #101M
+7a255bae75e0: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:fcb16ce3271d36a1bf48835f3a40a487ff03ab1a1e6f891da9232085e8917b62
+Status: Downloaded newer image for willhallonline/ansible:2.15-alpine-3.14
+standard_init_linux.go:207: exec user process caused "exec format error"
+
+[root@arm-ky10-23-2 opsdeploy]# docker images |grep ansibl
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.14-v2.9.27-mitogen     be6c9c1cd4a5        4 hours ago         336MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.8-v2.6.20              550b7d09fa4e        10 hours ago        257MB
+willhallonline/ansible                                                        2.15-alpine-3.14               f7d6ff7642cd        3 months ago        548MB #x64 only
+willhallonline/ansible                                                        2.9-alpine-3.14                782a333a02e9        3 months ago        239MB #x64 only
+willhallonline/ansible                                                        alpine                         ce9803d02db3        3 months ago        465MB #x64, arm64
 ```
