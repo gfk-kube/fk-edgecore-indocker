@@ -81,7 +81,8 @@ Host *\n\
   sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
 
 # deployer's use:
-RUN ln -s /bin/bash /usr/bin/sh
+RUN rm -f /usr/bin/sh; \
+  ln -s /bin/bash /usr/bin/sh
 
 # etcd-v3.3.15> v3.5.2
 # COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
