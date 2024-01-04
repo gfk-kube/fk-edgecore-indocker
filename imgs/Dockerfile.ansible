@@ -48,7 +48,7 @@ Host *\n\
   StrictHostKeyChecking no\n\
 """ > /etc/ssh/ssh_config; \
   cat /etc/ssh/ssh_config; \
-  sed -i "s^/run/supervisor.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
+  sed -i "s^/run/supervisord.sock^/var/run/supervisor.sock^g" /etc/supervisord.conf
 
 # deployer's use:
 RUN ln -s /bin/bash /usr/bin/sh
