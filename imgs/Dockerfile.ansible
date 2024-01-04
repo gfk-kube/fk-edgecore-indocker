@@ -1,5 +1,5 @@
 # ref: alpine-dockerfile/env/env-ansible/Dockerfile.x64-alpine
-FROM bitnami/etcd:3.3.15 as etcd
+# FROM bitnami/etcd:3.3.15 as etcd
 FROM pachyderm/etcd:v3.5.2 as etcd
 # 124.48 MB
 # FROM williamyeh/ansible:centos7
