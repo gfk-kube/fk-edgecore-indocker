@@ -46,12 +46,13 @@ alma-sdk)
     ;;
 ansible)
     echo "baseImgs>> ansible"
-    ver=v2.4.6
+    # ver=alpine3.7-v2.4.6
+    ver=alpine3.8-v2.6.20
     repo="registry.cn-shenzhen.aliyuncs.com"
-    img="env-ansible:alpine3.7-$ver"
+    img="env-ansible:$ver"
     # cache
     ali="registry.cn-shenzhen.aliyuncs.com"
-    cimg="env-ansible-cache:alpine3.7-$ver"
+    cimg="env-ansible-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
     plat="--platform linux/amd64,linux/arm64" ##,linux/arm
