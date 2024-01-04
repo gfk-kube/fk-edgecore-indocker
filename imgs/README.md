@@ -133,4 +133,26 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     al
 willhallonline/ansible                                                        2.15-alpine-3.14               f7d6ff7642cd        3 months ago        548MB #x64 only
 willhallonline/ansible                                                        2.9-alpine-3.14                782a333a02e9        3 months ago        239MB #x64 only
 willhallonline/ansible                                                        alpine                         ce9803d02db3        3 months ago        465MB #x64, arm64
+
+
+
+# [SELF BUILD]
+[root@arm-ky10-23-2 opsdeploy]# docker run -it --rm registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base sh
+Unable to find image 'registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base' locally
+alpine3.10-v2.8py3-mitogen-base: Pulling from infrastlabs/env-ansible
+26d14edc4f17: Pull complete 
+ec6491ba3f60: Pull complete  #97M
+2a3cbf1b4a15: Pull complete 
+04bb53c83949: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:52cfc1ddfe5a765f3e11a5ad86ca3fdefdd73475403ee6a224a714f5fe12ca72
+Status: Downloaded newer image for registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base
+/ansible # 
+/ansible # ansible --version
+ansible 2.8.8
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.7/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.7.10 (default, Mar  2 2021, 09:12:36) [GCC 8.3.0]
 ```
