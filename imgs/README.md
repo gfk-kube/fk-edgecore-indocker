@@ -156,7 +156,28 @@ ansible 2.8.8
   executable location = /usr/bin/ansible
   python version = 3.7.10 (default, Mar  2 2021, 09:12:36) [GCC 8.3.0]
 
+[root@arm-ky10-23-2 opsdeploy]# docker run -it --rm registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.9.13py3-mitogen-base sh
+Unable to find image 'registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.9.13py3-mitogen-base' locally
+alpine3.10-v2.9.13py3-mitogen-base: Pulling from infrastlabs/env-ansible
+26d14edc4f17: Already exists 
+e524a8b3cf7b: Pull complete 
+2cc2bca4fd12: Pull complete 
+a026f51a7b68: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:1cc11d4ed9d979e1f579e64a13f3ef45edc3dc1bd2f84be1ced44c5dc7b85c77
+Status: Downloaded newer image for registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.9.13py3-mitogen-base
+/ansible # 
+/ansible # ansible --version
+ansible 2.9.13
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.7/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.7.10 (default, Mar  2 2021, 09:12:36) [GCC 8.3.0]
+/ansible # 
+
 [root@arm-ky10-23-2 opsdeploy]# docker images |grep ansibl
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.10-v2.9.13py3-mitogen-base   8b5f7f71c99f        About a minute ago   271MB ##
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.10-v2.8py3-mitogen-base   5067da01366f        9 minutes ago       243MB ##
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.14-v2.9.27-mitogen        be6c9c1cd4a5        5 hours ago         336MB
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.8-v2.6.20                 550b7d09fa4e        11 hours ago        257MB
