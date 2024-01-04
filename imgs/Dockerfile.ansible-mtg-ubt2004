@@ -25,11 +25,12 @@ FROM willhallonline/ansible:2.9-ubuntu-20.04
 # mirrors.tuna.tsinghua.edu.cn
 # mirrors.ustc.edu.cn
 # mirrors.163.com
-ARG TARGETPLATFORM
 ENV \
   DEBIAN_FRONTEND=noninteractive
+ARG TARGETPLATFORM
 RUN export DOMAIN="mirrors.tuna.tsinghua.edu.cn"; \
-  test -z "$(echo $TARGETPLATFORM |grep arm)" && target=ubuntu || target=ubuntu-ports; \
+  # test -z "$(echo $TARGETPLATFORM |grep arm)" && target=ubuntu || target=ubuntu-ports; \
+  test -z "$(uname -a |grep arm)" && target=ubuntu || target=ubuntu-ports; \
   echo "deb http://${DOMAIN}/$target focal main restricted universe multiverse" > /etc/apt/sources.list \
   && echo "deb http://${DOMAIN}/$target focal-updates main restricted universe multiverse">> /etc/apt/sources.list; \
     \
