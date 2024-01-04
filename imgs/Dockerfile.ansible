@@ -7,12 +7,18 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 # FROM williamyeh/ansible:1.9-alpine3
 # 56 MB #err: variable ansible >> mitogen
 # FROM williamyeh/ansible:alpine3
-FROM alpine:3.7
+
+# Ansible 2.5 引入了一个新的 YAML 回调插件
+#  https://www.coder.work/article/6354015
+#  alpine 3.6; ansible-2.3.0.0-r1
+#  alpine3.7-ansible-2.4.6.0-r1
+#  alpine3.8-ansible-2.6.20-r0
+FROM alpine:3.8
 
 # RUN export domain="mirrors.aliyun.com"; \
 RUN export domain="mirrors.ustc.edu.cn"; \
-  echo "http://$domain/alpine/v3.7/main" > /etc/apk/repositories; \
-  echo "http://$domain/alpine/v3.7/community" >> /etc/apk/repositories
+  echo "http://$domain/alpine/v3.8/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.8/community" >> /etc/apk/repositories
 
 # libevent ncurses vim #total: 17.163 MB
 # total: 8.614 MB
