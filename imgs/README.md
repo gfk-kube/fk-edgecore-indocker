@@ -155,4 +155,10 @@ ansible 2.8.8
   ansible python module location = /usr/lib/python3.7/site-packages/ansible
   executable location = /usr/bin/ansible
   python version = 3.7.10 (default, Mar  2 2021, 09:12:36) [GCC 8.3.0]
+
+[root@arm-ky10-23-2 opsdeploy]# docker images |grep ansibl
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.10-v2.8py3-mitogen-base   5067da01366f        9 minutes ago       243MB ##
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.14-v2.9.27-mitogen        be6c9c1cd4a5        5 hours ago         336MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.8-v2.6.20                 550b7d09fa4e        11 hours ago        257MB
+willhallonline/ansible                                                        2.9-alpine-3.14                   782a333a02e9        3 months ago        239MB ##
 ```
