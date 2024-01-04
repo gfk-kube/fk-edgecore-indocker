@@ -28,7 +28,8 @@ RUN apk add --no-cache \
 
 # mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
 #   pip install mitogen
-RUN apk add --no-cache supervisor
+# +ansible
+RUN apk add --no-cache supervisor ansible
 # RUN apk add --no-cache pip; \
 #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
