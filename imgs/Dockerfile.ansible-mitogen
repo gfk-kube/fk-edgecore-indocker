@@ -42,6 +42,23 @@ RUN apk add --no-cache supervisor ##219MB> 264MB
 # RUN apk add --no-cache py2-pip; \
 #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
+# glibc-225有效; glibc-235无效
+# https://github.com/FansinZhao/alpine-glibc/blob/master/Dockerfile
+# wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk
+# apk add glibc-2.35-r1.apk  --allow-untrusted
+# 
+# wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk
+# apk add glibc-2.25-r0.apk --allow-untrusted
+# source /etc/profile
+# java
+# java -version
+# 
+# use java8+glibc225@alpine311 for slim-size
+RUN \
+  wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk; \
+  apk add glibc-2.25-r0.apk --allow-untrusted; \
+  rm -f glibc-2.25-r0.apk;
+
 # ENV PS1='\h:\w\$ '
 ENV PS1="[\u@\h \W]\\$ "
 RUN export TIMEZONE=Asia/Shanghai; \
