@@ -59,6 +59,21 @@ ansible)
     args="--build-arg FULL=/.."
     docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible . 
     ;;
+ansible-mitogen)
+    echo "baseImgs>> ansible-mitogen"
+    # ver=alpine3.7-v2.4.6
+    ver=alpine3.14-v2.9.27-mitogen
+    repo="registry.cn-shenzhen.aliyuncs.com"
+    img="env-ansible:$ver"
+    # cache
+    ali="registry.cn-shenzhen.aliyuncs.com"
+    cimg="env-ansible-cache:$ver"
+    cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
+
+    plat="--platform linux/amd64,linux/arm64" ##,linux/arm
+    args="--build-arg FULL=/.."
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mitogen . 
+    ;;
 syncer)
     echo "syncer: imgSync"
     bash syncer/run.sh
