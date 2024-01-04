@@ -55,3 +55,16 @@ RUN mkdir /ansible && \
 WORKDIR /ansible
 
 CMD [ "ansible-playbook", "--version" ]
+
+# ERR
+# > [linux/amd64 3/5] RUN apk --no-cache add         sudo         python3        py3-pip         openssl         ca-certificates         sshpass         openssh-client         rsync         git &&     apk --no-cache add --virtual build-dependencies         python3-dev         libffi-dev         musl-dev         gcc         cargo         openssl-dev         libressl-dev         build-base &&     pip3 install --upgrade pip cffi &&     pip3 install ansible==2.9.27 &&     pip3 install mitogen ansible-lint jmespath &&     pip3 install --upgrade pywinrm &&     apk del build-dependencies &&     rm -rf /var/cache/apk/* &&     rm -rf /root/.cache/pip &&     rm -rf /root/.cargo:
+# 92.52       [end of output]
+# 92.52   
+# 92.52   note: This error originates from a subprocess, and is likely not a problem with pip.
+# 92.52 error: metadata-generation-failed
+# 92.52 
+# 92.52 × Encountered error while generating package metadata.
+# 92.52 ╰─> See above for output.
+# 92.52 
+# 92.52 note: This is an issue with the package mentioned above, not pip.
+# 92.52 hint: See above for details.
