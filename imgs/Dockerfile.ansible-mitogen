@@ -14,6 +14,7 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 #  alpine3.7-ansible-2.4.6.0-r1
 #  alpine3.8-ansible-2.6.20-r0
 # FROM alpine:3.8
+# https://github.com/willhallonline/docker-ansible
 FROM willhallonline/ansible:2.9-alpine-3.14
 
 # RUN export domain="mirrors.aliyun.com"; \
