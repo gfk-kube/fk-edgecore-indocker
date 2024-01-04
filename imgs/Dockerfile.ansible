@@ -1,0 +1,60 @@
+# ref: alpine-dockerfile/env/env-ansible/Dockerfile.x64-alpine
+FROM bitnami/etcd:3.3.15 as etcd
+# 124.48 MB
+# FROM williamyeh/ansible:centos7
+# 56 MB #err: variable ansible >> mitogen
+FROM williamyeh/ansible:alpine3
+# 34.07 MB #err: inventory.yml's format
+# FROM williamyeh/ansible:1.9-alpine3
+
+# FROM woahbase/alpine-ansible:latest
+
+RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
+# mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
+# RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config; \
+#   pip install mitogen
+RUN pip install supervisor
+
+#domain="mirrors.ustc.edu.cn"
+RUN export domain="mirrors.aliyun.com"; \
+  echo "http://$domain/alpine/v3.8/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.8/community" >> /etc/apk/repositories
+# libevent ncurses vim #total: 17.163 MB
+# total: 8.614 MB
+RUN apk add --no-cache \
+  ca-certificates tzdata curl wget \
+  sed grep gawk findutils sudo tree unzip procps htop \
+  expect shadow xterm bash bash-completion coreutils busybox-extras openssl 
+# RUN yum -y install iproute net-tools \
+#   sudo psmisc sysstat tree tmux lrzsz which wget openssl \
+#   zip unzip crontabs logrotate
+
+# crond 4.5 >> crond -f;
+RUN apk add --no-cache \
+  lighttpd lighttpd-mod_auth dcron \
+  jq lftp
+
+# ENV PS1='\h:\w\$ '
+ENV PS1="[\u@\h \W]\\$ "
+RUN export TIMEZONE=Asia/Shanghai; \
+  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone; \
+  echo "export TERM=xterm" >> /etc/profile; \
+  echo -e "alias ll='ls -lF'\nalias la='ls -A'\nalias l='ls -CF'" >> /root/.bashrc
+
+# deployer's use:
+RUN ln -s /bin/bash /usr/bin/sh
+
+# etcd-v3.3.19-linux-amd64
+COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
+ENV ETCDCTL_API=3
+
+# mitogen: /usr/lib/python2.7/site-packages
+ADD ansible-mitogen.tar.gz /usr/lib/python2.7/site-packages
+
+# # ansible调试ZH正常， go? web?: yum install kde-l10n-Chinese 
+# # https://blog.csdn.net/beeworkshop/article/details/104263429
+# # LANG=zh_CN.UTF-8: cause lftp down 501 err.
+# ENV LANG=en_US.UTF-8 \
+#     LANGUAGE=zh_CN:zh \
+#     LC_ALL=zh_CN.UTF-8
+# RUN localedef -c -f UTF-8 -i zh_CN zh_CN.UTF-8 
