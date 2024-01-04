@@ -1,5 +1,6 @@
 # ref: alpine-dockerfile/env/env-ansible/Dockerfile.x64-alpine
 FROM bitnami/etcd:3.3.15 as etcd
+FROM pachyderm/etcd:v3.5.2 as etcd
 # 124.48 MB
 # FROM williamyeh/ansible:centos7
 # 34.07 MB #err: inventory.yml's format
@@ -42,8 +43,9 @@ RUN sed -i 's/.*StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_
 # deployer's use:
 RUN ln -s /bin/bash /usr/bin/sh
 
-# etcd-v3.3.19-linux-amd64
-COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
+# etcd-v3.3.15> v3.5.2
+# COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
+COPY --from=etcd /usr/local/bin/ /usr/local/bin/
 ENV ETCDCTL_API=3
 
 # mitogen: /usr/lib/python2.7/site-packages
