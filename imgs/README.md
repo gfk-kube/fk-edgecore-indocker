@@ -298,9 +298,8 @@ dcp-rundeck:/srv/local/rundeck/rdeck/_glibc#
 ```
 
 - try3 `phone.search`>> OK
-  - https://blog.csdn.net/qq_38008295/article/details/111467167 华为云鲲鹏服务器测试使用-JDK基础镜像构建 `cyphernode/alpine-glibc-base:arm64-v3.11.0_2.29-0`
-  - https://blog.51cto.com/u_16099250/7122742 X86环境拉取arm架构的docker镜像 @
-2023-08-17 ``
+  - @2020-12-21 https://blog.csdn.net/qq_38008295/article/details/111467167 华为云鲲鹏服务器测试使用-JDK基础镜像构建 `cyphernode/alpine-glibc-base:arm64-v3.11.0_2.29-0`
+  - @2023-08-17 https://blog.51cto.com/u_16099250/7122742 X86环境拉取arm架构的docker镜像 `tedli/alpine-glibc:3.14.0`
 
 
 ```bash
