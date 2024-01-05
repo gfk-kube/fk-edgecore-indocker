@@ -63,7 +63,8 @@ ansible-mitogen)
     echo "baseImgs>> ansible-mitogen"
     # ver=alpine3.7-v2.4.6
     # ver=alpine3.8-v2.6.20
-    ver=alpine3.14-v2.9.27-mitogen
+    # ver=alpine3.14-v2.9.27-mitogen
+    ver=alpine3.10-ansi2.8.8py3710-mitogen
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
