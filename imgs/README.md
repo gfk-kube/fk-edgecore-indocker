@@ -183,3 +183,20 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     al
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     alpine3.8-v2.6.20                 550b7d09fa4e        11 hours ago        257MB
 willhallonline/ansible                                                        2.9-alpine-3.14                   782a333a02e9        3 months ago        239MB ##
 ```
+
+- ansible@alpine; glibc-jdk8(x64正常, arm64不行)
+
+```bash
+# arm-jdk8:
+[root@arm-ky10-23-2 jdk]# ./bin/java -version
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+[root@arm-ky10-23-2 jdk]# pwd
+/opt/_sam/opsdeploy/rdeck/jdk
+
+
+# alpine310-glibc225/227不能识别;
+# 
+
+```
