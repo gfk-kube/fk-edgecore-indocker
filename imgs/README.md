@@ -184,6 +184,8 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     al
 willhallonline/ansible                                                        2.9-alpine-3.14                   782a333a02e9        3 months ago        239MB ##
 ```
 
+## arm-jdk
+
 - ansible@alpine; glibc-jdk8(x64正常, arm64不行)
 
 ```bash
@@ -241,4 +243,84 @@ dcp-rundeck:/srv/local/rundeck# ldd /srv/local/rundeck/rdeck/jdk/bin/javac
         libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7f40d560e000)
 Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __strdup: symbol not found
 Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __rawmemchr: symbol not found
+```
+
+- arm try2 `multi org-x64's ver try: @aarch64`
+
+```bash
+# 2.35; x3
+# https://blog.csdn.net/duxing_langzi/article/details/125911398
+
+Executing glibc-bin-2.35-r0.trigger
+/usr/glibc-compat/sbin/ldconfig: line 1: syntax error: unexpected "("
+ERROR: glibc-bin-2.35-r0.trigger: script exited with error 2
+OK: 213 MiB in 107 packages
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# java
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __strdup: symbol not found
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __rawmemchr: symbol not found
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# ps -ef
+UID         PID   PPID  C STIME TTY          TIME CMD
+root          1      0  0 11:16 ?        00:00:00 /usr/bin/python2 /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+root         47      1  0 11:16 ?        00:00:00 filebrowser --address=0.0.0.0 --port=6661 --noauth --root=/srv/local/rundeck/editor/files --disable-exec --disable-thumbnails
+root         48      1  0 11:16 ?        00:00:00 webhookd -listen-addr=:6662
+root        105      0  0 11:17 pts/0    00:00:00 bash
+root        173      0  0 11:36 pts/1    00:00:00 bash
+root        199    173  0 11:42 pts/1    00:00:00 ps -ef
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# which java
+/srv/local/rundeck/rdeck/jdk/bin/java
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# java -version
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __strdup: symbol not found
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __rawmemchr: symbol not found
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# pwd
+/srv/local/rundeck/rdeck/_glibc
+
+
+# 
+Executing glibc-bin-2.35-r0.trigger
+/usr/glibc-compat/sbin/ldconfig: line 1: syntax error: unexpected "("
+ERROR: glibc-bin-2.35-r0.trigger: script exited with error 2
+OK: 213 MiB in 107 packages
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# java
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __strdup: symbol not found
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/aarch64/jli/libjli.so: __rawmemchr: symbol not found
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# apk del *.apk --allow-untrusted
+ERROR: No such package: glibc-2.35-r0.apk
+ERROR: No such package: glibc-bin-2.35-r0.apk
+ERROR: No such package: glibc-i18n-2.35-r0.apk
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# apk list -I |grep glibc
+glibc-bin-2.35-r0 x86_64 {glibc} (LGPL) [installed]
+glibc-2.35-r0 x86_64 {glibc} (LGPL) [installed]
+glibc-i18n-2.35-r0 noarch {glibc} (LGPL) [installed]
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc# apk del glibc-bin-2.35-r0 glibc-i18n-2.35-r0
+ERROR: No such package: glibc-bin-2.35-r0
+ERROR: No such package: glibc-i18n-2.35-r0
+dcp-rundeck:/srv/local/rundeck/rdeck/_glibc#
+```
+
+- try3 `phone.search`>> OK
+  - https://blog.csdn.net/qq_38008295/article/details/111467167 华为云鲲鹏服务器测试使用-JDK基础镜像构建 `cyphernode/alpine-glibc-base:arm64-v3.11.0_2.29-0`
+  - https://blog.51cto.com/u_16099250/7122742 X86环境拉取arm架构的docker镜像 @
+2023-08-17 ``
+
+
+```bash
+# 01: glibc2.31@May 18, 2021; 2.33@Mar 10, 2021; 2.29@May 4, 2019
+# https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/
+# May 18, 2021
+# Alpine 3.12.4 with glibc 2.31-r0 
+
+https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-2.31-r0-aarch64.apk
+https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-bin-2.31-r0-aarch64.apk
+https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-dev-2.31-r0-aarch64.apk
+https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-i18n-2.31-r0-aarch64.apk
+
+
+# 02:
+# ng: 缺中文字符集
+starudream/alpine-glibc        latest          （缺少locale文件及中文字符集）
+cyphernode/alpine-glibc-base   v3.12.4_2.31-0  （有locale文件，但缺少中文字符集）
+guisea/alpine-glibc            2.33            （Could not open '/lib/ld-linux-aarch64.so.1': No such file or directory）
+
+# ok:
+tedli/alpine-glibc:3.14.0
 ```
