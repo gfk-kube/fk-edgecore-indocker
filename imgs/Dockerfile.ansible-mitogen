@@ -15,12 +15,15 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 #  alpine3.8-ansible-2.6.20-r0
 # FROM alpine:3.8
 # https://github.com/willhallonline/docker-ansible
-FROM willhallonline/ansible:2.9-alpine-3.14
+# x64 only 239M
+# FROM willhallonline/ansible:2.9-alpine-3.14
+# multi self-build 243M
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base
 
 # RUN export domain="mirrors.aliyun.com"; \
 RUN export domain="mirrors.ustc.edu.cn"; \
-  echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
-  echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+  echo "http://$domain/alpine/v3.10/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.10/community" >> /etc/apk/repositories
 
 # libevent ncurses vim #total: 17.163 MB
 # total: 8.614 MB
