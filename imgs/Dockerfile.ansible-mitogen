@@ -57,7 +57,11 @@ RUN apk add --no-cache supervisor ##219MB> 264MB
 # java
 # java -version
 # 
-# use java8+glibc225@alpine311 for slim-size
+# use java8+glibc225@alpine311 for slim-size>> alpine314 >> alpine310
+#  x64: ok;
+#  arm64: 无效
+  # dcp-rundeck:/srv/local/rundeck/rdeck# java -version
+  # bash: /srv/local/rundeck/rdeck/jdk/bin/java: No such file or directory
 RUN \
   # export GITHUB=https://hub.yzuu.cf; \
   export GITHUB=https://github.com; \
