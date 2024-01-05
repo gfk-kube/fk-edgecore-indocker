@@ -46,6 +46,7 @@ RUN apk add --no-cache supervisor ##219MB> 264MB
 # RUN apk add --no-cache py2-pip; \
 #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
+#############
 # glibc-225有效; glibc-235无效
 # https://github.com/FansinZhao/alpine-glibc/blob/master/Dockerfile
 # wget https://hub.yzuu.cf/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk
@@ -62,12 +63,21 @@ RUN apk add --no-cache supervisor ##219MB> 264MB
 #  arm64: 无效
   # dcp-rundeck:/srv/local/rundeck/rdeck# java -version
   # bash: /srv/local/rundeck/rdeck/jdk/bin/java: No such file or directory
+#############
+# https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/
+# glibc-2.31-r0-aarch64.apk 3.11 MB 2021-05-18T15:12:42Z
+# glibc-2.31-r0-armhf.apk   2.34 MB 2021-05-18T15:13:01Z
+# glibc-2.31-r0-x86_64.apk  4.19 MB
 RUN \
   # export GITHUB=https://hub.yzuu.cf; \
   export GITHUB=https://github.com; \
-  wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk; \
-  apk add glibc-2.25-r0.apk --allow-untrusted; \
-  rm -f glibc-2.25-r0.apk;
+  # file=glibc-2.25-r0.apk; \
+  # wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/$file; \
+  arch=x86_64; test ! -z "$(uname -a |grep aarch64)" && arch=aarch64
+  file=glibc-2.31-r0-$arch.apk; \
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file
+  apk add $file --allow-untrusted; \
+  rm -f $file;
 
 # ENV PS1='\h:\w\$ '
 ENV PS1="[\u@\h \W]\\$ "
