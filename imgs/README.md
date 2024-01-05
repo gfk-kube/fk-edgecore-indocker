@@ -308,10 +308,12 @@ dcp-rundeck:/srv/local/rundeck/rdeck/_glibc#
 # May 18, 2021
 # Alpine 3.12.4 with glibc 2.31-r0 
 
-https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-2.31-r0-aarch64.apk
-https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-bin-2.31-r0-aarch64.apk
-https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-dev-2.31-r0-aarch64.apk
-https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-i18n-2.31-r0-aarch64.apk
+export GITHUB=https://hub.yzuu.cf #https://github.com
+export arch=armhf #x86_64 #aarch64
+wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-2.31-r0-$arch.apk
+wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-i18n-2.31-r0-$arch.apk
+wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-bin-2.31-r0-$arch.apk
+wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glibc-dev-2.31-r0-$arch.apk #
 
 
 # 02:
@@ -319,7 +321,23 @@ https://github.com/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/glib
 starudream/alpine-glibc        latest          （缺少locale文件及中文字符集）
 cyphernode/alpine-glibc-base   v3.12.4_2.31-0  （有locale文件，但缺少中文字符集）
 guisea/alpine-glibc            2.33            （Could not open '/lib/ld-linux-aarch64.so.1': No such file or directory）
-
 # ok:
 tedli/alpine-glibc:3.14.0
+
+
+
+# 手动更新后：
+###############
+dcp pull #更新;
+[root@arm-ky10-23-2 jdk]# docker run -it --rm -v $(pwd):/jdk registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-ansi2.8.8py3710-mitogen sh
+[root@ca93249428d0 ansible]# cd /jdk/
+[root@ca93249428d0 jdk]# ./bin/java 
+Usage: java [-options] class [args...]
+           (to execute a class)
+[root@ca93249428d0 jdk]# ./bin/java  -version
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+
+
 ```
