@@ -187,7 +187,7 @@ willhallonline/ansible                                                        2.
 - ansible@alpine; glibc-jdk8(x64正常, arm64不行)
 
 ```bash
-# arm-jdk8:
+# arm-jdk8@host23.2:
 [root@arm-ky10-23-2 jdk]# ./bin/java -version
 java version "1.8.0_202"
 Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
@@ -195,8 +195,50 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 [root@arm-ky10-23-2 jdk]# pwd
 /opt/_sam/opsdeploy/rdeck/jdk
 
+# [root@arm-ky10-23-2 bin]# 
+[root@arm-ky10-23-2 bin]# #./java -h
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+[root@arm-ky10-23-2 bin]# ldd ./java
+        linux-vdso.so.1 (0x0000fffccad40000)
+        libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x0000fffccacd0000)
+        libjli.so => /opt/_sam/opsdeploy/rdeck/jdk/bin/./../lib/aarch64/jli/libjli.so (0x0000fffccaca0000)
+        libdl.so.2 => /usr/lib64/libdl.so.2 (0x0000fffccac70000)
+        libc.so.6 => /usr/lib64/libc.so.6 (0x0000fffccaae0000)
+        /lib/ld-linux-aarch64.so.1 (0x0000fffccad50000)
 
 # alpine310-glibc225/227不能识别;
-# 
+[root@arm-ky10-23-2 bin]# dcp exec rundeck bash
+WARNING: The SERVER_IP variable is not set. Defaulting to a blank string.
+  # dcp-rundeck:/srv/local/rundeck# which java
+  /srv/local/rundeck/rdeck/jdk/bin/java
+  # dcp-rundeck:/srv/local/rundeck# java 
+  bash: /srv/local/rundeck/rdeck/jdk/bin/java: No such file or directory
+  # dcp-rundeck:/srv/local/rundeck# ldd java
+  /lib/ld-musl-aarch64.so.1: cannot load java: No such file or directory
 
+
+
+##X64#################
+dcp-rundeck:/srv/local/rundeck# ldd /srv/local/rundeck/rdeck/jdk/bin/java
+        /lib64/ld-linux-x86-64.so.2 (0x7fdce6878000)
+        libpthread.so.0 => /lib64/ld-linux-x86-64.so.2 (0x7fdce6878000)
+        libjli.so => /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so (0x7fdce6660000)
+        libdl.so.2 => /lib64/ld-linux-x86-64.so.2 (0x7fdce6878000)
+        libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7fdce6878000)
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __strdup: symbol not found
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __rawmemchr: symbol not found
+
+
+dcp-rundeck:/srv/local/rundeck# ldd /srv/local/rundeck/rdeck/jdk/bin/javac
+        /lib64/ld-linux-x86-64.so.2 (0x7f40d560e000)
+        libpthread.so.0 => /lib64/ld-linux-x86-64.so.2 (0x7f40d560e000)
+        libjli.so => /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so (0x7f40d53f6000)
+        libdl.so.2 => /lib64/ld-linux-x86-64.so.2 (0x7f40d560e000)
+        libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7f40d560e000)
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __strdup: symbol not found
+Error relocating /srv/local/rundeck/rdeck/jdk/bin/../lib/amd64/jli/libjli.so: __rawmemchr: symbol not found
 ```
