@@ -73,9 +73,9 @@ RUN \
   export GITHUB=https://github.com; \
   # file=glibc-2.25-r0.apk; \
   # wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/$file; \
-  arch=x86_64; test ! -z "$(uname -a |grep aarch64)" && arch=aarch64
+  arch=x86_64; test ! -z "$(uname -a |grep aarch64)" && arch=aarch64; \
   file=glibc-2.31-r0-$arch.apk; \
-  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
   apk add $file --allow-untrusted; \
   rm -f $file;
 
