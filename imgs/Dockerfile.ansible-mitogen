@@ -8,6 +8,14 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 # 56 MB #err: variable ansible >> mitogen
 # FROM williamyeh/ansible:alpine3
 
+
+FROM infrastlabs/x11-base:alpine-compile as perp
+# merge
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base as merge
+  COPY --from=etcd /usr/local/bin/ /rootfs/usr/local/bin/
+  COPY --from=perp /usr/local/static/3rd/ /rootfs/usr/local/static/3rd/
+  COPY --from=perp /usr/local/static/perp/ /rootfs/usr/local/static/perp/
+
 # Ansible 2.5 引入了一个新的 YAML 回调插件
 #  https://www.coder.work/article/6354015
 #  alpine 3.6; ansible-2.3.0.0-r1
@@ -41,10 +49,12 @@ RUN apk add --no-cache \
 #   pip install mitogen
 # +ansible: [3.7-py2, 3.8-py3]
 # RUN apk add --no-cache ansible  ##219MB
-# +supervisor[3.8-py2]
-RUN apk add --no-cache supervisor ##219MB> 264MB
-# RUN apk add --no-cache py2-pip; \
-#   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+
+# # +supervisor[3.8-py2]
+# RUN apk add --no-cache supervisor ##219MB> 264MB
+# # RUN apk add --no-cache py2-pip; \
+# #   pip install supervisor -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 #############
 # glibc-225有效; glibc-235无效
@@ -114,7 +124,8 @@ RUN ln -s /bin/bash /usr/bin/sh
 
 # etcd-v3.3.15> v3.5.2
 # COPY --from=etcd /opt/bitnami/etcd/bin/ /usr/bin
-COPY --from=etcd /usr/local/bin/ /usr/local/bin/
+# COPY --from=etcd /usr/local/bin/ /usr/local/bin/
+COPY --from=merge /rootfs /
 ENV ETCDCTL_API=3
 
 # mitogen: /usr/lib/python2.7/site-packages
