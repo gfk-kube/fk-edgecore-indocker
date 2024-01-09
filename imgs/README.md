@@ -342,11 +342,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 
 ```
 
-- py2-sv> perp `396MB> 340MB`
+- py2-sv> perp `396MB> 356MB`; -40M
 
 ```bash
-# root @ ch-pcitech-node192 in .../auto-deploy/opsdeploy |09:56:45  |br-war-slim U:3 ?:30 ✗| 
+# root @ node192 in .../auto-deploy/opsdeploy |10:01:37  |br-war-slim U:3 ?:30 ✗| 
 $ docker images |grep ansi
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                alpine3.10-ansi2.8.8py3710-mitogen         b45ffa9b1465        8 minutes ago       356MB
 infrastlabs/env-ansible                                                  alpine3.10-ansi2.8.8py3710-mitogen-amd64   3a43e7ff7147        4 days ago          396MB
-registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                alpine3.14-v2.9.27-mitogen                 dd532e264b8e        5 days ago          340MB
 ```
