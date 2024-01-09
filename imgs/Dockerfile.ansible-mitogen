@@ -16,7 +16,10 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py
   COPY --from=etcd /usr/local/bin/ /rootfs/usr/local/bin/
   COPY --from=perp /rootfs/usr/local/static/perp/ /rootfs/usr/local/static/perp/
   COPY --from=third /rootfs/files1/usr/local/static/3rd/ /rootfs/usr/local/static/3rd/
-  RUN du -sh /rootfs/usr/local/static/*
+  # 3rd: bin> gosu, upx, yq; sbin> frpc/frps, tini
+  RUN rm -f /rootfs/usr/local/static/3rd/sbin/frp*; \
+    du -sh /rootfs/usr/local/static/*;
+    
 # Ansible 2.5 引入了一个新的 YAML 回调插件
 #  https://www.coder.work/article/6354015
 #  alpine 3.6; ansible-2.3.0.0-r1
@@ -88,19 +91,19 @@ RUN \
   file=glibc-2.31-r0-$arch.apk; \
   wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
   apk add $file --allow-untrusted; \
-  rm -f $file; \
-  \
-  # glibc-bin-2.31-r0-aarch64.apk  glibc-dev-2.31-r0-aarch64.apk 
-  file=glibc-bin-2.31-r0-$arch.apk; \
-  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
-  apk add $file --allow-untrusted; \
-  rm -f $file; \
-  \
-  # glibc-i18n-2.31-r0-aarch64.apk ; deps: glibc-bin
-  file=glibc-i18n-2.31-r0-$arch.apk; \
-  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
-  apk add $file --allow-untrusted; \
   rm -f $file;
+  # \
+  # # glibc-bin-2.31-r0-aarch64.apk  glibc-dev-2.31-r0-aarch64.apk 
+  # file=glibc-bin-2.31-r0-$arch.apk; \
+  # wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  # apk add $file --allow-untrusted; \
+  # rm -f $file; \
+  # \
+  # # glibc-i18n-2.31-r0-aarch64.apk ; deps: glibc-bin
+  # file=glibc-i18n-2.31-r0-$arch.apk; \
+  # wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  # apk add $file --allow-untrusted; \
+  # rm -f $file;
 
 # ENV PS1='\h:\w\$ '
 ENV PS1="[\u@\h \W]\\$ "
