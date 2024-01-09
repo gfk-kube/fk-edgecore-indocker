@@ -77,6 +77,18 @@ RUN \
   file=glibc-2.31-r0-$arch.apk; \
   wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
   apk add $file --allow-untrusted; \
+  rm -f $file; \
+  \
+  # glibc-bin-2.31-r0-aarch64.apk  glibc-dev-2.31-r0-aarch64.apk 
+  file=glibc-bin-2.31-r0-$arch.apk; \
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  apk add $file --allow-untrusted; \
+  rm -f $file; \
+  \
+  # glibc-i18n-2.31-r0-aarch64.apk ; deps: glibc-bin
+  file=glibc-i18n-2.31-r0-$arch.apk; \
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  apk add $file --allow-untrusted; \
   rm -f $file;
 
 # ENV PS1='\h:\w\$ '
