@@ -349,4 +349,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 $ docker images |grep ansi
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                alpine3.10-ansi2.8.8py3710-mitogen         b45ffa9b1465        8 minutes ago       356MB
 infrastlabs/env-ansible                                                  alpine3.10-ansi2.8.8py3710-mitogen-amd64   3a43e7ff7147        4 days ago          396MB
+
+
+# tar.gz: [145M > 137M] -8M
+│   ├── [145M]  img-ansible-amd64.tar.gz
+│   ├── [145M]  img-ansible-arm64.tar.gz
+
+│   ├── [137M]  img-ansible-amd64.tar.gz
+│   ├── [137M]  img-ansible-arm64.tar.gz
+
 ```
