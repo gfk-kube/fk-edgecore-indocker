@@ -35,10 +35,10 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.
 #  alpine314: 
 FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3-mitogen-base
 
-# RUN export domain="mirrors.aliyun.com"; \
-RUN export domain="mirrors.ustc.edu.cn"; \
-  echo "http://$domain/alpine/v3.10/main" > /etc/apk/repositories; \
-  echo "http://$domain/alpine/v3.10/community" >> /etc/apk/repositories
+# # RUN export domain="mirrors.aliyun.com"; \
+# RUN export domain="mirrors.ustc.edu.cn"; \
+#   echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
+#   echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
 
 # libevent ncurses vim #total: 17.163 MB
 # total: 8.614 MB
