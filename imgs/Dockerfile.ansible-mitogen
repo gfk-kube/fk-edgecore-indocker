@@ -12,7 +12,7 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 FROM infrastlabs/x11-base:alpine-compile as perp
 FROM infrastlabs/x11-base:fluxbox as third
 # merge
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base as merge
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.10.16py3-mitogen-base as merge
   COPY --from=etcd /usr/local/bin/ /rootfs/usr/local/bin/
   COPY --from=perp /rootfs/usr/local/static/perp/ /rootfs/usr/local/static/perp/
   COPY --from=third /rootfs/files1/usr/local/static/3rd/ /rootfs/usr/local/static/3rd/
@@ -30,7 +30,10 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py
 # x64 only 239M
 # FROM willhallonline/ansible:2.9-alpine-3.14
 # multi self-build 243M
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base
+# ###base: alpine3.10-v2.8py3-mitogen-base >> alpine3.10-v2.10.16py3-mitogen-base >> alpine3.14-v2.10.17py3-mitogen-base
+#  alpine310: v2.10.16> v2.10.7; 实装: v2.10.17; pull-layer:186M;
+#  alpine314: 
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.10.16py3-mitogen-base
 
 # RUN export domain="mirrors.aliyun.com"; \
 RUN export domain="mirrors.ustc.edu.cn"; \
