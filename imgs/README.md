@@ -465,4 +465,13 @@ Successfully installed ansible-2.10.7
 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
 # 装后debug正常；
 
+
+
+# https://blog.51cto.com/zhangxueliang/6129999 ##Ansible 2.10 版本之后,Ansible 项目分为了两个部分:ansible-base 和 ansible-core
+# https://github.com/willhallonline/docker-ansible/tree/v4.2.0 ##ansi, base, core+ansi
+[root@cent7-23-195 ~]# docker images |grep ansible  |grep 3.14
+willhallonline/ansible                                                         2.11-alpine-3.14                           885a51d2cea1        3 months ago        504MB ##big
+willhallonline/ansible                                                         2.10-alpine-3.14                           64fdaba0a3f8        3 months ago        143MB ##base
+willhallonline/ansible                                                         2.9-alpine-3.14                            782a333a02e9        3 months ago        239MB ##core+ansible
+[root@cent7-23-195 ~]# 
 ```
