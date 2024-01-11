@@ -41,6 +41,9 @@ RUN apk --no-cache add \
     pip3 install ansible==2.10.0 && \
     pip3 install mitogen ansible-lint jmespath && \
     pip3 install --upgrade pywinrm && \
+    # rdeck's ansible-hosts
+    pip3 install jinja2==2.10.1 && \
+    pip3 install markupsafe==1.1.1 && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
