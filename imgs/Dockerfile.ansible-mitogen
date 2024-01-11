@@ -12,7 +12,7 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 FROM infrastlabs/x11-base:alpine-compile as perp
 FROM infrastlabs/x11-base:fluxbox as third
 # merge
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.10.16py3-mitogen-base as merge
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3-mitogen-base as merge
   COPY --from=etcd /usr/local/bin/ /rootfs/usr/local/bin/
   COPY --from=perp /rootfs/usr/local/static/perp/ /rootfs/usr/local/static/perp/
   COPY --from=third /rootfs/files1/usr/local/static/3rd/ /rootfs/usr/local/static/3rd/
@@ -33,7 +33,7 @@ FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.10.
 # ###base: alpine3.10-v2.8py3-mitogen-base >> alpine3.10-v2.10.16py3-mitogen-base >> alpine3.14-v2.10.17py3-mitogen-base
 #  alpine310: v2.10.16> v2.10.7; 实装: v2.10.17; pull-layer:186M;
 #  alpine314: 
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.10.16py3-mitogen-base
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3-mitogen-base
 
 # RUN export domain="mirrors.aliyun.com"; \
 RUN export domain="mirrors.ustc.edu.cn"; \
@@ -55,8 +55,9 @@ RUN apk add --no-cache \
 
 # rdeck-ansible 不能识别Nodes; 347MB > 357MB
 # https://blog.csdn.net/qq_21127151/article/details/133525293
-RUN pip install jinja2==2.10.1; \
-  pip install markupsafe==1.1.1;
+#  included @alpine3.14-v2.10.17py3-mitogen-base
+# RUN pip install jinja2==2.10.1; \
+#   pip install markupsafe==1.1.1;
 
 # mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
 #   pip install mitogen
