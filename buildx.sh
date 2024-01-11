@@ -64,7 +64,8 @@ ansible-mitogen)
     # ver=alpine3.7-v2.4.6
     # ver=alpine3.8-v2.6.20
     # ver=alpine3.14-v2.9.27-mitogen
-    ver=alpine3.10-ansi2.8.8py3710-mitogen
+    # ver=alpine3.10-ansi2.8.8py3710-mitogen
+    ver=alpine3.14-v2.10.17py3917-mitogen
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
@@ -76,7 +77,7 @@ ansible-mitogen)
     args="--build-arg FULL=/.."
     docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mitogen . 
     ;;
-ansible-mitogen-alpine38)
+ansible-mitogen-alpine38) ##base
     echo "baseImgs>> ansible-mitogen-alpine38"
     # ver=alpine3.7-v2.4.6
     # ver=alpine3.8-v2.6.20
