@@ -50,7 +50,7 @@ RUN apk add --no-cache \
   jq lftp
 
 
-# rdeck-ansible 不能识别Nodes
+# rdeck-ansible 不能识别Nodes; 347MB > 357MB
 # https://blog.csdn.net/qq_21127151/article/details/133525293
 RUN pip install jinja2==2.10.1; \
   pip install markupsafe==1.1.1;
