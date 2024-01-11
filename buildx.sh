@@ -88,7 +88,7 @@ ansible-mitogen-alpine38) ##base
     # ver=alpine3.10-v2.8py3-mitogen-base #OK1
     # ver=alpine3.10-v2.9.13py3-mitogen-base
     # ver=alpine3.10-v2.10.16py3-mitogen-base
-    var=alpine3.14-v2.10.17py3-mitogen-base
+    ver=alpine3.14-v2.10.17py3-mitogen-base
     # ver=alpine3.12-v2.9.27py3-mitogen-base #ERR2
     
     repo="registry.cn-shenzhen.aliyuncs.com"
