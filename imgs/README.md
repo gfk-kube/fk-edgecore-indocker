@@ -419,4 +419,14 @@ ansible 2.10.17
 /ansible # 
 /ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
 /usr/lib/python3.9/site-packages/ansible_mitogen/plugins
+
+
+
+# base:143M > full:340M;
+[root@cent7-23-195 ~]# docker images |grep ansible  |grep 3.14
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen          55193190c7f6        3 minutes ago       251MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3-mitogen-base        4cd48f1492c6        17 minutes ago      143MB ##
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.9.27-mitogen                 dd532e264b8e        7 days ago          340MB ##
+willhallonline/ansible                                                         2.10-alpine-3.14                           64fdaba0a3f8        3 months ago        143MB
+willhallonline/ansible                                                         2.9-alpine-3.14                            782a333a02e9        3 months ago        239MB
 ```
