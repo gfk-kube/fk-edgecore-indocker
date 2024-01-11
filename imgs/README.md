@@ -359,3 +359,34 @@ infrastlabs/env-ansible                                                  alpine3
 │   ├── [137M]  img-ansible-arm64.tar.gz
 
 ```
+
+- ansi-2.10.17 (mitogen: > 2.10) << ff: self-compile `ansi288@aline3.10`
+
+```bash
+# 357M@full> 489M@base
+[root@cent7-23-195 opsdeploy]# docker images |grep alpine3.10
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.10-v2.10.16py3-mitogen-base        3bd7f2cbff25        25 minutes ago      489MB
+infrastlabs/env-ansible                                                        alpine3.10-ansi2.8.8py3710-mitogen-amd64   343c4a7eeb6f        3 hours ago         357MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.10-ansi2.8.8py3710-mitogen         343c4a7eeb6f        3 hours ago         357MB ##
+harbor.pcitech.com/library/infrastlabs-env-ansible                             alpine3.10-ansi2.8.8py3710-mitogen-amd64   3a43e7ff7147        6 days ago          396MB
+harbor.pcitech.com/library/infrastlabs-env-ansible                             alpine3.10-ansi2.8.8py3710-mitogen-arm64   4cd90ba3fcb7        6 days ago          387MB
+
+# org's (非latest只有x64..)
+# https://github.com/willhallonline/docker-ansible
+[root@cent7-23-195 opsdeploy]# docker images |grep ansible |grep willhal
+willhallonline/ansible                                                         2.10-alpine-3.14                           64fdaba0a3f8        3 months ago        143MB ###
+willhallonline/ansible                                                         2.9-alpine-3.14                            782a333a02e9        3 months ago        239MB
+
+# 
+[root@cent7-23-195 opsdeploy]# docker run -it --rm  willhallonline/ansible:2.10-alpine-3.14 sh
+/ansible # ansible --version
+ansible 2.10.17
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.9.17 (main, Jun  9 2023, 02:31:24) [GCC 10.3.1 20210424]
+/ansible # 
+/ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
+/usr/lib/python3.9/site-packages/ansible_mitogen/plugins
+```
