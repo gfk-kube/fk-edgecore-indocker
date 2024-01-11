@@ -429,4 +429,40 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      a
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.9.27-mitogen                 dd532e264b8e        7 days ago          340MB ##
 willhallonline/ansible                                                         2.10-alpine-3.14                           64fdaba0a3f8        3 months ago        143MB
 willhallonline/ansible                                                         2.9-alpine-3.14                            782a333a02e9        3 months ago        239MB
+
+
+# rdeck test: stdout_callback不支持  (ansible-base?)>> 加装ansible OK
+# 24.1.12 要求ansi2.5+; ansi2.10@alpine3.14再次出错? 暂注释
+# stdout_callback = yaml
+# 22.10.28: 23.2 arm容器下出错 注释它;
+#stdout_callback = skippy
+# debug  # or json, or yaml, etc.
+stdout_callback = debug
+
+
+# ansible-base基础上，可直接安装ansible了; (无gcc等依赖)
+# dcp-rundeck:/srv/local/rundeck#  pip3 install ansible==2.10.7 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple/
+Collecting ansible==2.10.7
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/ba/22/7b58a8ba8e43159dc5cb32d97dd50e2b70b016585dbb188e9f2b61dac1e2/ansible-2.10.7.tar.gz (29.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.9/29.9 MB 4.0 MB/s eta 0:00:00
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: ansible-base<2.11,>=2.10.5 in /usr/lib/python3.9/site-packages (from ansible==2.10.7) (2.10.17)
+Requirement already satisfied: jinja2 in /usr/lib/python3.9/site-packages (from ansible-base<2.11,>=2.10.5->ansible==2.10.7) (2.10.1)
+Requirement already satisfied: PyYAML in /usr/lib/python3.9/site-packages (from ansible-base<2.11,>=2.10.5->ansible==2.10.7) (6.0.1)
+Requirement already satisfied: cryptography in /usr/lib/python3.9/site-packages (from ansible-base<2.11,>=2.10.5->ansible==2.10.7) (41.0.7)
+Requirement already satisfied: packaging in /usr/lib/python3.9/site-packages (from ansible-base<2.11,>=2.10.5->ansible==2.10.7) (20.9)
+Requirement already satisfied: cffi>=1.12 in /usr/lib/python3.9/site-packages (from cryptography->ansible-base<2.11,>=2.10.5->ansible==2.10.7) (1.16.0)
+Requirement already satisfied: MarkupSafe>=0.23 in /usr/lib/python3.9/site-packages (from jinja2->ansible-base<2.11,>=2.10.5->ansible==2.10.7) (1.1.1)
+Requirement already satisfied: pycparser in /usr/lib/python3.9/site-packages (from cffi>=1.12->cryptography->ansible-base<2.11,>=2.10.5->ansible==2.10.7) (2.21)
+Building wheels for collected packages: ansible
+  Building wheel for ansible (setup.py) ... done
+  Created wheel for ansible: filename=ansible-2.10.7-py3-none-any.whl size=48212986 sha256=f3eae5f6181afa255d35871c134e090fd8b1816ab97c2cfc87653f07aee35fd9
+  Stored in directory: /root/.cache/pip/wheels/56/10/42/c2848f6b9ec74855f2302255cef81480b2097d40d316a6bb8c
+Successfully built ansible
+Installing collected packages: ansible
+Successfully installed ansible-2.10.7
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+# 装后debug正常；
+
 ```
