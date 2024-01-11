@@ -390,3 +390,33 @@ ansible 2.10.17
 /ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
 /usr/lib/python3.9/site-packages/ansible_mitogen/plugins
 ```
+
+- alpine314-ansi210, 自编译x64/arm64 `Dockerfile.ansible-mtg-alpine314-ansi210py3`
+
+```bash
+# lite2.5: buildx-baseAnsi时, top.ver误用[var]
+[root@cent7-23-195 ~]# docker images |grep lite2
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      lite2.5                                    4fe9ef6dc82b        17 minutes ago      143MB
+
+[root@cent7-23-195 ~]# docker run -it --rm $img sh
+Unable to find image 'registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:lite2.5' locally
+lite2.5: Pulling from infrastlabs/env-ansible
+f7dab3ab2d6e: Already exists 
+e704b551252d: Pull complete 
+9d09f30c50b3: Pull complete 
+91e9ee97092c: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:840f231bc0dcd7fa0334392f01566fb803b6a6eacdb2fff03ef17fb47ca1dc76
+Status: Downloaded newer image for registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:lite2.5
+/ansible # 
+/ansible # ansible --version
+ansible 2.10.17
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.9.17 (main, Jun  9 2023, 02:31:24) [GCC 10.3.1 20210424]
+/ansible # 
+/ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
+/usr/lib/python3.9/site-packages/ansible_mitogen/plugins
+```
