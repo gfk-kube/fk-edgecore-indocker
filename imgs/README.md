@@ -474,4 +474,41 @@ willhallonline/ansible                                                         2
 willhallonline/ansible                                                         2.10-alpine-3.14                           64fdaba0a3f8        3 months ago        143MB ##base
 willhallonline/ansible                                                         2.9-alpine-3.14                            782a333a02e9        3 months ago        239MB ##core+ansible
 [root@cent7-23-195 ~]# 
+
+
+# 251MB> 506MB
+[root@cent7-23-195 ~]# docker images |grep ansible  |grep 3.14
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen                 4c006acf467c        12 minutes ago      506MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-ansi_base_bk1   55193190c7f6        47 minutes ago      251MB
+```
+
+- ansible: `base> ansible`base基础上，按需安装模块?
+
+```bash
+# https://blog.51cto.com/u_13756916/2313462 超详细Ansible安装及模块详解 @2018.11
+# ansible-doc -l
+dcp-rundeck:/srv/local/rundeck# ansible-doc -l 2>/dev/null |wc
+   4618   35544  578280
+# dcp-rundeck:/srv/local/rundeck# ansible-doc -l 2>/dev/null |grep yaml
+dellemc.os10.show_system_network_summary                                       Operations for show_system_network output in json/yaml fo...
+# 
+# ansible.netcommon.cli_parse:
+# dcp-rundeck:/srv/local/rundeck# ansible-doc -l 2>/dev/null |grep stdout
+# dcp-rundeck:/srv/local/rundeck# ansible-doc -l 2>/dev/null |grep output
+ansible.netcommon.cli_parse                                                    Parse cli output or text using a variety of par...
+community.network.ce_info_center_global                                        Manages outputting logs on HUAWEI CloudEngine swit...
+dellemc.os10.base_xml_to_dict                                                  Operations for show command output convertion from xml to json fo...
+dellemc.os10.show_system_network_summary                                       Operations for show_system_network output in json/yaml fo...
+dcp-rundeck:/srv/local/rundeck#
+
+# 手动添加：
+# https://www.cnblogs.com/chen2ha/p/15914170.html ##ansible手动添加模块 @2022-02-19
+ansible的模块，可以在github上获取：
+  核心模块 https://github.com/ansible/ansible-modules-core ##8年前 NOTE: As of Ansible 2.3, modules are now in the main Ansible repository.
+      ansible/ansible-modules-core
+  额外模块 https://github.com/ansible/ansible-modules-extras #8年前
+      ansible/ansible-modules-extras
+找到自己需要的模块，下载下来，放到上面看到的modules目录下即可
+# new: few-mods @dir
+# https://github.com/ansible/ansible/tree/devel/lib/ansible/modules
 ```
