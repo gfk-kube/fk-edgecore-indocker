@@ -49,6 +49,12 @@ RUN apk add --no-cache \
   lighttpd lighttpd-mod_auth dcron \
   jq lftp
 
+
+# rdeck-ansible 不能识别Nodes
+# https://blog.csdn.net/qq_21127151/article/details/133525293
+RUN pip install jinja2==2.10.1; \
+  pip install markupsafe==1.1.1;
+
 # mitogen用pip新装：导致故障；(之前cent7-lite3构建版 可用); 禁用mitogen: conf/tpls/ansible.cfg.tpl 内注释mitogen两块
 #   pip install mitogen
 # +ansible: [3.7-py2, 3.8-py3]
