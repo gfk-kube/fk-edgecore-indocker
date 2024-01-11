@@ -511,4 +511,66 @@ ansible的模块，可以在github上获取：
 找到自己需要的模块，下载下来，放到上面看到的modules目录下即可
 # new: few-mods @dir
 # https://github.com/ansible/ansible/tree/devel/lib/ansible/modules
+
+
+
+# INSTALL MODS
+# ansible-galaxy collection install ansible.posix
+https://docs.ansible.com/ansible/latest/collections/ansible/posix/debug_callback.html#ansible-collections-ansible-posix-debug-callback
+# ansible-galaxy collection install community.general
+https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html#ansible-collections-community-general-yaml-callback
+
+
+# LIST02
+# https://docs.ansible.com/ansible/latest/plugins/callback.html
+# https://docs.ansible.com/ansible/latest/collections/callback_index_stdout.html
+# standard inputdcp-rundeck:/srv/local/rundeck# ansible-doc -t callback -l 2>/dev/null |wc
+     42     258    3228
+# dcp-rundeck:/srv/local/rundeck# ansible-doc -t callback -l 2>/dev/null
+
+amazon.aws.aws_resource_actions       summarizes all "resource:actions" completed                                                         
+ansible.posix.cgroup_perf_recap       Profiles system activity of tasks and full execution using cgroups                                  
+ansible.posix.debug                   formatted stdout/stderr display                                                                     
+ansible.posix.json                    Ansible screen output as JSON                                                                       
+ansible.posix.profile_roles           adds timing information to roles                                                                    
+amazon.aws.aws_resource_actions       summarizes all "resource:actions" completed                                                         
+ansible.posix.cgroup_perf_recap       Profiles system activity of tasks and full execution using cgroups                                  
+ansible.posix.debug                   formatted stdout/stderr display                                                                     
+ansible.posix.json                    Ansible screen output as JSON                                                                       
+ansible.posix.profile_roles           adds timing information to roles                                                                    
+ansible.posix.profile_tasks           adds time information to tasks                                                                      
+ansible.posix.skippy                  Ansible screen output that ignores skipped status                                                   
+ansible.posix.timer                   Adds time to play stats                                                                             
+community.general.actionable          shows only items that need attention                                                                
+community.general.cgroup_memory_recap Profiles maximum memory usage of tasks and full execution using cgroups                             
+community.general.context_demo        demo callback that adds play/task context                                                           
+community.general.counter_enabled     adds counters to the output items (tasks and hosts/task)                                            
+community.general.dense               minimal stdout output                                                                               
+community.general.diy                 Customize the output                                                                                
+community.general.full_skip           suppresses tasks if all hosts skipped                                                               
+community.general.hipchat             post task events to hipchat                                                                         
+community.general.jabber              post task events to a jabber server                                                                 
+community.general.log_plays           write playbook output to log file                                                                   
+community.general.logdna              Sends playbook logs to LogDNA                                                                       
+community.general.logentries          Sends events to Logentries                                                                          
+community.general.logstash            Sends events to Logstash                                                                            
+community.general.mail                Sends failure events via email                                                                      
+community.general.nrdp                post task result to a nagios server through nrdp                                                    
+community.general.null                Don\'t display stuff to screen                                                                       
+community.general.osx_say             notify using software speech synthesizer                                                            
+community.general.say                 notify using software speech synthesizer                                                            
+community.general.selective           only print certain tasks                                                                            
+community.general.slack               Sends play events to a Slack channel                                                                
+community.general.splunk              Sends task result events to Splunk HTTP Event Collector                                             
+community.general.stderr              Splits output, sending failed tasks to stderr                                                       
+community.general.sumologic           Sends task result events to Sumologic                                                               
+community.general.syslog_json         sends JSON events to syslog                                                                         
+community.general.unixy               condensed Ansible output                                                                            
+community.general.yaml                yaml-ized Ansible screen output                                                                     
+community.grafana.grafana_annotations send ansible events as annotations on charts to grafana over http api                               
+default                               default Ansible screen output                                                                       
+junit                                 write playbook output to a JUnit file                                                               
+minimal                               minimal Ansible screen output                                                                       
+oneline                               oneline Ansible screen output                                                                       
+ovirt.ovirt.stdout                    Output the log of ansible   
 ```
