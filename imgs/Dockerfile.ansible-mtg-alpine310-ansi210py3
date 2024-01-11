@@ -36,6 +36,7 @@ RUN apk --no-cache add \
         openssl-dev \
         build-base && \
     pip3 install --upgrade pip cffi && \
+    # # ERROR! Your version of Ansible ((2, 8, 8)) is too old. The oldest version supported by Mitogen for Ansible is (2, 10).
     # https://github.com/willhallonline/docker-ansible/blob/v3.2.0/ansible210/alpine312/Dockerfile
     pip3 install ansible==2.10.16 && \
     pip3 install mitogen ansible-lint jmespath && \
