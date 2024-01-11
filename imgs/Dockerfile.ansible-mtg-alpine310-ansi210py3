@@ -38,7 +38,8 @@ RUN apk --no-cache add \
     pip3 install --upgrade pip cffi && \
     # # ERROR! Your version of Ansible ((2, 8, 8)) is too old. The oldest version supported by Mitogen for Ansible is (2, 10).
     # https://github.com/willhallonline/docker-ansible/blob/v2.5.0/ansible210/alpine310/Dockerfile
-    pip3 install ansible==2.10.0 && \
+    # hand try>> dcp-rundeck:/srv/local/rundeck# pip3 install ansible==2.10.7
+    pip3 install ansible==2.10.7 && \
     pip3 install mitogen ansible-lint jmespath && \
     pip3 install --upgrade pywinrm && \
     # rdeck's ansible-hosts
