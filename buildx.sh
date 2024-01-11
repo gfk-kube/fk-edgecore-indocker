@@ -85,7 +85,8 @@ ansible-mitogen-alpine38)
     # ver=alpine3.8-v2.7.11-mitogen-base #ERR
     # ver=alpine3.9-v2.8.7py2-mitogen-base #ERR
     # ver=alpine3.10-v2.8py3-mitogen-base #OK1
-    ver=alpine3.10-v2.9.13py3-mitogen-base
+    # ver=alpine3.10-v2.9.13py3-mitogen-base
+    ver=alpine3.10-v2.10.16py3-mitogen-base
     # ver=alpine3.12-v2.9.27py3-mitogen-base #ERR2
     
     repo="registry.cn-shenzhen.aliyuncs.com"
@@ -99,7 +100,8 @@ ansible-mitogen-alpine38)
     args="--build-arg FULL=/.."
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine39-ansi28py2 .
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi28py3 . 
-    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi29py3 .
+    # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi29py3 .
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi210py3 .
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine312-ansi29py3 . 
     ;;
 ansible-ubt2004)
