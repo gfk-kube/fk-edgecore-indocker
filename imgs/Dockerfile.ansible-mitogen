@@ -62,6 +62,7 @@ RUN apk add --no-cache \
 # pip3 install ansible==2.10.7 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 #  alpine314: ansible-base img[143M]基础上，加装ansible (stdout_callback = yaml格式化需要; 再装无需gcc编译)
 #  ansi2.10.7: alpine314上也是1.10.x的最后可pip下载版
+#  +48.52MB
 RUN pip3 install ansible==2.10.7 && \
     rm -rf /var/cache/apk/* && \
     rm -rf /root/.cache/pip && \
