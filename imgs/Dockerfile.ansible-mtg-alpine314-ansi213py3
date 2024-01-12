@@ -83,6 +83,9 @@ RUN apk --no-cache add \
     rm -rf /root/.cache/pip && \
     rm -rf /root/.cargo
 
+# todo2: temp here
+# RUN ansible-galaxy collection install community.general
+
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
