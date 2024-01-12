@@ -38,6 +38,12 @@ ENV ANSIBLE_VERSION "6.7.0"
 #     org.label-schema.vendor="Will Hall Online" \
 #     org.label-schema.docker.cmd="docker run --rm -it -v $(pwd):/ansible ~/.ssh/id_rsa:/root/id_rsa willhallonline/ansible:2.12-alpine-3.14"
 
+# RUN export domain="mirrors.aliyun.com"; \
+RUN export domain="mirrors.ustc.edu.cn"; \
+  echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
+
+
 RUN apk --no-cache add \
         sudo \
         python3\
@@ -64,9 +70,9 @@ RUN apk --no-cache add \
     pip3 install --ignore-installed  ansible-lint==${ANSIBLE_LINT} && \
     pip3 install mitogen jmespath && \
     pip3 install --upgrade pywinrm && \
-    # rdeck's ansible-hosts
-    pip3 install jinja2==2.10.1 && \
-    pip3 install markupsafe==1.1.1 && \
+    # # rdeck's ansible-hosts
+    # pip3 install jinja2==2.10.1 && \
+    # pip3 install markupsafe==1.1.1 && \
     # 
     apk del build-dependencies && \
     rm -rf /var/cache/apk/* && \
