@@ -514,12 +514,6 @@ ansible的模块，可以在github上获取：
 
 
 
-# INSTALL MODS
-# ansible-galaxy collection install ansible.posix
-https://docs.ansible.com/ansible/latest/collections/ansible/posix/debug_callback.html#ansible-collections-ansible-posix-debug-callback
-# ansible-galaxy collection install community.general
-https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html#ansible-collections-community-general-yaml-callback
-
 
 # LIST02
 # https://docs.ansible.com/ansible/latest/plugins/callback.html
@@ -575,8 +569,34 @@ oneline                               oneline Ansible screen output
 ovirt.ovirt.stdout                    Output the log of ansible   
 
 
+
+# INSTALL MODS
+# ansible-galaxy collection install ansible.posix
+https://docs.ansible.com/ansible/latest/collections/ansible/posix/debug_callback.html#ansible-collections-ansible-posix-debug-callback
+# ansible-galaxy collection install community.general
+https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html#ansible-collections-community-general-yaml-callback
+
+
 # alpine3.14-v2.10.17py3917-mitogen-v210corebase 506MB> 251MB
 [root@cent7-23-195 ~]# docker images |grep 17py3917
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase    7f513700f3de        10 minutes ago      251MB ###
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen                 4c006acf467c        7 hours ago         506MB
+
+# handIns
+[root@cent7-23-195 ~]# docker run -it --rm  registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.14-v2.10.17py3917-mitogen-v210corebase bash
+fd2cbbb1c31c:/ansible# 
+# fd2cbbb1c31c:/ansible# ansible-galaxy collection install ansible.posix
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'ansible.posix:1.5.4' to '/root/.ansible/collections/ansible_collections/ansible/posix'
+Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/ansible-posix-1.5.4.tar.gz to /root/.ansible/tmp/ansible-local-87u37ab26/tmp0qtx9rip
+ansible.posix (1.5.4) was installed successfully
+# fd2cbbb1c31c:/ansible# ansible-galaxy collection install community.general
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'community.general:8.2.0' to '/root/.ansible/collections/ansible_collections/community/general'
+Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-general-8.2.0.tar.gz to /root/.ansible/tmp/ansible-local-12b3um3d14/tmptfb2rb8m
+community.general (8.2.0) was installed successfully
 ```
