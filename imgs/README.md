@@ -573,4 +573,10 @@ junit                                 write playbook output to a JUnit file
 minimal                               minimal Ansible screen output                                                                       
 oneline                               oneline Ansible screen output                                                                       
 ovirt.ovirt.stdout                    Output the log of ansible   
+
+
+# alpine3.14-v2.10.17py3917-mitogen-v210corebase 506MB> 251MB
+[root@cent7-23-195 ~]# docker images |grep 17py3917
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase    7f513700f3de        10 minutes ago      251MB ###
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen                 4c006acf467c        7 hours ago         506MB
 ```
