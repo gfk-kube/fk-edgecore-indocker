@@ -12,36 +12,29 @@
     # --build-arg ANSIBLE_LINT=${ANSIBLE_LINT_213} \
     # ansible-core/alpine314/
 
-# https://github.com/willhallonline/docker-ansible/blob/v4.3.2/ansible-base/alpine314/Dockerfile
+# https://github.com/willhallonline/docker-ansible/blob/v4.3.2/ansible-core/alpine314/Dockerfile
 # pull base image
 FROM alpine:3.14
 
-# ARG ANSIBLE_CORE_VERSION
-# ARG ANSIBLE_LINT
-# ENV ANSIBLE_LINT ${ANSIBLE_LINT}
-# ENV ANSIBLE_CORE ${ANSIBLE_CORE_VERSION}
-ENV ANSIBLE_LINT "5.4.0"
-ENV ANSIBLE_CORE "2.13.7"
+ARG ANSIBLE_CORE_VERSION
+ARG ANSIBLE_VERSION
+ARG ANSIBLE_LINT
+ENV ANSIBLE_CORE_VERSION ${ANSIBLE_CORE_VERSION}
+ENV ANSIBLE_VERSION ${ANSIBLE_VERSION}
+ENV ANSIBLE_LINT ${ANSIBLE_LINT}
 
-# # Labels.
-# LABEL maintainer="will@willhallonline.co.uk" \
-#     org.label-schema.schema-version="1.0" \
-#     org.label-schema.build-date=$BUILD_DATE \
-#     org.label-schema.vcs-ref=$VCS_REF \
-#     org.label-schema.name="willhallonline/ansible" \
-#     org.label-schema.description="Ansible inside Docker" \
-#     org.label-schema.url="https://github.com/willhallonline/docker-ansible" \
-#     org.label-schema.vcs-url="https://github.com/willhallonline/docker-ansible" \
-#     org.label-schema.vendor="Will Hall Online" \
-#     org.label-schema.docker.cmd="docker run --rm -it -v $(pwd):/ansible ~/.ssh/id_rsa:/root/id_rsa willhallonline/ansible:2.10-alpine-3.14"
+# Labels.
+LABEL maintainer="will@willhallonline.co.uk" \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.build-date=$BUILD_DATE \
+    org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.name="willhallonline/ansible" \
+    org.label-schema.description="Ansible inside Docker" \
+    org.label-schema.url="https://github.com/willhallonline/docker-ansible" \
+    org.label-schema.vcs-url="https://github.com/willhallonline/docker-ansible" \
+    org.label-schema.vendor="Will Hall Online" \
+    org.label-schema.docker.cmd="docker run --rm -it -v $(pwd):/ansible ~/.ssh/id_rsa:/root/id_rsa willhallonline/ansible:2.12-alpine-3.14"
 
-# RUN export domain="mirrors.aliyun.com"; \
-RUN export domain="mirrors.ustc.edu.cn"; \
-  echo "http://$domain/alpine/v3.14/main" > /etc/apk/repositories; \
-  echo "http://$domain/alpine/v3.14/community" >> /etc/apk/repositories
-
-
-# ansible-base==${ANSIBLE_CORE} ##pip:同ansi-v210模式
 RUN apk --no-cache add \
         sudo \
         python3\
@@ -63,13 +56,11 @@ RUN apk --no-cache add \
         build-base && \
     pip3 install --upgrade pip wheel && \
     pip3 install --upgrade cryptography cffi && \
-    pip3 install ansible-base==${ANSIBLE_CORE} && \
-    pip3 install mitogen ansible-lint==${ANSIBLE_LINT} jmespath && \
+    pip3 install ansible-core==${ANSIBLE_CORE_VERSION} && \
+    pip3 install ansible==${ANSIBLE_VERSION} && \
+    pip3 install --ignore-installed  ansible-lint==${ANSIBLE_LINT} && \
+    pip3 install mitogen jmespath && \
     pip3 install --upgrade pywinrm && \
-    # rdeck's ansible-hosts
-    pip3 install jinja2==2.10.1 && \
-    pip3 install markupsafe==1.1.1 && \
-    # 
     apk del build-dependencies && \
     rm -rf /var/cache/apk/* && \
     rm -rf /root/.cache/pip && \
