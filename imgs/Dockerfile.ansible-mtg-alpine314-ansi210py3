@@ -58,6 +58,10 @@ RUN apk --no-cache add \
     rm -rf /root/.cache/pip && \
     rm -rf /root/.cargo
 
+# ansible.cfg: stdout_callback=yaml
+# https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html#ansible-collections-community-general-yaml-callback
+RUN ansible-galaxy collection install community.general
+
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
