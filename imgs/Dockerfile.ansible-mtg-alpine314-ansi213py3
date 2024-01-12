@@ -71,7 +71,11 @@ RUN apk --no-cache add \
     pip3 install mitogen jmespath && \
     pip3 install --upgrade pywinrm && \
     # # rdeck's ansible-hosts
+    #  ERR:ansible-core 2.13.7 requires jinja2>=3.0.0, but you have jinja2 2.10.1 which is incompatible.
+    #  Successfully installed jinja2-2.10.1
     # pip3 install jinja2==2.10.1 && \
+    #  Downloading MarkupSafe-1.1.1.tar.gz (19 kB)
+    #  Preparing metadata (setup.py) ... error
     # pip3 install markupsafe==1.1.1 && \
     # 
     apk del build-dependencies && \
