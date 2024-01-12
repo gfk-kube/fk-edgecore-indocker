@@ -599,4 +599,49 @@ Starting collection install process
 Installing 'community.general:8.2.0' to '/root/.ansible/collections/ansible_collections/community/general'
 Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-general-8.2.0.tar.gz to /root/.ansible/tmp/ansible-local-12b3um3d14/tmptfb2rb8m
 community.general (8.2.0) was installed successfully
+
+
+# rdeck test: ansi-v210:手动装后，仅WARN stdout_callback=yaml可通过/显示正常
+# dcp-rundeck:/srv/local/rundeck# ansible-galaxy collection install community.general
+[WARNING]: Collection community.general does not support Ansible version
+2.10.17
+# https://galaxy.ansible.com/ui/ #官网ansi-v213
+Warning alert:To be able to download content from galaxy it is required to have ansible-core>=2.13.9
+Please, check it running the command: ansible --version
+
+
+# img: +ansi-galaxy community 251MB> 266MB
+[root@cent7-23-195 opsdeploy]# docker images |grep corebase
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase       b1883ee1d4f1        9 minutes ago       266MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase-bk1   7f513700f3de        2 hours ago         251MB
+```
+
+- ansi-v213
+
+```bash
+# ansible [core 2.15.4]
+[root@cent7-23-195 ~]# docker run -it --rm willhallonline/ansible:2.13-alpine-3.14 sh
+Unable to find image 'willhallonline/ansible:2.13-alpine-3.14' locally
+2.13-alpine-3.14: Pulling from willhallonline/ansible
+f7dab3ab2d6e: Already exists 
+c38b270f7de5: Pull complete 
+6f6c68bf0200: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:b124b851b237a92386431b7fb6917811eb406ca43e2caeb33299352dc1660de7
+Status: Downloaded newer image for willhallonline/ansible:2.13-alpine-3.14
+/ansible # ansible --version
+ansible [core 2.15.4]
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.9.17 (main, Jun  9 2023, 02:31:24) [GCC 10.3.1 20210424] (/usr/bin/python3)
+  jinja version = 3.1.2
+  libyaml = True
+/ansible # 
+/ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
+/usr/lib/python3.9/site-packages/ansible_mitogen/plugins
+
+
 ```
