@@ -616,7 +616,7 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      a
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase-bk1   7f513700f3de        2 hours ago         251MB
 ```
 
-- ansi-v213
+- ansi-v213 145M(无rdeck's) << ansi-v210:143M
 
 ```bash
 # ansible [core 2.15.4]
@@ -644,4 +644,17 @@ ansible [core 2.15.4]
 /usr/lib/python3.9/site-packages/ansible_mitogen/plugins
 
 
+# img 145MB
+[root@cent7-23-195 opsdeploy]# docker images |egrep "mitogen-base"
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.13.7py3-mitogen-base                   24b4461a711b        50 minutes ago      145MB ##
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3-mitogen-base                  4cd48f1492c6        11 hours ago        143MB
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.10-v2.10.16py3-mitogen-base                  3bd7f2cbff25        12 hours ago        489MB
+
+# tar.gz: 90M >>  $ali/infrastlabs/env-ansible:alpine3.14-v2.10.17py3917-mitogen-v210corebase (with: rdeck's ansi-galaxy-community)
+├── [4.0K]  deployer
+│   ├── [ 84M]  arm64-deployer.tar.gz
+│   ├── [ 86M]  deployer.tar.gz
+│   ├── [ 90M]  img-ansible-amd64.tar.gz #90M
+│   ├── [ 90M]  img-ansible-arm64.tar.gz
 ```
+
