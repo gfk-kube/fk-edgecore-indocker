@@ -89,9 +89,10 @@ ansible-mitogen-alpine38) ##base
     # ver=alpine3.10-v2.8py3-mitogen-base #OK1
     # ver=alpine3.10-v2.9.13py3-mitogen-base
     # ver=alpine3.10-v2.10.16py3-mitogen-base
-    ver=alpine3.14-v2.10.17py3-mitogen-base
     # ver=alpine3.12-v2.9.27py3-mitogen-base #ERR2
-    
+    # ver=alpine3.14-v2.10.17py3-mitogen-base
+    ver=alpine3.14-v2.13.7py3-mitogen-base
+
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
@@ -106,7 +107,8 @@ ansible-mitogen-alpine38) ##base
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi29py3 .
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine310-ansi210py3 . ##438M? too big;
     # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine312-ansi29py3 .
-    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine314-ansi210py3 . #org's 143M?
+    # docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine314-ansi210py3 . #org's 143M? (ansi> ansi-base)
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/Dockerfile.ansible-mtg-alpine314-ansi213py3 . #(ansi> ansi-base> ansi-core)
     ;;
 ansible-ubt2004)
     echo "baseImgs>> ansible-mitogen-ubt2004"
