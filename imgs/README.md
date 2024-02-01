@@ -71,10 +71,10 @@ useradd -u $uid -g $gid -m -s /bin/bash $user
 - 2）arm-jdk `alpine-glibc-arm63; zh: utf8 charset`
 - 3）py2-sv> perp `396MB> 356MB`; -40M
 - 4）mitogen: ansi> 2.10
-- 5）ansible.base> `stdout_callback=yaml； #ansible-galaxy collection install community.general`
-- 6）ansi-v213: 无rdeck's依赖模块 `pip3 install jinja2==2.10.1; markupsafe==1.1.1`
+- 5）ansi-v210-base: `stdout_callback=yaml； #ansible==2.10.7 >> ansible-galaxy collection install community.general`
+- 6）ansi-v213-core: 无rdeck's依赖模块 `pip3 install jinja2==2.10.1; markupsafe==1.1.1`
 
-**ansible** `Dockerfile.ansible-mtg-alpine314-ansi210py3`
+**ansible** `Dockerfile.ansible-mtg-alpine314-ansi210py3> Dockerfile.ansible-mitogen`
 
 ### 1）refImg> self build: `alpine3.10-v2.8py3`
 
@@ -499,7 +499,7 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      a
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-ansi_base_bk1   55193190c7f6        47 minutes ago      251MB
 ```
 
-### 5）ansible.base> `stdout_callback=yaml； #ansible-galaxy collection install community.general`
+### 5）ansi-v210-base: `stdout_callback=yaml； #ansible==2.10.7 >> ansible-galaxy collection install community.general`
 
 - ansible: `base> ansible`base基础上，按需安装模块?
 
