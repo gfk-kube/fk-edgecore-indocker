@@ -66,7 +66,7 @@ ansible-mitogen)
     # ver=alpine3.14-v2.9.27-mitogen
     # ver=alpine3.10-ansi2.8.8py3710-mitogen
     # ver=alpine3.14-v2.10.17py3917-mitogen
-    ver=alpine3.14-v2.10.17py3917-mitogen-v210corebase #notes: pip3 ins ansible==v2.10.7
+    ver=alpine3.14-v2.10.17py3917-mitogen-v210corebase #notes: pip3 ins ansible==v2.10.7; >> auto-dp-lite在用;
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
