@@ -67,6 +67,19 @@ useradd -u $uid -g $gid -m -s /bin/bash $user
 
 ## env-ansible
 
+- 1）refImg> self build: `alpine3.10-v2.8py3`
+- 2）arm-jdk `alpine-glibc-arm63; zh: utf8 charset`
+- 3）py2-sv> perp `396MB> 356MB`; -40M
+- 4）mitogen: ansi> 2.10
+- 5）ansible.base> `stdout_callback=yaml； #ansible-galaxy collection install community.general`
+- 6）ansi-v213: 无rdeck's依赖模块 `pip3 install jinja2==2.10.1; markupsafe==1.1.1`
+
+**ansible**
+
+### 1）refImg> self build: `alpine3.10-v2.8py3`
+
+- refImg
+
 ```bash
 # ubt2004-v2.9.27-mitogen: 599MB> 683MB
 # alpine3.14-v2.9.27-mitogen: 239MB> 333MB >> 340MB(glibc225)
@@ -133,9 +146,11 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     al
 willhallonline/ansible                                                        2.15-alpine-3.14               f7d6ff7642cd        3 months ago        548MB #x64 only
 willhallonline/ansible                                                        2.9-alpine-3.14                782a333a02e9        3 months ago        239MB #x64 only
 willhallonline/ansible                                                        alpine                         ce9803d02db3        3 months ago        465MB #x64, arm64
+```
 
+- selfBuild
 
-
+```
 # [SELF BUILD]
 [root@arm-ky10-23-2 opsdeploy]# docker run -it --rm registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base sh
 Unable to find image 'registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible:alpine3.10-v2.8py3-mitogen-base' locally
@@ -184,7 +199,7 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                     al
 willhallonline/ansible                                                        2.9-alpine-3.14                   782a333a02e9        3 months ago        239MB ##
 ```
 
-## arm-jdk
+### 2）arm-jdk `alpine-glibc-arm63; zh: utf8 charset`
 
 - ansible@alpine; glibc-jdk8(x64正常, arm64不行)
 
@@ -342,7 +357,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 
 ```
 
-- py2-sv> perp `396MB> 356MB`; -40M
+### 3）py2-sv> perp `396MB> 356MB`; -40M
 
 ```bash
 # root @ node192 in .../auto-deploy/opsdeploy |10:01:37  |br-war-slim U:3 ?:30 ✗| 
@@ -359,6 +374,8 @@ infrastlabs/env-ansible                                                  alpine3
 │   ├── [137M]  img-ansible-arm64.tar.gz
 
 ```
+
+### 4）mitogen: ansi> 2.10
 
 - ansi-2.10.17 (mitogen: > 2.10) << ff: self-compile `ansi288@aline3.10`
 
@@ -481,6 +498,8 @@ willhallonline/ansible                                                         2
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen                 4c006acf467c        12 minutes ago      506MB
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-ansi_base_bk1   55193190c7f6        47 minutes ago      251MB
 ```
+
+### 5）ansible.base> `stdout_callback=yaml； #ansible-galaxy collection install community.general`
 
 - ansible: `base> ansible`base基础上，按需安装模块?
 
@@ -616,6 +635,9 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      a
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.10.17py3917-mitogen-v210corebase-bk1   7f513700f3de        2 hours ago         251MB
 ```
 
+
+### 6）ansi-v213: 无rdeck's依赖模块 `pip3 install jinja2==2.10.1; markupsafe==1.1.1`
+
 - ansi-v213 145M(无rdeck's) << ansi-v210:143M
 
 ```bash
@@ -642,8 +664,11 @@ ansible [core 2.15.4]
 /ansible # 
 /ansible # find /usr -type d | grep 'ansible_mitogen/plugins' | sort | head -n 1
 /usr/lib/python3.9/site-packages/ansible_mitogen/plugins
+```
 
+- last view size
 
+```bash
 # img 145MB
 [root@cent7-23-195 opsdeploy]# docker images |egrep "mitogen-base"
 registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      alpine3.14-v2.13.7py3-mitogen-base                   24b4461a711b        50 minutes ago      145MB ##
@@ -655,6 +680,6 @@ registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-ansible                      a
 │   ├── [ 84M]  arm64-deployer.tar.gz
 │   ├── [ 86M]  deployer.tar.gz
 │   ├── [ 90M]  img-ansible-amd64.tar.gz #90M
-│   ├── [ 90M]  img-ansible-arm64.tar.gz
+│   ├── [ 90M]  img-ansible-arm64.tar.gz #fix-amd>arm >> 85M
 ```
 
