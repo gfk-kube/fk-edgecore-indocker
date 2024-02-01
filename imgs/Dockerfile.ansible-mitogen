@@ -8,7 +8,7 @@ FROM pachyderm/etcd:v3.5.2 as etcd
 # 56 MB #err: variable ansible >> mitogen
 # FROM williamyeh/ansible:alpine3
 
-# 3rd> third
+# 3rd> third; third: upx, tini err;
 FROM infrastlabs/x11-base:alpine-compile as perp
 FROM infrastlabs/x11-base:fluxbox as third
 # merge
