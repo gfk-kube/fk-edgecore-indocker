@@ -74,7 +74,7 @@ useradd -u $uid -g $gid -m -s /bin/bash $user
 - 5）ansible.base> `stdout_callback=yaml； #ansible-galaxy collection install community.general`
 - 6）ansi-v213: 无rdeck's依赖模块 `pip3 install jinja2==2.10.1; markupsafe==1.1.1`
 
-**ansible**
+**ansible** `Dockerfile.ansible-mtg-alpine314-ansi210py3`
 
 ### 1）refImg> self build: `alpine3.10-v2.8py3`
 
