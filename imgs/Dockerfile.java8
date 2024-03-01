@@ -1,0 +1,30 @@
+# alpine-glibc-java8 temp: @24.3.1
+FROM alpine:3.13
+
+# RUN export domain="mirrors.aliyun.com"; \
+RUN export domain="mirrors.ustc.edu.cn"; \
+  echo "http://$domain/alpine/v3.13/main" > /etc/apk/repositories; \
+  echo "http://$domain/alpine/v3.13/community" >> /etc/apk/repositories
+
+RUN \
+  # export GITHUB=https://hub.yzuu.cf; \
+  export GITHUB=https://github.com; \
+  # file=glibc-2.25-r0.apk; \
+  # wget $GITHUB/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/$file; \
+  arch=x86_64; test ! -z "$(uname -a |grep aarch64)" && arch=aarch64; \
+  file=glibc-2.31-r0-$arch.apk; \
+  wget $GITHUB/SatoshiPortal/alpine-pkg-glibc/releases/download/2.31-r0/$file; \
+  apk add $file --allow-untrusted; \
+  rm -f $file;
+
+
+# SDK-java
+# COPY --from=jdk8 /usr/local/soft/java/jdk1.8.0_202 /usr/local/soft/java/jdk1.8.0_202
+# jdk-8u202-linux-arm64-vfp-hflt.tar.gz	2022-Aug-02 14:53:47	69.7M	application/x-gtar-compressed
+# jdk-8u202-linux-x64.tar.gz	2022-Aug-02 16:30:50	185.0M	application/x-gtar-compressed
+# curl -u root:root http://172.25.23.203/repository1/v3_base_data/v2/packages/3rdparty/jdk/jdk-8u202-linux-x64.tar.gz
+
+ARG JAVA_HOME="/usr/local/soft/java/jdk1.8.0_202"
+ENV JAVA_HOME="$JAVA_HOME" \
+    PATH="$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH" \
+    JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
