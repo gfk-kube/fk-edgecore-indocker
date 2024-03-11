@@ -38,9 +38,9 @@ jobs:
           # sh buildx.sh alma
           # sh buildx.sh alma-sdk
           # 
-          # sh buildx.sh ansible
-          # sh buildx.sh ansible-mitogen-alpine38 ##base alpine310>314
-          sh buildx.sh ansible-mitogen #ver=alpine3.14-v2.10.17py3917-mitogen-v210corebase
-          # sh buildx.sh ansible-ubt2004
+          # # sh buildx.sh ansible
+          # # sh buildx.sh ansible-mitogen-alpine38 ##base alpine310>314
+          # sh buildx.sh ansible-mitogen #ver=alpine3.14-v2.10.17py3917-mitogen-v210corebase
+          # # sh buildx.sh ansible-ubt2004
           # 
-          # sh buildx.sh syncer #imgSync
+          sh buildx.sh syncer #imgSync
