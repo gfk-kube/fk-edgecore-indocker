@@ -1,7 +1,13 @@
+#!/bin/bash
+cur=$(cd "$(dirname "$0")"; pwd)
+cd $cur
 
-file=image-syncer-v1.3.1-linux-amd64.tar.gz
-test -s "$file" || curl -O -fSL https://ghproxy.com/https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/$file
+# file=image-syncer-v1.3.1-linux-amd64.tar.gz
+# test -s "$file" || curl -O -fSL https://ghproxy.com/https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/$file
+file=image-syncer-x64.tar.gz #oci support
+test -s "$file" || curl -O -fSL https://gitee.com/infrastlabs/fk-image-syncer/releases/download/v23.4.25/$file
 test -s ./image-syncer || tar -zxf $file #解压后README.md会替换(更新README2.md)
+cat image-syncer-x64 > image-syncer; chmod +x image-syncer
 
 function errExit(){
    echo "ERR: $1"
@@ -50,7 +56,8 @@ cat $authyml |grep -v password
    # /etc/docker/certs.d/deploy.xxx.com.ssl:18443/deploy.xxx.com.ssl.crt
 
 # --proc 1 #多了hub取不到
-./image-syncer $proc --auth $authyml --images ./images.yml --arch=amd64 --arch=arm64 #--arch amd64,arm64
+# ./image-syncer $proc --auth $authyml --images ./images.yml --arch=amd64 --arch=arm64 #--arch amd64,arm64
+./image-syncer $proc --auth $authyml --images ./images.yml --arch=amd64 --arch=arm64 --arch=arm
 }
 
 function genImgList(){
@@ -58,9 +65,17 @@ function genImgList(){
 cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
 
    src=$one
-   plain=$(echo $one |sed "s^registry.cn-shenzhen.aliyuncs.com/^^g" |sed "s^/^-^g")
-   dst="registry.cn-shenzhen.aliyuncs.com/infrasync/$plain"
-   if [ "true" != "$tlsPrivate" ]; then
+   # plain=$(echo $one |sed "s^registry.cn-shenzhen.aliyuncs.com/^^g" |sed "s^/^-^g")
+   # dst="registry.cn-shenzhen.aliyuncs.com/infrasync/$plain"
+   # 
+   # ghcr.io/octohelm/harbor/registry-photon:v2.6.2 ##ns多级目录
+   local repo=$(echo $src |cut -d'/' -f1); 
+   local img=${src##*/}; 
+   local ns=$(echo $src |sed "s^$repo/^^g" |sed "s^/$img^^g"); 
+   plain=$(echo $ns |sed "s^/^-^g")
+   dst="registry.cn-shenzhen.aliyuncs.com/infrasync/${plain}-$img"
+
+   if [ "true" == "$syncAliyun" ]; then
       proc="--proc 1" #多了hub取不到
       echo "$src: $dst" >> images.yml
    else
@@ -70,12 +85,14 @@ cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
       echo "$dst: $dst2" >> images.yml
    fi
 done
+
 cat images.yml
 }
 
 # test "" == "$1" && errExit "please with src.txt"
-tlsPrivate=true2
-test "true" == "" && src=src.txt || src=src0.txt
+syncAliyun=true
+# test "true" == "" && src=src.txt || src=src2.txt
+src=src2.txt
 DOCKER_REGISTRY_DST2_DOMAIN="server.k8s.local"
 genImgList $src #$1
-startSync
+startSync #amd64,arm64
