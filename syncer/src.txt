@@ -1,29 +1,135 @@
-rancher/pause:3.2 #两年前 3.1 #4年前
-alpine:3.14.8  #3 months ago 2.7M
-# ubuntu:20.04 #15 hours ago 26.23 MB ###error: unsupported manifest type: application/vnd.oci.image.index.v1+json
-# almalinux:8.7 #两月前 68.14 MB
-# docker:20.10.18 #20.10.18|20.10.18-cli 4月前 46.12 MB
-
-
-##k3s端#########
-coredns/coredns:1.8.0 # a year ago 
-#rancher
-# rancher/local-path-provisioner:v0.0.23 #3月前 13.25 MB #v009 :4 years ago
-#metrics
-dyrnq/metrics-server:v0.6.2
-# dyrnq/metrics-server:v0.4.5 #12 hours ago cron??
-#kdash
-kubernetesui/dashboard:v2.5.1 # a year ago
-kubernetesui/metrics-scraper:v1.0.7 #两年前 #v108 arch乱/无arm
-#kedge
-kubeedge/edgemesh-agent:v1.13.0 #13 days ago 22M
-
-
-nginx:1.22.0-alpine
-# 
+#########FF1###############
+# #common
+# docker.io/library/alpine:3.14.8  #3 months ago 2.7M
+# docker.io/library/ubuntu:20.04 #15 hours ago 26.23 MB ###error: unsupported manifest type: application/vnd.oci.image.index.v1+json
+# docker.io/library/almalinux:8.7 #两月前 68.14 MB
+# docker.io/library/docker:20.10.18 #20.10.18|20.10.18-cli 4月前 46.12 MB
+# docker.io/library/nginx:1.22.0-alpine
+# #k3s
+# docker.io/rancher/pause:3.2 #两年前 3.1 #4年前
+# docker.io/coredns/coredns:1.8.0 # a year ago 
+# docker.io/rancher/local-path-provisioner:v0.0.23 #3月前 13.25 MB #v009 :4 years ago
+# # docker.io/dyrnq/metrics-server:v0.4.5 #12 hours ago cron??
+# docker.io/dyrnq/metrics-server:v0.6.2
+# docker.io/kubernetesui/dashboard:v2.5.1 # a year ago
+# docker.io/kubernetesui/metrics-scraper:v1.0.7 #两年前 #v108 arch乱/无arm
+# docker.io/kubeedge/edgemesh-agent:v1.13.0 #13 days ago 22M
+# # ali-infrastlabs
 # # ERRO[2023-02-10 17:51:44] Get manifest info from registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-v2 error: unsupported manifest type: application/vnd.oci.image.index.v1+json 
 # # ERRO[2023-02-10 17:51:44] Get manifest info from registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-v2 error: unsupported manifest type: application/vnd.oci.image.index.v1+json 
 # registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-v2
 # registry.cn-shenzhen.aliyuncs.com/infrastlabs/env-centos:alma8.7-sdk-v2
 
+#########FF2###############
+# docker-baseimage-gui
+# tonistiigi/xx
+# alpine:3.15
 
+# # harbor v262 @octohelm/harbor
+# ghcr.io/octohelm/harbor/harbor-exporter:v2.6.2
+# ghcr.io/octohelm/harbor/redis-photon:v2.6.2
+# ghcr.io/octohelm/harbor/trivy-adapter-photon:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-registryctl:v2.6.2
+# ghcr.io/octohelm/harbor/registry-photon:v2.6.2
+# ghcr.io/octohelm/harbor/nginx-photon:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-log:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-jobservice:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-core:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-portal:v2.6.2
+# ghcr.io/octohelm/harbor/harbor-db:v2.6.2
+# ghcr.io/octohelm/harbor/prepare:v2.6.2
+# #redis-photon:v2.6.2 err@23.2-arm ==> org's redis:7.0.0
+# registry-1.docker.io/library/redis:7.0.0 #与sync.sh解析对齐: $repo/$ns/$img
+
+# ##ke-1.13
+# docker.io/kubeedge/cloudcore:v1.13.5
+# docker.io/kubeedge/installation-package:v1.13.5
+# docker.io/library/eclipse-mosquitto:1.6.15
+# #ke-1.15
+# docker.io/kubeedge/installation-package:v1.15.2
+
+# #24.07.01
+# docker.io/cooolin/socks5:latest
+
+
+# #24.08.21 rook-ceph-csi
+# quay.io/cephcsi/cephcsi:v3.4.0
+# k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0
+# k8s.gcr.io/sig-storage/csi-resizer:v1.3.0
+# k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0
+# k8s.gcr.io/sig-storage/csi-snapshotter:v4.2.0
+# k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
+# 
+## quay.io/ceph/ceph
+# quay.io/ceph/ceph:v19.2.0-20240927
+# quay.io/ceph/ceph:v18.2.4-20240724
+# quay.io/ceph/ceph:v17.2.7-20240529
+# quay.io/ceph/ceph:v16.2.15-20240529
+# quay.io/ceph/ceph:v15.2.17-20220809
+# quay.io/ceph/ceph:v14.2.22-20210630
+
+#24.10.15
+# docker.io/library/alpine:3.13.12
+# docker.io/library/alpine:3.14.8
+
+#24.12.04 tea_act_runner
+# docker.io/gitea/act_runner:latest
+# docker.io/gitea/runner-images:ubuntu-20.04
+# docker.io/gitea/runner-images:ubuntu-22.04
+# # none: ubt24.04
+# # docker.io/gitea/runner-images:ubuntu-24.04
+# docker.io/gitea/runner-images:ubuntu-latest
+# ##actions-img
+# registry.cn-shenzhen.aliyuncs.com/infrasync/tonistiigi-binfmt:latest
+# registry.cn-shenzhen.aliyuncs.com/infrasync/moby-buildkit:buildx-stable-1
+# docker.io/tonistiigi/binfmt:latest
+# docker.io/moby/buildkit:buildx-stable-1
+# ##gitea
+# docker.io/gitea/gitea:1.22.4
+# docker.io/gitea/gitea:latest
+
+# distros
+# docker.io/library/alpine:3.13
+# docker.io/library/alpine:3.19
+docker.io/library/ubuntu:14.04
+docker.io/library/ubuntu:16.04
+docker.io/library/ubuntu:18.04
+# docker.io/library/ubuntu:20.04
+# docker.io/library/ubuntu:22.04
+# docker.io/library/ubuntu:24.04
+# docker.io/opensuse/leap:15.0
+# docker.io/opensuse/leap:15.6
+# docker.io/library/busybox:1.36.1
+# docker.io/library/debian:10
+# docker.io/library/debian:11
+# docker.io/library/debian:12
+# docker.io/library/fedora:39
+# distro-openwrt
+# ghcr.io/openwrt/rootfs:x86_64-openwrt-23.05
+# ghcr.io/openwrt/rootfs:armsr-armv8-openwrt-23.05
+# ghcr.io/openwrt/rootfs:arm_cortex-a9_vfpv3-d16-openwrt-23.05
+
+# ##diskmark #latest, 1.0.6: @24.4.5
+# docker.io/e7db/diskmark:1.0.6
+
+# 24.12.15 rancher/k3s
+# docker.io/rancher/k3s:v1.31.3-k3s1
+# docker.io/rancher/k3s:v1.29.11-k3s1
+# docker.io/rancher/k3s:v1.25.16-k3s4
+# docker.io/rancher/k3s:v1.21.14-k3s1
+# # v1.20.11-k3s2 v1.20.4-k3s1 #v1.19.3-k3s3
+# docker.io/rancher/k3s:v1.20.15-k3s1
+# # v1.17.14-k3s3
+# docker.io/rancher/k3s:v1.17.17-k3s1
+# ##k3d-registry
+# docker.io/library/registry:2
+
+# 24.12.20
+# docker.io/andyshinn/dnsmasq:latest
+# docker.io/jpillora/dnsmasq:latest
+# docker.io/mber5/virt-manager:latest
+
+#########2501###############
+docker.io/mber5/virt-manager:latest
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501
+registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501-alpine319
