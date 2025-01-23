@@ -142,10 +142,10 @@ builder)
     args="--build-arg FULL=/.."
     docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/multiplat-builder/Dockerfile . 
     ;;
-syncer)
-    echo "syncer: imgSync"
-    bash syncer/run.sh
-    ;;
+# syncer)
+#     echo "syncer: imgSync"
+#     bash syncer/run.sh
+#     ;;
 *)
     # repo=registry-1.docker.io
     repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
