@@ -44,4 +44,8 @@ jobs:
           # # sh buildx.sh ansible-ubt2004
           # 
           # sh buildx.sh builder
-          sh buildx.sh syncer #imgSync
+
+          #imgSync
+          # sh buildx.sh syncer #imgSync
+          export SYNC_ALI=true
+          bash syncer/run.sh
