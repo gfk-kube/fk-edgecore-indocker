@@ -1,10 +1,10 @@
 #########FF1###############
 # #common
-# docker.io/library/alpine:3.14.8  #3 months ago 2.7M
-# docker.io/library/ubuntu:20.04 #15 hours ago 26.23 MB ###error: unsupported manifest type: application/vnd.oci.image.index.v1+json
-# docker.io/library/almalinux:8.7 #两月前 68.14 MB
+# docker.io/library/docker:17.12.1-ce
+# docker.io/library/docker:18.09.8
 # docker.io/library/docker:20.10.18 #20.10.18|20.10.18-cli 4月前 46.12 MB
 # docker.io/library/nginx:1.22.0-alpine
+
 # #k3s
 # docker.io/rancher/pause:3.2 #两年前 3.1 #4年前
 # docker.io/coredns/coredns:1.8.0 # a year ago 
@@ -22,8 +22,6 @@
 
 #########FF2###############
 # docker-baseimage-gui
-# tonistiigi/xx
-# alpine:3.15
 
 # # harbor v262 @octohelm/harbor
 # ghcr.io/octohelm/harbor/harbor-exporter:v2.6.2
@@ -41,14 +39,14 @@
 # #redis-photon:v2.6.2 err@23.2-arm ==> org's redis:7.0.0
 # registry-1.docker.io/library/redis:7.0.0 #与sync.sh解析对齐: $repo/$ns/$img
 
-# ##ke-1.13
+##ke-1.13
 # docker.io/kubeedge/cloudcore:v1.13.5
 # docker.io/kubeedge/installation-package:v1.13.5
 # docker.io/library/eclipse-mosquitto:1.6.15
 # #ke-1.15
 # docker.io/kubeedge/installation-package:v1.15.2
 
-# #24.07.01
+#24.07.01
 # docker.io/cooolin/socks5:latest
 
 
@@ -59,8 +57,8 @@
 # k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0
 # k8s.gcr.io/sig-storage/csi-snapshotter:v4.2.0
 # k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
-# 
-## quay.io/ceph/ceph
+
+# # quay.io/ceph/ceph
 # quay.io/ceph/ceph:v19.2.0-20240927
 # quay.io/ceph/ceph:v18.2.4-20240724
 # quay.io/ceph/ceph:v17.2.7-20240529
@@ -68,11 +66,11 @@
 # quay.io/ceph/ceph:v15.2.17-20220809
 # quay.io/ceph/ceph:v14.2.22-20210630
 
-#24.10.15
-# docker.io/library/alpine:3.13.12
-# docker.io/library/alpine:3.14.8
-
-#24.12.04 tea_act_runner
+#24.12.04 
+# #gitea
+# docker.io/gitea/gitea:1.22.4
+# docker.io/gitea/gitea:latest
+# # tea_act_runner
 # docker.io/gitea/act_runner:latest
 # docker.io/gitea/runner-images:ubuntu-20.04
 # docker.io/gitea/runner-images:ubuntu-22.04
@@ -80,20 +78,23 @@
 # # docker.io/gitea/runner-images:ubuntu-24.04
 # docker.io/gitea/runner-images:ubuntu-latest
 # ##actions-img
-# registry.cn-shenzhen.aliyuncs.com/infrasync/tonistiigi-binfmt:latest
-# registry.cn-shenzhen.aliyuncs.com/infrasync/moby-buildkit:buildx-stable-1
+# # registry.cn-shenzhen.aliyuncs.com/infrasync/tonistiigi-binfmt:latest
+# # registry.cn-shenzhen.aliyuncs.com/infrasync/moby-buildkit:buildx-stable-1
 # docker.io/tonistiigi/binfmt:latest
 # docker.io/moby/buildkit:buildx-stable-1
-# ##gitea
-# docker.io/gitea/gitea:1.22.4
-# docker.io/gitea/gitea:latest
 
-# distros
+
+#24.10.15
+# # distros
+# docker.io/library/almalinux:8.7 #两月前 68.14 MB
 # docker.io/library/alpine:3.13
+# docker.io/library/alpine:3.13.12
+# docker.io/library/alpine:3.14.8
 # docker.io/library/alpine:3.19
-docker.io/library/ubuntu:14.04
-docker.io/library/ubuntu:16.04
-docker.io/library/ubuntu:18.04
+# docker.io/library/ubuntu:14.04
+# docker.io/library/ubuntu:16.04
+# docker.io/library/ubuntu:18.04
+# #docker.io/library/ubuntu:20.04 #15 hours ago 26.23 MB ###error: unsupported manifest type: application/vnd.oci.image.index.v1+json
 # docker.io/library/ubuntu:20.04
 # docker.io/library/ubuntu:22.04
 # docker.io/library/ubuntu:24.04
@@ -104,15 +105,15 @@ docker.io/library/ubuntu:18.04
 # docker.io/library/debian:11
 # docker.io/library/debian:12
 # docker.io/library/fedora:39
-# distro-openwrt
+# # distro-openwrt
 # ghcr.io/openwrt/rootfs:x86_64-openwrt-23.05
 # ghcr.io/openwrt/rootfs:armsr-armv8-openwrt-23.05
 # ghcr.io/openwrt/rootfs:arm_cortex-a9_vfpv3-d16-openwrt-23.05
 
-# ##diskmark #latest, 1.0.6: @24.4.5
+##diskmark #latest, 1.0.6: @24.4.5
 # docker.io/e7db/diskmark:1.0.6
 
-# 24.12.15 rancher/k3s
+# # 24.12.15 rancher/k3s
 # docker.io/rancher/k3s:v1.31.3-k3s1
 # docker.io/rancher/k3s:v1.29.11-k3s1
 # docker.io/rancher/k3s:v1.25.16-k3s4
@@ -124,12 +125,99 @@ docker.io/library/ubuntu:18.04
 # ##k3d-registry
 # docker.io/library/registry:2
 
-# 24.12.20
+# # 24.12.20
+# none_ui?: https://developer.aliyun.com/article/1543881
 # docker.io/andyshinn/dnsmasq:latest
+# 7years: @2018.12.22; x64 only
 # docker.io/jpillora/dnsmasq:latest
-# docker.io/mber5/virt-manager:latest
+# fk.jpillora; GNUMakefile:DOCKER_PLATFORMS=linux/amd64,linux/arm/v7,linux/i386,linux/arm64; dnsmasq:v2.86
+# docker.io/outlyernet/dnsmasq-multiarch:latest
 
 #########2501###############
-docker.io/mber5/virt-manager:latest
-registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501
-registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501-alpine319
+# docker.io/mber5/virt-manager:latest
+# registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501
+# registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501-alpine319
+# docker.io/openeuler/openeuler:20.03-lts
+# docker.io/openeuler/openeuler:22.03-lts
+# docker.io/openeuler/openeuler:24.03-lts
+# docker.io/portainer/agent:2.26.0
+# docker.io/portainer/agent:2.27.0
+
+# out-infrastlabs
+# docker.io/library/elasticsearch:6.8.6
+# docker.io/library/elasticsearch:7.17.7
+# docker.io/library/elasticsearch:7.17.9
+# docker.io/library/kibana:6.8.6
+# docker.io/library/kibana:7.17.7
+# docker.io/library/kibana:7.17.9
+# docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z.hotfix.8ee531027
+# docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z.hotfix.d7313e455
+# docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z
+# docker.io/minio/minio:RELEASE.2022-03-22T02-05-10Z
+# docker.io/kubernetesui/dashboard:v2.4.0
+# docker.io/kubernetesui/dashboard:v2.5.1
+# docker.io/kubernetesui/dashboard:v2.7.0
+
+#########2503###############
+# openebs-v420
+# docker.io/bats/bats:1.8.2
+# docker.io/bitnami/etcd:3.5.6-debian-11-r10
+# docker.io/bitnami/kubectl:1.25.15
+# docker.io/grafana/promtail:2.8.3
+# docker.io/openebs/alpine-bash:4.1.0
+# docker.io/openebs/alpine-sh:4.1.0
+# docker.io/openebs/mayastor-agent-core:v2.8.0
+# docker.io/openebs/mayastor-agent-ha-cluster:v2.8.0
+# docker.io/openebs/mayastor-agent-ha-node:v2.8.0
+# docker.io/openebs/mayastor-api-rest:v2.8.0
+# docker.io/openebs/mayastor-csi-controller:v2.8.0
+# docker.io/openebs/mayastor-csi-node:v2.8.0
+# docker.io/openebs/mayastor-io-engine:v2.8.0
+# docker.io/openebs/mayastor-metrics-exporter-io-engine:v2.8.0
+# docker.io/openebs/mayastor-obs-callhome-stats:v2.8.0
+# docker.io/openebs/mayastor-obs-callhome:v2.8.0
+# docker.io/openebs/mayastor-operator-diskpool:v2.8.0
+# docker.io/grafana/loki:2.6.1
+# docker.io/nats:2.9.17-alpine
+# docker.io/natsio/nats-box:0.13.8
+# docker.io/natsio/nats-server-config-reloader:0.10.1
+# docker.io/natsio/prometheus-nats-exporter:0.11.0
+# docker.io/openebs/lvm-driver:1.6.1
+# docker.io/openebs/provisioner-localpv:4.2.0
+# docker.io/openebs/zfs-driver:2.7.1
+# registry.k8s.io/sig-storage/csi-attacher:v4.3.0
+# registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.0
+# registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.8.0
+# registry.k8s.io/sig-storage/csi-provisioner:v3.5.0
+# registry.k8s.io/sig-storage/csi-resizer:v1.8.0
+# registry.k8s.io/sig-storage/csi-resizer:v1.9.3
+# registry.k8s.io/sig-storage/csi-snapshotter:v6.2.2
+# registry.k8s.io/sig-storage/csi-snapshotter:v6.3.3
+# registry.k8s.io/sig-storage/snapshot-controller:v6.2.2
+# registry.k8s.io/sig-storage/snapshot-controller:v6.3.3
+# docker.io/openebs/linux-utils:4.1.0
+
+# 25.3.26
+# docker.io/gitea/gitea:nightly
+# docker.io/gitea/gitea:nightly-rootless
+
+# 25.4.27
+# docker.io/library/golang:1.17.13-alpine3.16
+# docker.io/library/docker:dind
+# hw's repo none arm64, hub's sync for test: 有arm64
+# docker.io/kubesphere/kubeedge-proxy:v0.4.1
+# 
+## KubeSphere Images[core+kubeedge]
+## ks-core
+docker.io/kubesphere/ks-apiserver:v4.1.3
+docker.io/kubesphere/ks-console:v4.1.3
+docker.io/kubesphere/ks-controller-manager:v4.1.3
+docker.io/kubesphere/kubectl:v1.27.16
+docker.io/kubesphere/redis:7.2.4-alpine
+docker.io/kubesphere/haproxy:2.9.6-alpine
+docker.io/kubesphere/ks-extensions-museum:v1.1.6
+## kubeedge
+docker.io/kubeedge/iptables-manager:v1.13.1
+docker.io/kubeedge/cloudcore:v1.13.1
+docker.io/kubeedge/controller-manager:v1.13.1
+docker.io/kubesphere/kubeedge-proxy:v0.4.1
