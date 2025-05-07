@@ -1,7 +1,13 @@
 #!/bin/bash
 cur=$(cd "$(dirname "$0")"; pwd)
 # export GITHUB=https://ghproxy.com/https://github.com
-export GITHUB=https://hub.yzuu.cf
+# export GITHUB=https://hub.yzuu.cf
+# export GITHUB=https://gh.llkk.cc/https://github.com # 100k; 
+export GITHUB=https://ghfast.top/https://github.com # 300k+; https://ghproxy.link/
+
+# gitac
+test "true" == "$GITAC" && export GITHUB=https://github.com
+test "true" == "$GITAC" && export silent="-s" #curl -s
 
 function ff(){
 TARGETPLATFORM=$1
@@ -23,6 +29,7 @@ function tplat(){
 
   dst2=${cur}$WORKDIR/$TARGETPLATFORM/$dest; mkdir -p $dst2
   test -s $dst2/$file && echo "existed, skip" || curl -k -fSL -o $dst2/$file $URL
+  errCode=$?; test "0" != "$errCode" && rm -f $dst2/$file #if err, delete file
   echo $WORKDIR/$TARGETPLATFORM/$dest/$file >> $cur/down/.list.txt
 }
 
@@ -30,9 +37,14 @@ function tplat(){
 # cfssl (只有x64的:win,nux,darwin) #https://blog.csdn.net/never_late/article/details/128570360
 # # https://github.com/cloudflare/cfssl/releases/download/v1.4.1/cfssl_1.4.1_linux_amd64
 export WORKDIR=/down/down00_cfssl_x64
-$RUN tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64; \
-  tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64; \
-  tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v1.6.3/cfssl-certinfo_1.6.3_linux_amd64
+export VER=1.6.5; \
+$RUN tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssl_${VER}_linux_amd64; \
+  tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssljson_${VER}_linux_amd64; \
+  tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssl-certinfo_${VER}_linux_amd64
+# v165: +arm64
+$RUN tplat arm64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssl_${VER}_linux_arm64; \
+  tplat arm64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssljson_${VER}_linux_arm64; \
+  tplat arm64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssl-certinfo_${VER}_linux_arm64
 
 export WORKDIR=/down/down01_tools
 # # go:supervisord x64 10.6M; arm64 3.22M
@@ -40,54 +52,59 @@ export WORKDIR=/down/down01_tools
 #   tplat arm64 $GITHUB/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_ARM64.tar.gz
 # 
 # image-syncer 7.1M ##arm64: start with v131 @Oct 20, 2021
-$RUN tplat amd64 $GITHUB/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz; \
-  tplat arm64 $GITHUB/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-arm64.tar.gz
+export VER=1.5.5; \
+$RUN tplat amd64 $GITHUB/AliyunContainerService/image-syncer/releases/download/v${VER}/image-syncer-v${VER}-linux-amd64.tar.gz; \
+  tplat arm64 $GITHUB/AliyunContainerService/image-syncer/releases/download/v${VER}/image-syncer-v${VER}-linux-arm64.tar.gz
 # registry 5.8M
-$RUN tplat amd64 $GITHUB/distribution/distribution/releases/download/v2.8.1/registry_2.8.1_linux_amd64.tar.gz; \
-  tplat arm64 $GITHUB/distribution/distribution/releases/download/v2.8.1/registry_2.8.1_linux_arm64.tar.gz
+export VER=2.8.3; \
+$RUN tplat amd64 $GITHUB/distribution/distribution/releases/download/v${VER}/registry_${VER}_linux_amd64.tar.gz; \
+  tplat arm64 $GITHUB/distribution/distribution/releases/download/v${VER}/registry_${VER}_linux_arm64.tar.gz
 # 
 # dcp_v2 v2.10.2@Aug 27, 2022; 24.5 MB >>  v2.11.0@Sep 14, 2022; 42.5 MB
-$RUN tplat amd64 $GITHUB/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64; \
-  tplat arm64 $GITHUB/docker/compose/releases/download/v2.10.2/docker-compose-linux-aarch64
+export VER=2.35.1; \
+$RUN tplat amd64 $GITHUB/docker/compose/releases/download/v${VER}/docker-compose-linux-x86_64; \
+  tplat arm64 $GITHUB/docker/compose/releases/download/v${VER}/docker-compose-linux-aarch64
 
 
 
 export WORKDIR=/down/down02_containerd
 # containerd 1.6.15 41.4M; >> 1.6.32
+  # export VER=2.0.5; \
 $RUN \
-  export VER=1.6.32; \
+  export VER=1.7.27; \
   tplat amd64 $GITHUB/containerd/containerd/releases/download/v${VER}/containerd-${VER}-linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/containerd/containerd/releases/download/v${VER}/containerd-${VER}-linux-arm64.tar.gz
 # snapshotter 1.0.5 3820k >> 1.0.8
+  # export VER=2.1.2; \
 $RUN \
   export VER=1.0.8; \
   tplat amd64 $GITHUB/containerd/fuse-overlayfs-snapshotter/releases/download/v${VER}/containerd-fuse-overlayfs-${VER}-linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/containerd/fuse-overlayfs-snapshotter/releases/download/v${VER}/containerd-fuse-overlayfs-${VER}-linux-arm64.tar.gz
 # cni 1.2.0 38.6M >> 1.5.0
 $RUN \
-  export VER=1.5.0; \
+  export VER=1.7.1; \
   tplat amd64 $GITHUB/containernetworking/plugins/releases/download/v${VER}/cni-plugins-linux-amd64-v${VER}.tgz; \
   tplat arm64 $GITHUB/containernetworking/plugins/releases/download/v${VER}/cni-plugins-linux-arm64-v${VER}.tgz
 # runc 1.1.4 9210k>> 1.1.12
 $RUN \
-  export VER=1.1.12; \
+  export VER=1.2.6; \
   tplat amd64 $GITHUB/opencontainers/runc/releases/download/v${VER}/runc.amd64; \
   tplat arm64 $GITHUB/opencontainers/runc/releases/download/v${VER}/runc.arm64
 # 23.10 +buildkit 0.12.2 >> 0.13.2
 $RUN \
-  export VER=0.13.2; \
+  export VER=0.21.1; \
   tplat amd64 $GITHUB/moby/buildkit/releases/download/v${VER}/buildkit-v${VER}.linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/moby/buildkit/releases/download/v${VER}/buildkit-v${VER}.linux-arm64.tar.gz
 # 
 # nerdctl 1.1.0 10.3M >> 1.7.6
-#   24.7.23: v176> nerdctl-2.0.0-rc.0-linux-arm64.tar.gz ##--provenance=false
+#   24.7.23: v176> 2.0.0-rc.0 ##--provenance=false
 $RUN \
-  export VER=2.0.0-rc.0; \
+  export VER=2.0.5; \
   tplat amd64 $GITHUB/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-arm64.tar.gz
 # crictl 1.26.0 21.8M >> 1.30.0
 $RUN \
-  export VER=1.30.0; \
+  export VER=1.33.0; \
   tplat amd64 $GITHUB/kubernetes-sigs/cri-tools/releases/download/v${VER}/crictl-v${VER}-linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/kubernetes-sigs/cri-tools/releases/download/v${VER}/crictl-v${VER}-linux-arm64.tar.gz
 
@@ -96,14 +113,14 @@ $RUN \
 export WORKDIR=/down/down03_k3s
 # k3s 1.22.17 48.9M
 $RUN \
-  export VER=1.22.17; \
+  export VER=1.26.15; \
   tplat amd64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s; \
   tplat arm64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s-arm64
 # k3s v1.23.15 58M|53M
 # k3s v1.23.16 62M
 # k3s v1.23.17 62M
 $RUN \
-  export VER=1.23.17; \
+  export VER=1.32.4; \
   tplat amd64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s; \
   tplat arm64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s-arm64
 
@@ -111,19 +128,23 @@ $RUN \
 
 
 
-# 原生kubernetes: server < node < client
-export WORKDIR=/down/down04_k8s
-$RUN tplat amd64 https://dl.k8s.io/v1.23.17/kubernetes-server-linux-amd64.tar.gz; \
-  tplat arm64 https://dl.k8s.io/v1.23.17/kubernetes-server-linux-arm64.tar.gz
-# 原生kubernetes: +etcd_v354
-$RUN tplat amd64 $GITHUB/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-amd64.tar.gz; \
-  tplat arm64 $GITHUB/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-arm64.tar.gz
+# # 原生kubernetes: server < node < client
+# export WORKDIR=/down/down04_k8s
+# export VER=1.23.17; \
+# $RUN tplat amd64 https://dl.k8s.io/v${VER}/kubernetes-server-linux-amd64.tar.gz; \
+#   tplat arm64 https://dl.k8s.io/v${VER}/kubernetes-server-linux-arm64.tar.gz
+# # 原生kubernetes: +etcd_v354
+# export VER=3.5.4; \
+# $RUN tplat amd64 $GITHUB/etcd-io/etcd/releases/download/v${VER}/etcd-v${VER}-linux-amd64.tar.gz; \
+#   tplat arm64 $GITHUB/etcd-io/etcd/releases/download/v${VER}/etcd-v${VER}-linux-arm64.tar.gz
 
-# flannel v0.21.4
-$RUN tplat amd64 $GITHUB/flannel-io/flannel/releases/download/v0.21.4/flannel-v0.21.4-linux-amd64.tar.gz; \
-  tplat arm64 $GITHUB/flannel-io/flannel/releases/download/v0.21.4/flannel-v0.21.4-linux-arm64.tar.gz
-$RUN tplat amd64 $GITHUB/flannel-io/cni-plugin/releases/download/v1.1.2/cni-plugin-flannel-linux-amd64-v1.1.2.tgz; \
-  tplat arm64 $GITHUB/flannel-io/cni-plugin/releases/download/v1.1.2/cni-plugin-flannel-linux-arm64-v1.1.2.tgz
+# # flannel v0.21.4
+# export VER=0.21.4; \
+# $RUN tplat amd64 $GITHUB/flannel-io/flannel/releases/download/v${VER}/flannel-v${VER}-linux-amd64.tar.gz; \
+#   tplat arm64 $GITHUB/flannel-io/flannel/releases/download/v${VER}/flannel-v${VER}-linux-arm64.tar.gz
+# export VER=1.1.2; \
+# $RUN tplat amd64 $GITHUB/flannel-io/cni-plugin/releases/download/v${VER}/cni-plugin-flannel-linux-amd64-v${VER}.tgz; \
+#   tplat arm64 $GITHUB/flannel-io/cni-plugin/releases/download/v${VER}/cni-plugin-flannel-linux-arm64-v${VER}.tgz
 
 
 # clean
