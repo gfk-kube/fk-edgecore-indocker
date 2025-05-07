@@ -1,4 +1,9 @@
 
+## imgVers
+
+- Dockerfile.v2301-v25 `tplat $arch https://ghproxy.com/https://github.com  @Dockerfile.v2301-v25`
+- Dockerfile.v2405 `GITHUB=https://hub.yzuu.cf; tplat $arch $GITHUB; 下载列表改到plat.sh内:先执行脚本再本地ADD构建img`
+
 ```bash
 # headless @ mac23-199 in .../fk-edgecore-indocker/bins2 |00:15:26  |sam-custom2 U:1 ✗| 
 $ curl -O -fSL https://ghproxy.com/https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-linux-amd64.tar.gz
