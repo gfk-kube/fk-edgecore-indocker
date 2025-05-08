@@ -171,10 +171,17 @@ cd $cur/
   echo -e $line; du -sh down*/*/* |grep -v "amd64$"
 
 # DOCKER: export DOCKER_HOST=arm64.docker.local:2375
-# https://github.com/StefanScherer/docker-cli-builder
-# curl -O -fSL $GITHUB/StefanScherer/docker-cli-builder/releases/download/18.09.6/docker.exe
-# curl -O -fSL $GITHUB/StefanScherer/docker-cli-builder/releases/download/20.10.9/docker.exe
+  # https://github.com/StefanScherer/docker-cli-builder
+  # curl -O -fSL $GITHUB/StefanScherer/docker-cli-builder/releases/download/18.09.6/docker.exe
+  # curl -O -fSL $GITHUB/StefanScherer/docker-cli-builder/releases/download/20.10.9/docker.exe
 # KUBECTL:
-# https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md
-# https://storage.googleapis.com/kubernetes-release/release/v1.22.17/kubernetes-client-windows-amd64.tar.gz
-# C:\Users\Administrator\.kube\config #hosts: server.k8s.local
+  # https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md
+  # https://storage.googleapis.com/kubernetes-release/release/v1.22.17/kubernetes-client-windows-amd64.tar.gz
+  # C:\Users\Administrator\.kube\config #hosts: server.k8s.local
+
+# v2505
+  # host-21-60:/data1/opt/apps/fk-edgecore-indocker/bins/down # du -sh *
+  # 50M	down00_cfssl_x64
+  # 167M	down01_tools
+  # 423M	down02_containerd
+  # 250M	down03_k3s
