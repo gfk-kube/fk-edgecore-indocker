@@ -26,7 +26,7 @@ function tplat(){
   # dest=$(echo $URL |sed "s^https://ghproxy.com/^^g" |sed "s^hub.yzuu.cf^github.com^g" \
   #   |sed "s^https://^^g" |sed "s^%2B^+^g") #%2B: +
   dest=$(echo $URL |sed "s^$GITHUB/^^g" |sed "s^https://^^g" |sed "s^%2B^+^g")
-  dest="github.com/$URL" #默认github.com, cur: 全gh下载的
+  dest="github.com/$dest" #默认github.com, cur: 全gh下载的
   file=${dest##*/};dest=${dest%/*}; echo "destDir: $dest, file: $file"
 
   dst2=${cur}$WORKDIR/$TARGETPLATFORM/$dest; mkdir -p $dst2
