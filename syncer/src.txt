@@ -223,5 +223,7 @@
 # docker.io/kubesphere/kubeedge-proxy:v0.4.1
 
 # 25.5.9
-quay.io/kubevirt/virt-operator:v1.5.1
-quay.io/kubevirt/virt-operator:v1.4.0
+# quay.io/kubevirt/virt-operator:v1.5.1
+# quay.io/kubevirt/virt-operator:v1.4.0
+quay.io/kubevirt/virt-operator:v0.59.2
+quay.io/kubevirt/virt-operator:v0.49.0
