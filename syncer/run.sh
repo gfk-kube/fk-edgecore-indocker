@@ -116,12 +116,22 @@ source /etc/profile #DOCKER_REGISTRY_USER/PW_dockerhub
 authConf
 genImgList_v2 $SYNC_LIST
 
-# https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz
-file=image-syncer-x64.tar.gz #oci support
-test -s "$file" || curl -s -k -o /tmp/$file -fSL https://gitee.com/infrastlabs/fk-image-syncer/releases/download/v23.4.25/$file
-tar -zxf /tmp/$file -C /tmp #解压后README.md会替换(更新README2.md)
-# gitac: cp: cannot create regular file '/bin/syncer': Permission denied
-\cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
+function getSyncer(){
+  file=image-syncer-x64.tar.gz #oci support
+  # gitee: self's multi-manifests sync
+  # curl: (22) The requested URL returned error: 403
+  test -s "$file" || curl -s -k -o /tmp/$file -fSL https://gitee.com/infrastlabs/fk-image-syncer/releases/download/v23.4.25/$file
+  local errCode=$?
+  # org's-hub
+  #  https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz
+  #  https://github.com/AliyunContainerService/image-syncer/releases/download/v1.5.5/image-syncer-v1.5.5-linux-amd64.tar.gz #v155@Jul 22, 2024
+  test "0" == "$errCode" || curl -s -k -o /tmp/$file -fSL https://github.com/AliyunContainerService/image-syncer/releases/download/v1.5.5/image-syncer-v1.5.5-linux-amd64.tar.gz
+  
+  tar -zxf /tmp/$file -C /tmp #解压后README.md会替换(更新README2.md)
+  # gitac: cp: cannot create regular file '/bin/syncer': Permission denied
+  \cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
+}
+getSyncer
 
 # --proc 1 #多了hub取不到
 # --arch $SYNC_ARCH ##16.04; 14.04, mismatch of os or architecture ##view: 变成全arch, 该方式无效
