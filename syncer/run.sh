@@ -132,6 +132,7 @@ function getSyncer(){
   # gitac: cp: cannot create regular file '/bin/syncer': Permission denied
   test -f /tmp/image-syncer-x64 && \cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
   test -f /tmp/image-syncer && \cp -a /tmp/image-syncer ./syncer; #org's-hub
+  chmod +x ./syncer; ls -lh ./syncer
 }
 getSyncer
 
