@@ -134,6 +134,8 @@ function getSyncer(){
   test -f /tmp/image-syncer && \cp -a /tmp/image-syncer ./syncer; #org's-hub
   chmod +x ./syncer; ls -lh ./syncer
 }
+# org's-hub log.contSize:
+  # time="2025-05-09 06:43:45" level=info msg="Finish synchronizing blob sha256:e2ff7455406c401d043658f1e0d1a9378499ea7a8d06814007e7dcf341a1d649(2.632MB) from quay.io/kubevirt/virt-operator:v1.5.1 to registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:kubevirt--virt-operator---v1.5.1. Now 34/37 tasks have been processed."
 getSyncer
 
 # --proc 1 #多了hub取不到
