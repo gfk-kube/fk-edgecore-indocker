@@ -130,7 +130,8 @@ function getSyncer(){
 
   tar -zxf /tmp/$file -C /tmp #解压后README.md会替换(更新README2.md)
   # gitac: cp: cannot create regular file '/bin/syncer': Permission denied
-  \cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
+  test -f /tmp/image-syncer-x64 && \cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
+  test -f /tmp/image-syncer && \cp -a /tmp/image-syncer ./syncer; #org's-hub
 }
 getSyncer
 
