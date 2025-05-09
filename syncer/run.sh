@@ -144,8 +144,11 @@ exit 0
 export LOCAL_URL="harbor.xxx.com"
 export LOCAL_IP="172.25.20.115"
 export LOCAL_FORMAT='$nslast/$img:$tag' #nsfull/nslast; use '', not ""
+export LOCAL_FORMAT='infrasync/v2025:$nsfull--$img---$tag' #unset为空时,即该模式
 bash syncer/run.sh
 
+# toAli:
+  # quay.io/kubevirt/virt-operator:v1.5.1: registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:kubevirt--virt-operator---v1.5.1
 # eval https://blog.csdn.net/qq_35902025/article/details/140180780
   # [root@(⎈|default:kubeedge) ~]$ ns=infrasync
   # [root@(⎈|default:kubeedge) ~]$ img=alpine
