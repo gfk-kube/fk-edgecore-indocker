@@ -232,3 +232,14 @@ quay.io/kubevirt/virt-operator:v1.0.1
 # x64 only:
 # quay.io/kubevirt/virt-operator:v0.59.2
 # quay.io/kubevirt/virt-operator:v0.49.0
+# v0.39.1 quay.io/kubevirt/virt-operator@sha256:2429917d5fa837c5b3f7a8ebcc4df6f9574d3bbab8f9d47c45d1a71d150e0c7f
+quay.io/kubevirt/virt-operator:v0.39.1
+# v0.29.2 index.docker.io/kubevirt/virt-operator@sha256:870c7fa0ceec783b0639b9e430611f5e418f93520d3d2f7f6a487290da1fada8
+docker.io/kubevirt/virt-operator:v0.29.2
+# v0.19.0 index.docker.io/kubevirt/virt-operator:v0.19.0
+docker.io/kubevirt/virt-operator:v0.19.0
+# v0.9.6
+docker.io/kubevirt/virt-api:v0.9.6
+docker.io/kubevirt/virt-controller:v0.9.6
+docker.io/kubevirt/virt-handler:v0.9.6
+
