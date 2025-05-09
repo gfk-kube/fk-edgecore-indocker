@@ -224,3 +224,4 @@
 
 # 25.5.9
 quay.io/kubevirt/virt-operator:v1.5.1
+quay.io/kubevirt/virt-operator:v1.4.0
