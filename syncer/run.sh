@@ -126,7 +126,8 @@ function getSyncer(){
   #  https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz
   #  https://github.com/AliyunContainerService/image-syncer/releases/download/v1.5.5/image-syncer-v1.5.5-linux-amd64.tar.gz #v155@Jul 22, 2024
   test "0" == "$errCode" || curl -s -k -o /tmp/$file -fSL https://github.com/AliyunContainerService/image-syncer/releases/download/v1.5.5/image-syncer-v1.5.5-linux-amd64.tar.gz
-  
+  ls -lh /tmp/$file #view
+
   tar -zxf /tmp/$file -C /tmp #解压后README.md会替换(更新README2.md)
   # gitac: cp: cannot create regular file '/bin/syncer': Permission denied
   \cp -a /tmp/image-syncer-x64 ./syncer; #chmod +x /bin/syncer
