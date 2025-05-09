@@ -221,3 +221,6 @@ docker.io/kubeedge/iptables-manager:v1.13.1
 docker.io/kubeedge/cloudcore:v1.13.1
 docker.io/kubeedge/controller-manager:v1.13.1
 docker.io/kubesphere/kubeedge-proxy:v0.4.1
+
+# 25.5.9
+quay.io/kubevirt/virt-operator:v1.5.1
