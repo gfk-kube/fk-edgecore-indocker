@@ -78,7 +78,8 @@ function genImgList(){
 # v2: 单个img:ns--img-tag
 function genImgList_v2(){
   :> images.yml
-  cat $1 |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
+  # sed 's/^[[:blank:]]*//' filename ##去除行首空格
+  cat $1 |sed 's/^[[:blank:]]*//' |grep -Ev "^#|^$" |awk '{print $1}' |while read one; do
     # ghcr.io/octohelm/harbor/registry-photon:v2.6.2 ##ns多级目录
     local repo=$(echo $one |cut -d'/' -f1) 
     local nsimgtag=$(echo $one |sed "s^$repo/^^g")
