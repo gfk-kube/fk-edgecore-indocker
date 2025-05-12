@@ -242,6 +242,7 @@
 # docker.io/kubevirt/virt-api:v0.9.6
 # docker.io/kubevirt/virt-controller:v0.9.6
 # docker.io/kubevirt/virt-handler:v0.9.6
+
 ##k3s-v1.26--kvirt-v111############
   # https://blog.itpub.net/70024420/viewspace-2965242/
   # imageregistry: ts3.harbor.com.cn/kubernetes/kubevirt
@@ -253,6 +254,7 @@
     # cni-default-plugins kubemacpool bridge-marker ovs-cni-marker ovs-cni-plugin 
     # hostpath-provisioner-operator hostpath-csi-driver csi-driver virtio-container-disk
     # hyperconverged-cluster-operator cluster-network-addons-operator
+# quay.io/kubevirt/virt-operator:v1.1.1
 # quay.io/kubevirt/virt-api:v1.1.1
 # quay.io/kubevirt/virt-controller:v1.1.1
 # quay.io/kubevirt/virt-handler:v1.1.1
@@ -264,10 +266,20 @@
 # quay.io/kubevirt/cirros-container-disk-demo:v1.1.1-arm64
 
 ##k8s-v1.21--kvirt-v0391############
+quay.io/kubevirt/virt-operator:v0.39.1
 quay.io/kubevirt/virt-api:v0.39.1
 quay.io/kubevirt/virt-controller:v0.39.1
 quay.io/kubevirt/virt-handler:v0.39.1
 quay.io/kubevirt/virt-launcher:v0.39.1
 # vm.imgs
 quay.io/kubevirt/cirros-container-disk-demo:v0.39.1
+
+##k8s-v1.21--kvirt-v0490############
+quay.io/kubevirt/virt-operator:v0.49.0
+quay.io/kubevirt/virt-api:v0.49.0
+quay.io/kubevirt/virt-controller:v0.49.0
+quay.io/kubevirt/virt-handler:v0.49.0
+quay.io/kubevirt/virt-launcher:v0.49.0
+# vm.imgs
+quay.io/kubevirt/cirros-container-disk-demo:v0.49.0
 
