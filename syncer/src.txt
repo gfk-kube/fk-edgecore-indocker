@@ -257,9 +257,17 @@
 # quay.io/kubevirt/virt-controller:v1.1.1
 # quay.io/kubevirt/virt-handler:v1.1.1
 # quay.io/kubevirt/virt-launcher:v1.1.1
-# vm.imgs
-docker.io/kubevirt/fedora-cloud-container-disk-demo:latest
-quay.io/kubevirt/cirros-container-disk-demo:v1.1.1
-quay.io/kubevirt/cirros-container-disk-demo:v1.1.1-arm64
+# # vm.imgs
+# https://quay.io/repository/kubevirt/cirros-container-disk-demo?tab=tags
+# docker.io/kubevirt/fedora-cloud-container-disk-demo:latest
+# quay.io/kubevirt/cirros-container-disk-demo:v1.1.1
+# quay.io/kubevirt/cirros-container-disk-demo:v1.1.1-arm64
 
+##k8s-v1.21--kvirt-v0391############
+quay.io/kubevirt/virt-api:v0.39.1
+quay.io/kubevirt/virt-controller:v0.39.1
+quay.io/kubevirt/virt-handler:v0.39.1
+quay.io/kubevirt/virt-launcher:v0.39.1
+# vm.imgs
+quay.io/kubevirt/cirros-container-disk-demo:v0.39.1
 
