@@ -259,3 +259,7 @@
 # quay.io/kubevirt/virt-launcher:v1.1.1
 # vm.imgs
 docker.io/kubevirt/fedora-cloud-container-disk-demo:latest
+quay.io/kubevirt/cirros-container-disk-demo:v1.1.1
+quay.io/kubevirt/cirros-container-disk-demo:v1.1.1-arm64
+
+
