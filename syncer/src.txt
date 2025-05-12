@@ -245,7 +245,7 @@ docker.io/kubevirt/virt-handler:v0.9.6
 ##k3s-v1.26--kvirt-v111############
   # https://blog.itpub.net/70024420/viewspace-2965242/
   # imageregistry: ts3.harbor.com.cn/kubernetes/kubevirt
-  # quay.io/kubevirt/virt-operator:v1.1.1
+  # quay.io/kubevirt/virt-operator:v1.1.1 ##https://quay.io/organization/kubevirt
     # /virt-api:v1.1.1
     # virt-controller virt-handler virt-launcher 
     # cdi-operator cdi-controller cdi-uploadproxy cdi-apiserver  cdi-importer cdi-cloner cdi-uploadserver
@@ -253,7 +253,7 @@ docker.io/kubevirt/virt-handler:v0.9.6
     # cni-default-plugins kubemacpool bridge-marker ovs-cni-marker ovs-cni-plugin 
     # hostpath-provisioner-operator hostpath-csi-driver csi-driver virtio-container-disk
     # hyperconverged-cluster-operator cluster-network-addons-operator
-docker.io/kubevirt/virt-api:v1.1.1
-docker.io/kubevirt/virt-controller:v1.1.1
-docker.io/kubevirt/virt-handler:v1.1.1
-docker.io/kubevirt/virt-launcher:v1.1.1
+quay.io/kubevirt/virt-api:v1.1.1
+quay.io/kubevirt/virt-controller:v1.1.1
+quay.io/kubevirt/virt-handler:v1.1.1
+quay.io/kubevirt/virt-launcher:v1.1.1
