@@ -284,7 +284,7 @@
 # quay.io/kubevirt/cirros-container-disk-demo:v0.49.0
 
 # 25.05.20 infrastlabs/docker-desktop-hdmi
-#1.4.0:arm32|388.58 MB, 1.2.2:x64|234.37 MB, 1.3.0:x64|351.06 MB
+#1.4.0:arm32|388.58 MB, 1.2.2:x64|234.37 MB, 1.3.0:x64|351.06 MB; ##real.allbe: arm64?
 docker.io/hilschernetpi/netpi-desktop-hdmi:1.4.0
 docker.io/hilschernetpi/netpi-desktop-hdmi:1.3.0
 docker.io/hilschernetpi/netpi-desktop-hdmi:1.2.2
