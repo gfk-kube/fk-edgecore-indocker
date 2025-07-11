@@ -148,7 +148,8 @@ gh-download)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="gh-download:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="${img}-cache"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
