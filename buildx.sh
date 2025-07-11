@@ -142,6 +142,20 @@ builder)
     args="--build-arg FULL=/.."
     docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/multiplat-builder/Dockerfile . 
     ;;
+gh-download)
+    echo "baseImgs>> gh-download"
+    ver=openhd-rv1126-os #v1.0
+    repo="registry.cn-shenzhen.aliyuncs.com"
+    img="gh-download:$ver"
+    # cache
+    ali="registry.cn-shenzhen.aliyuncs.com"
+    cimg="${img}-cache"
+    cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
+
+    plat="--platform linux/amd64" ##,linux/arm64,linux/arm
+    args="--build-arg FULL=/.."
+    docker buildx build $cache $plat $args --push -t $repo/$ns/$img -f imgs/gh-download/Dockerfile.ubt20-openhd-rv1126-os . 
+    ;;
 # syncer)
 #     echo "syncer: imgSync"
 #     bash syncer/run.sh
