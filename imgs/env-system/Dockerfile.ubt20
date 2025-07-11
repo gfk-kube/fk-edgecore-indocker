@@ -12,8 +12,8 @@ RUN export DOMAIN="mirrors.ustc.edu.cn"; \
   && echo "deb http://${DOMAIN}/$target focal-updates main restricted universe multiverse">> /etc/apt/sources.list; \
   \
   echo 'apt update -qq && apt install -yq --no-install-recommends $@ && apt clean && rm -rf /var/lib/apt/lists/*; ' > /usr/local/bin/apt.sh \
-    && chmod +x /usr/local/bin/apt.sh; \
-  \
+    && chmod +x /usr/local/bin/apt.sh; 
+  
 # MISC 15.1 MB
 RUN \
   # \2487 kB
