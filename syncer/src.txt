@@ -110,9 +110,9 @@
 # ghcr.io/openwrt/rootfs:armsr-armv8-openwrt-23.05
 # ghcr.io/openwrt/rootfs:arm_cortex-a9_vfpv3-d16-openwrt-23.05
 # debian-slim
-docker.io/library/debian:10-slim
-docker.io/library/debian:11-slim
-docker.io/library/debian:12-slim
+# docker.io/library/debian:10-slim
+# docker.io/library/debian:11-slim
+# docker.io/library/debian:12-slim
 
 ##diskmark #latest, 1.0.6: @24.4.5
 # docker.io/e7db/diskmark:1.0.6
@@ -144,6 +144,7 @@ docker.io/library/debian:12-slim
 # docker.io/openeuler/openeuler:20.03-lts
 # docker.io/openeuler/openeuler:22.03-lts
 # docker.io/openeuler/openeuler:24.03-lts
+docker.io/openeuler/openeuler:22.03-lts-sp4
 # docker.io/portainer/agent:2.26.0
 # docker.io/portainer/agent:2.27.0
 
