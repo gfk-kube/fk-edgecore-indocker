@@ -78,8 +78,8 @@
 # # docker.io/gitea/runner-images:ubuntu-24.04
 # docker.io/gitea/runner-images:ubuntu-latest
 # ##actions-img
-# # registry.cn-shenzhen.aliyuncs.com/infrasync/tonistiigi-binfmt:latest
-# # registry.cn-shenzhen.aliyuncs.com/infrasync/moby-buildkit:buildx-stable-1
+# # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:tonistiigi--binfmt---latest
+# # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:moby--buildkit---buildx-stable-1
 # docker.io/tonistiigi/binfmt:latest
 # docker.io/moby/buildkit:buildx-stable-1
 
