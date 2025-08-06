@@ -296,7 +296,7 @@ docker.io/openeuler/openeuler:22.03-lts-sp4
 # #linux/arm64
 # ghcr.io/marcelcoding/desktop-hdmi:edge
 
-# 25.08.06
+# 25.08.06 ffsync,fxa
 docker.io/mikefarah/yq:4.13.2
-
+docker.io/k14s/image:kbld-rand-1585335669119302000-70217251112176
 
