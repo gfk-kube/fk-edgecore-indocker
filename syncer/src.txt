@@ -310,4 +310,5 @@ docker.io/mozilla/channelserver:1.2.0
 docker.io/library/mysql:8.4
 docker.io/library/nginx:1.22.0-alpine
 docker.io/library/redis:6.0-alpine
+ghcr.io/jackyzy823/syncserver3:03b9cfdf03e4ee6baf6f8952b7bb2d6af4e376a5
 ghcr.io/ufoscout/docker-compose-wait:2.12.1
