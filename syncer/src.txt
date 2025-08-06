@@ -297,6 +297,17 @@ docker.io/openeuler/openeuler:22.03-lts-sp4
 # ghcr.io/marcelcoding/desktop-hdmi:edge
 
 # 25.08.06 ffsync,fxa
-docker.io/mikefarah/yq:4.13.2
-docker.io/k14s/image:kbld-rand-1585335669119302000-70217251112176
-
+# # init.sh
+# docker.io/mikefarah/yq:4.13.2
+# docker.io/k14s/image:kbld-rand-1585335669119302000-70217251112176
+# gen.dcp.yml
+docker.io/mozilla/fxa-mono:v1.305.0
+# https://registry.cyou/r/mozilla/syncserver  ##syncser@3yearsAgo; channelser:notFound;{1.0.0|1.2.0|1.24.0}
+# docker.io/mozilla/syncserver@sha256:016162bf39d8486d5710b4ae5bcaaebd8bd60b55db6cf468b8f720b526bd68b7
+docker.io/mozilla/syncserver:latest
+# docker.io/mozilla/channelserver@sha256:e0b4f3c2afa54cdc4d484edf44e4517bf6d9a6dc1e71a1b4986ac0c5e28620a4
+docker.io/mozilla/channelserver:1.2.0
+docker.io/mysql:8.4
+docker.io/nginx:1.22.0-alpine
+docker.io/redis:6.0-alpine
+ghcr.io/ufoscout/docker-compose-wait:2.12.1
