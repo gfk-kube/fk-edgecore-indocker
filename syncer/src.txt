@@ -307,7 +307,7 @@ docker.io/mozilla/fxa-mono:v1.305.0
 docker.io/mozilla/syncserver:latest
 # docker.io/mozilla/channelserver@sha256:e0b4f3c2afa54cdc4d484edf44e4517bf6d9a6dc1e71a1b4986ac0c5e28620a4
 docker.io/mozilla/channelserver:1.2.0
-docker.io/mysql:8.4
-docker.io/nginx:1.22.0-alpine
-docker.io/redis:6.0-alpine
+docker.io/library/mysql:8.4
+docker.io/library/nginx:1.22.0-alpine
+docker.io/library/redis:6.0-alpine
 ghcr.io/ufoscout/docker-compose-wait:2.12.1
