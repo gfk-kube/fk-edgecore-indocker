@@ -90,34 +90,34 @@
 #  https://www.centos.org/download/aws-images/ #kvm
 #  https://quay.io/repository/centos/centos?tab=tags
 #  https://hub.docker.com/_/centos ##centos9/10:none
-docker.io/library/centos:7.9.2009 #x5: 386,x64,arm,arm64,ppc64le;   centos9/10:none
-quay.io/centos/centos:stream9-minimal  #x4: x64,arm64,ppc64le,s390x
-quay.io/centos/centos:stream10-minimal #x4: x64,arm64,ppc64le,s390x
-quay.io/centos/centos:stream9
-quay.io/centos/centos:stream10
-docker.io/library/almalinux:8.10-minimal #x4: x64,arm64,ppc64le,s390x
-docker.io/library/almalinux:8.10 #8.7 68.14 MB
-docker.io/library/almalinux:9.6
-docker.io/library/rockylinux:9.3 #x4: x64,arm64,ppc64le,s390x
-docker.io/library/rockylinux:8.9
+# docker.io/library/centos:7.9.2009 #x5: 386,x64,arm,arm64,ppc64le;   centos9/10:none
+# quay.io/centos/centos:stream9-minimal  #x4: x64,arm64,ppc64le,s390x
+# quay.io/centos/centos:stream10-minimal #x4: x64,arm64,ppc64le,s390x
+# quay.io/centos/centos:stream9
+# quay.io/centos/centos:stream10
+# docker.io/library/almalinux:8.10-minimal #x4: x64,arm64,ppc64le,s390x
+# docker.io/library/almalinux:8.10 #8.7 68.14 MB
+# docker.io/library/almalinux:9.6
+# docker.io/library/rockylinux:9.3 #x4: x64,arm64,ppc64le,s390x
+# docker.io/library/rockylinux:8.9
 # https://registry.cyou/_/alpine/tags?name=3.13.12
 # docker.io/library/alpine:3.13
-docker.io/library/alpine:3.13.12 #x8: 386,x64,armv6,armv7,arm64,ppc64le,s390x,riscv64;
+# docker.io/library/alpine:3.13.12 #x8: 386,x64,armv6,armv7,arm64,ppc64le,s390x,riscv64;
 # docker.io/library/alpine:3.14.8
 # docker.io/library/alpine:3.19
 # docker.io/library/ubuntu:14.04
 # docker.io/library/ubuntu:16.04
 # docker.io/library/ubuntu:18.04
 # #docker.io/library/ubuntu:20.04 #15 hours ago 26.23 MB ###error: unsupported manifest type: application/vnd.oci.image.index.v1+json
-docker.io/library/ubuntu:20.04 #x6: x64,arm,arm64,ppc64le,s390x,riscv64
-docker.io/library/ubuntu:22.04
+# docker.io/library/ubuntu:20.04 #x6: x64,arm,arm64,ppc64le,s390x,riscv64
+# docker.io/library/ubuntu:22.04
 # docker.io/library/ubuntu:24.04
 # https://registry.cyou/r/opensuse/leap/tags?name=15.0
-docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
-docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
+# docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
+# docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
 # docker.io/library/busybox:1.36.1
 # docker.io/library/debian:10
-docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
+# docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
 # docker.io/library/debian:12
 # docker.io/library/fedora:39
 # # distro-openwrt
@@ -350,3 +350,4 @@ docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64;
 # gitea/gitea:1.15.11
 # forgaoqiang/n2n_supernode:latest
 # registry.cn-shenzhen.aliyuncs.com/k-pub/env-nexus
+docker.io/mozilla/syncstorage-rs:0.13.7
