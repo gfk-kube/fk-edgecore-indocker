@@ -142,7 +142,7 @@ getSyncer
 # --proc 1 #多了hub取不到
 # --arch $SYNC_ARCH ##16.04; 14.04, mismatch of os or architecture ##view: 变成全arch, 该方式无效
 #   TODO: --arch $SYNC_ARCH >> 转换为 --arch=amd64 --arch=arm64 --arch=arm
-./syncer $proc --auth $authyml --images ./images.yml --arch=amd64 --arch=arm64 --arch=arm
+./syncer $proc --auth $authyml --images ./images.yml --arch=amd64 --arch=arm64 --arch=arm --arch=ppc64le
 
 
 exit 0
