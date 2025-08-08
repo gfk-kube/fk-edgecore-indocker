@@ -328,3 +328,10 @@ docker.io/kinto/kinto-server:v1.195.4
 docker.io/kinto/kinto-server:v1.200.0
 #docker.io/library/postgres:latest
 docker.io/mozilla/send:latest
+###tenvm2's
+docker.io/yobasystems/alpine-mariadb:10.4.17
+docker.io/library/redis:5.0.6-alpine3.10
+fabiocicerchia/nginx-lua:1.21.6-alpine3.16.0
+# gitea/gitea:1.15.11
+# forgaoqiang/n2n_supernode:latest
+# registry.cn-shenzhen.aliyuncs.com/k-pub/env-nexus
