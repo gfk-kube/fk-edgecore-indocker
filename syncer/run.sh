@@ -157,11 +157,28 @@ exit 0
 # export LOCAL_IP="172.25.21.60"
 
 
-export LOCAL_URL="harbor.xxx.com"
-export LOCAL_IP="172.25.20.115"
-export LOCAL_FORMAT='$nslast/$img:$tag' #nsfull/nslast; use '', not ""
-export LOCAL_FORMAT='infrasync/v2025:$nsfull--$img---$tag' #unset为空时,即该模式
-bash syncer/run.sh
+# toLocal:
+  export LOCAL_URL="harbor.xxx.com"
+  export LOCAL_IP="172.25.20.115"
+  # harbor不支持二级ns;
+  # export LOCAL_FORMAT='$nslast/$img:$tag' #nsfull/nslast; use '', not ""
+  # export LOCAL_FORMAT='infrasync/v2025:$nsfull--$img---$tag' #unset为空时,即该模式
+  export LOCAL_FORMAT='infrasync/${nslast}-${img}:$tag'
+  bash syncer/run.sh
+  # 'infrasync/${nslast}-${img}:$tag'
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--centos---7.9.2009: harbor.xxx.com/infrasync/library-centos:7.9.2009
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:centos--centos---stream9: harbor.xxx.com/infrasync/centos-centos:stream9
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:centos--centos---stream10: harbor.xxx.com/infrasync/centos-centos:stream10
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--almalinux---8.10: harbor.xxx.com/infrasync/library-almalinux:8.10
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--almalinux---9.6: harbor.xxx.com/infrasync/library-almalinux:9.6
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--rockylinux---9.3: harbor.xxx.com/infrasync/library-rockylinux:9.3
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--rockylinux---8.9: harbor.xxx.com/infrasync/library-rockylinux:8.9
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--alpine---3.13.12: harbor.xxx.com/infrasync/library-alpine:3.13.12
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--ubuntu---20.04: harbor.xxx.com/infrasync/library-ubuntu:20.04
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--ubuntu---22.04: harbor.xxx.com/infrasync/library-ubuntu:22.04
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:opensuse--leap---15.0: harbor.xxx.com/infrasync/opensuse-leap:15.0
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:opensuse--leap---15.6: harbor.xxx.com/infrasync/opensuse-leap:15.6
+    # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--debian---11: harbor.xxx.com/infrasync/library-debian:11
 
 # toAli:
   # quay.io/kubevirt/virt-operator:v1.5.1: registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:kubevirt--virt-operator---v1.5.1
