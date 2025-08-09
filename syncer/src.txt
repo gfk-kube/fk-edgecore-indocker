@@ -352,9 +352,11 @@
 # registry.cn-shenzhen.aliyuncs.com/k-pub/env-nexus
 docker.io/mozilla/syncstorage-rs:0.1.13
 docker.io/mozilla/syncstorage-rs:0.2.9
+docker.io/mozilla/syncstorage-rs:0.3.0 ###
 docker.io/mozilla/syncstorage-rs:0.3.4
 docker.io/mozilla/syncstorage-rs:0.7.1
-docker.io/mozilla/syncstorage-rs:0.8.1
+docker.io/mozilla/syncstorage-rs:0.8.0
+docker.io/mozilla/syncstorage-rs:0.8.1 ###
 docker.io/mozilla/syncstorage-rs:0.8.3
 docker.io/mozilla/syncstorage-rs:0.8.7
 docker.io/mozilla/syncstorage-rs:0.10.2
