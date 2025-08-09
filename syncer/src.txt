@@ -354,4 +354,7 @@ docker.io/mozilla/syncstorage-rs:0.1.13
 docker.io/mozilla/syncstorage-rs:0.2.9
 docker.io/mozilla/syncstorage-rs:0.3.4
 docker.io/mozilla/syncstorage-rs:0.7.1
+docker.io/mozilla/syncstorage-rs:0.10.2
+docker.io/mozilla/syncstorage-rs:0.11.1
+docker.io/mozilla/syncstorage-rs:0.12.4
 docker.io/mozilla/syncstorage-rs:0.13.7
