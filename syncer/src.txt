@@ -339,6 +339,8 @@
 # docker.io/elsdoerfer/exim-sender:latest
 # #docker.io/library/nginx:latest
 # #docker.io/mozilla/channelserver:latest
+docker.io/kinto/kinto-server:v1.189.0
+docker.io/kinto/kinto-server:v1.189.1
 # docker.io/kinto/kinto-server:v1.195.4
 # docker.io/kinto/kinto-server:v1.200.0
 # #docker.io/library/postgres:latest
@@ -350,16 +352,16 @@
 # gitea/gitea:1.15.11
 # forgaoqiang/n2n_supernode:latest
 # registry.cn-shenzhen.aliyuncs.com/k-pub/env-nexus
-docker.io/mozilla/syncstorage-rs:0.1.13
-docker.io/mozilla/syncstorage-rs:0.2.9
-docker.io/mozilla/syncstorage-rs:0.3.0 ###
-docker.io/mozilla/syncstorage-rs:0.3.4
-docker.io/mozilla/syncstorage-rs:0.7.1
-docker.io/mozilla/syncstorage-rs:0.8.0
-docker.io/mozilla/syncstorage-rs:0.8.1 ###
-docker.io/mozilla/syncstorage-rs:0.8.3
-docker.io/mozilla/syncstorage-rs:0.8.7
-docker.io/mozilla/syncstorage-rs:0.10.2
-docker.io/mozilla/syncstorage-rs:0.11.1
-docker.io/mozilla/syncstorage-rs:0.12.4
-docker.io/mozilla/syncstorage-rs:0.13.7
+# docker.io/mozilla/syncstorage-rs:0.1.13
+# docker.io/mozilla/syncstorage-rs:0.2.9
+# docker.io/mozilla/syncstorage-rs:0.3.0 ###
+# docker.io/mozilla/syncstorage-rs:0.3.4
+# docker.io/mozilla/syncstorage-rs:0.7.1
+# docker.io/mozilla/syncstorage-rs:0.8.0
+# docker.io/mozilla/syncstorage-rs:0.8.1 ###
+# docker.io/mozilla/syncstorage-rs:0.8.3
+# docker.io/mozilla/syncstorage-rs:0.8.7
+# docker.io/mozilla/syncstorage-rs:0.10.2
+# docker.io/mozilla/syncstorage-rs:0.11.1
+# docker.io/mozilla/syncstorage-rs:0.12.4
+# docker.io/mozilla/syncstorage-rs:0.13.7
