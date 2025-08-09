@@ -329,6 +329,8 @@
 # ghcr.io/jackyzy823/syncserver3:03b9cfdf03e4ee6baf6f8952b7bb2d6af4e376a5
 # ghcr.io/ufoscout/docker-compose-wait:2.12.1
 ##br-img-mono########
+docker.io/mozilla/fxa-mono:v1.189.0
+docker.io/mozilla/fxa-mono:v1.189.1
 # docker.io/mozilla/fxa-mono:v1.195.4
 # docker.io/mozilla/fxa-mono:v1.200.0
 # docker.io/mysql/mysql-server:5.6
@@ -339,8 +341,6 @@
 # docker.io/elsdoerfer/exim-sender:latest
 # #docker.io/library/nginx:latest
 # #docker.io/mozilla/channelserver:latest
-docker.io/kinto/kinto-server:v1.189.0
-docker.io/kinto/kinto-server:v1.189.1
 # docker.io/kinto/kinto-server:v1.195.4
 # docker.io/kinto/kinto-server:v1.200.0
 # #docker.io/library/postgres:latest
