@@ -116,7 +116,8 @@
 # docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
 # docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
 # docker.io/library/busybox:1.36.1
-# docker.io/library/debian:10
+docker.io/library/debian:9
+docker.io/library/debian:10
 # docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
 # docker.io/library/debian:12
 # docker.io/library/fedora:39
@@ -329,8 +330,8 @@
 # ghcr.io/jackyzy823/syncserver3:03b9cfdf03e4ee6baf6f8952b7bb2d6af4e376a5
 # ghcr.io/ufoscout/docker-compose-wait:2.12.1
 ##br-img-mono########
-docker.io/mozilla/fxa-mono:v1.189.0
-docker.io/mozilla/fxa-mono:v1.189.1
+# docker.io/mozilla/fxa-mono:v1.189.0
+# docker.io/mozilla/fxa-mono:v1.189.1
 # docker.io/mozilla/fxa-mono:v1.195.4
 # docker.io/mozilla/fxa-mono:v1.200.0
 # docker.io/mysql/mysql-server:5.6
