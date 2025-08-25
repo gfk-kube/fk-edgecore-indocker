@@ -368,6 +368,7 @@ docker.io/library/debian:10
 # docker.io/mozilla/syncstorage-rs:0.13.7
 
 # 25.08.25 unixbench
+# registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:jess--unixbench---latest
 docker.io/openeuler/unixbench:6.0.0-oe2403sp1 #`x64/arm64 174.58 MB/167.22 MB|3 months ago`
 docker.io/heyahui/unixbench-amd64:latest  #x64 77.31 MB|3 years ago
 docker.io/heyahui/unixbench-arm64:latest  #arm64 74.93 MB|3 years ago
