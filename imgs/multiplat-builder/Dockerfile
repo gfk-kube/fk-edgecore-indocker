@@ -8,7 +8,8 @@
 #   RUN \
 #     rm -rf /rootfs/usr/local/kedge /rootfs/usr/local/k8s;
 
-FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:v2405-up2 as bins
+# FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:v2405-up2 as bins
+FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/edgecore:v2505-up2 as bins
 FROM registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-headless:core as rootfs1
   ARG TARGETPLATFORM
   WORKDIR /WS
