@@ -130,7 +130,8 @@ ansible-ubt2004)
 builder)
     echo "baseImgs>> builder"
     # multiplat-builder:v1.1
-    ver=v1.2-multi #ubt2004-builder
+    # ver=v1.2-multi #v2405-up2; ubt2004-builder
+    ver=v2505-up2 #up vers
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="multiplat-builder:$ver"
     # cache
