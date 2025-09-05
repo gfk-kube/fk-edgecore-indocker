@@ -3,7 +3,8 @@
 
 - loadBins_old.sh 弃用
 - imgbuild.sh 本地构建
-  - `bash imgbuild.sh bins`
+  - step1 `bash tplat.v2505.sh`
+  - step2 `bash imgbuild.sh bins`
 - Dockerfile.v2301-bin25 + plat.sh
   - `ADD ./bins2/tplat.sh /bin/tplat` (已弃,参考`tplat.v2405.sh> function tplat(){`)
   - `tplat $arch https://ghproxy.com/https://github.com  @Dockerfile.v2301-bin25` 在dockerfile内下载
