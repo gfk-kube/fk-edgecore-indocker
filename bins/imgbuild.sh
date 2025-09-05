@@ -26,6 +26,7 @@ bins)
     # img=edgecore:v2405-up1 #bins-v2.5
     img=edgecore:v2405-up2 #nerdctl-v2.0 --provenance=false
     img=edgecore:v2505-up1
+    img=edgecore:v2505-up2 #nerdctl-v2.1.4 +cmds
     docker build -t $repo/$ns/$img -f ../bins/Dockerfile.v2405 .
     docker push $repo/$ns/$img
     ;;
@@ -46,7 +47,7 @@ bins)
 #     ;;
 *)
     exit 0
-    docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img .
-    docker push $repo/$ns/$img
+    # docker build --build-arg TARGETPLATFORM="linux/amd64" -t $repo/$ns/$img .
+    # docker push $repo/$ns/$img
     ;;
 esac
