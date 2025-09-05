@@ -18,7 +18,8 @@ alma)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-centos:alma8.7-$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-centos-cache:alma8.7-$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -36,7 +37,8 @@ alma-sdk)
     # repo=registry-1.docker.io 
     img="env-centos:alma8.7-sdk-$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-centos-cache:alma8.7-sdk-$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -51,7 +53,8 @@ ansible)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-ansible-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -70,7 +73,8 @@ ansible-mitogen)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-ansible-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -97,7 +101,8 @@ ansible-mitogen-alpine38)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-ansible-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -119,7 +124,8 @@ ansible-ubt2004)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="env-ansible:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-ansible-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -135,7 +141,8 @@ builder)
     repo="registry.cn-shenzhen.aliyuncs.com"
     img="multiplat-builder:$ver"
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="env-builder-cache:$ver"
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
@@ -162,12 +169,13 @@ gh-download)
 #     echo "syncer: imgSync"
 #     bash syncer/run.sh
 #     ;;
-*)
+*) #_ex/edge-kind/Dockerfile.lite
     # repo=registry-1.docker.io
     repo="registry.cn-shenzhen.aliyuncs.com" #image-sync推docker:20.10.18,ali仓是支持multiArch的
     img="edgecore:$ver" #multi- (barge_docker v1.10.3 not support '-')
     # cache
-    ali="registry.cn-shenzhen.aliyuncs.com"
+    # ali="registry.cn-shenzhen.aliyuncs.com"
+    ali=$REPO_TEN_HK
     cimg="edgecore-cache:$ver" #multi- 
     cache="--cache-from type=registry,ref=$ali/$ns/$cimg --cache-to type=registry,ref=$ali/$ns/$cimg"
 
