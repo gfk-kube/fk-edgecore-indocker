@@ -100,8 +100,12 @@ $RUN \
 # 
 # nerdctl 1.1.0 10.3M >> 1.7.6
 #   24.7.23: v176> 2.0.0-rc.0 ##--provenance=false
+  # export VER=2.0.5; \
+  # v214@250905
+  #  https://github.com/containerd/nerdctl/releases/download/v2.1.4/nerdctl-2.1.4-linux-amd64.tar.gz
+  #  adds many commands: nerdctl manifest (create|inspect|push|annotate|rm), nerdctl container export, and nerdctl image import.
 $RUN \
-  export VER=2.0.5; \
+  export VER=2.1.4; \
   tplat amd64 $GITHUB/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-amd64.tar.gz; \
   tplat arm64 $GITHUB/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-arm64.tar.gz
 # crictl 1.26.0 21.8M >> 1.30.0
