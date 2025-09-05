@@ -41,6 +41,58 @@ libseccomp: 2.5.4
 $ ./containerd-fuse-overlayfs-grpc --version
 INFO[0000] containerd-fuse-overlayfs-grpc Version="v1.0.5" Revision="11c45f4d24689d8cb279813fbcb9bbd01773e0e8" 
 invalid args: usage: ./containerd-fuse-overlayfs-grpc <unix addr> <root>
+
+# 250905
+Administrator@sam-pincun MINGW64 /d/UserData/Desktop/=repos/_ct/fk-edgecore-indocker/bins (dev)
+$ cat tplat.v2405.sh |grep VER= -B 2 |egrep -v "^--|RUN"
+  # containerd 1.6.15 41.4M; >> 1.6.32
+    export VER=1.6.32; \
+  # snapshotter 1.0.5 3820k >> 1.0.8
+    export VER=1.0.8; \
+  # cni 1.2.0 38.6M >> 1.5.0
+    export VER=1.5.0; \
+  # runc 1.1.4 9210k>> 1.1.12
+    export VER=1.1.12; \
+  # 23.10 +buildkit 0.12.2 >> 0.13.2
+    export VER=0.13.2; \
+  #   24.7.23: v176> nerdctl-2.0.0-rc.0-linux-arm64.tar.gz ##--provenance=false
+    export VER=2.0.0-rc.0; \
+  # crictl 1.26.0 21.8M >> 1.30.0
+    export VER=1.30.0; \
+  # k3s 1.22.17 48.9M
+    export VER=1.22.17; \
+  # k3s v1.23.17 62M
+    export VER=1.23.17; \
+
+Administrator@sam-pincun MINGW64 /d/UserData/Desktop/=repos/_ct/fk-edgecore-indocker/bins (dev)
+$ cat tplat.v2505.sh |sed 's/^[[:blank:]]*//' |egrep -v "^#|^$" |grep VER= -A 1 |egrep -v "^--|RUN22"
+  export VER=1.6.5; \
+  $RUN tplat amd64 $GITHUB/cloudflare/cfssl/releases/download/v${VER}/cfssl_${VER}_linux_amd64; \
+  export VER=1.5.5; \
+  $RUN tplat amd64 $GITHUB/AliyunContainerService/image-syncer/releases/download/v${VER}/image-syncer-v${VER}-linux-amd64.tar.gz; \
+  export VER=2.8.3; \
+  $RUN tplat amd64 $GITHUB/distribution/distribution/releases/download/v${VER}/registry_${VER}_linux_amd64.tar.gz; \
+  export VER=2.35.1; \
+  $RUN tplat amd64 $GITHUB/docker/compose/releases/download/v${VER}/docker-compose-linux-x86_64; \
+  export VER=1.7.27; \
+  tplat amd64 $GITHUB/containerd/containerd/releases/download/v${VER}/containerd-${VER}-linux-amd64.tar.gz; \
+  export VER=1.0.8; \
+  tplat amd64 $GITHUB/containerd/fuse-overlayfs-snapshotter/releases/download/v${VER}/containerd-fuse-overlayfs-${VER}-linux-amd64.tar.gz; \
+  export VER=1.7.1; \
+  tplat amd64 $GITHUB/containernetworking/plugins/releases/download/v${VER}/cni-plugins-linux-amd64-v${VER}.tgz; \
+  export VER=1.2.6; \
+  tplat amd64 $GITHUB/opencontainers/runc/releases/download/v${VER}/runc.amd64; \
+  export VER=0.21.1; \
+  tplat amd64 $GITHUB/moby/buildkit/releases/download/v${VER}/buildkit-v${VER}.linux-amd64.tar.gz; \
+  export VER=2.1.4; \
+  tplat amd64 $GITHUB/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-amd64.tar.gz; \
+  export VER=1.33.0; \
+  tplat amd64 $GITHUB/kubernetes-sigs/cri-tools/releases/download/v${VER}/crictl-v${VER}-linux-amd64.tar.gz; \
+  export VER=1.26.15; \
+  tplat amd64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s; \
+  export VER=1.32.4; \
+  tplat amd64 $GITHUB/k3s-io/k3s/releases/download/v${VER}%2Bk3s1/k3s; \
+
 ```
 
 - **nerdctl-full-1.1.0-linux-amd64**
