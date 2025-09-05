@@ -1,8 +1,18 @@
 
 ## imgVers
 
-- Dockerfile.v2301-v25 `tplat $arch https://ghproxy.com/https://github.com  @Dockerfile.v2301-v25`
-- Dockerfile.v2405 `GITHUB=https://hub.yzuu.cf; tplat $arch $GITHUB; 下载列表改到plat.sh内:先执行脚本再本地ADD构建img`
+- loadBins_old.sh 弃用
+- imgbuild.sh 本地构建
+  - `bash imgbuild.sh bins`
+- Dockerfile.v2301-bin25 + plat.sh
+  - `ADD ./bins2/tplat.sh /bin/tplat` (已弃,参考`tplat.v2405.sh> function tplat(){`)
+  - `tplat $arch https://ghproxy.com/https://github.com  @Dockerfile.v2301-bin25` 在dockerfile内下载
+- Dockerfile.v2405 + tplat.v2405.sh
+  - 下载列表改到plat.v2405.sh内:先执行脚本再本地ADD构建img
+  - `GITHUB=https://hub.yzuu.cf; tplat $arch $GITHUB`
+- Dockerfile.v2405 + tplat.v2505.sh
+  - 2505:全量更新相关组件版本
+  - 2509:更新nerdctl-v214
 
 ```bash
 # headless @ mac23-199 in .../fk-edgecore-indocker/bins2 |00:15:26  |sam-custom2 U:1 ✗| 
