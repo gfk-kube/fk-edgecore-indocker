@@ -3,7 +3,13 @@ cur=$(cd "$(dirname "$0")"; pwd)
 # export GITHUB=https://ghproxy.com/https://github.com
 # export GITHUB=https://hub.yzuu.cf
 # export GITHUB=https://gh.llkk.cc/https://github.com # 100k; 
+# https://ghproxy.link/ >> cur: ghfast.top
+  # https://ghfast.top 当前可用
+  # https://ghgo.xyz 已被墙
+  # https://ghp.ci 已被墙
+  # https://ghproxy.com 已被墙
 export GITHUB=https://ghfast.top/https://github.com # 300k+; https://ghproxy.link/
+  # echo "107.173.127.234 ghfast.top" >> /etc/hosts ##250905: @vm21-60
 
 # gitac
 test "true" == "$GITAC" && export GITHUB=https://github.com
