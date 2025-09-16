@@ -116,8 +116,8 @@
 # docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
 # docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
 # docker.io/library/busybox:1.36.1
-docker.io/library/debian:9
-docker.io/library/debian:10
+# docker.io/library/debian:9
+# docker.io/library/debian:10
 # docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
 # docker.io/library/debian:12
 # docker.io/library/fedora:39
@@ -364,15 +364,15 @@ docker.io/library/debian:10
 # docker.io/mozilla/syncstorage-rs:0.13.7
 
 # 25.08.25 unixbench
-# registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:jess--unixbench---latest
-docker.io/openeuler/unixbench:6.0.0-oe2403sp1 #`x64/arm64 174.58 MB/167.22 MB|3 months ago`
-docker.io/heyahui/unixbench-amd64:latest  #x64 77.31 MB|3 years ago
-docker.io/heyahui/unixbench-arm64:latest  #arm64 74.93 MB|3 years ago
-docker.io/paipoi/unixbench_x86_64:latest  #x64 142.89 MB|3 years ago
-docker.io/paipoi/unixbench_aarch64:latest #arm64 138.33 MB|3 years ago
-docker.io/jess/unixbench:latest #x64 62.04 MB|2 years ago`
-docker.io/stefanoltmann/docker-benchmark:latest #x64 155.66 MB|9 years ago`
-docker.io/dynabix/unixbench:latest #x64 200.2 MB|5 years ago`
+# # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:jess--unixbench---latest
+# docker.io/openeuler/unixbench:6.0.0-oe2403sp1 #`x64/arm64 174.58 MB/167.22 MB|3 months ago`
+# docker.io/heyahui/unixbench-amd64:latest  #x64 77.31 MB|3 years ago
+# docker.io/heyahui/unixbench-arm64:latest  #arm64 74.93 MB|3 years ago
+# docker.io/paipoi/unixbench_x86_64:latest  #x64 142.89 MB|3 years ago
+# docker.io/paipoi/unixbench_aarch64:latest #arm64 138.33 MB|3 years ago
+# docker.io/jess/unixbench:latest #x64 62.04 MB|2 years ago`
+# docker.io/stefanoltmann/docker-benchmark:latest #x64 155.66 MB|9 years ago`
+# docker.io/dynabix/unixbench:latest #x64 200.2 MB|5 years ago`
 
 # 25.09.16 oe,void
 # docker.io/openeuler/openeuler:20.03-lts
