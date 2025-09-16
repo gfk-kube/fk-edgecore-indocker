@@ -157,10 +157,6 @@ docker.io/library/debian:10
 # docker.io/mber5/virt-manager:latest
 # registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501
 # registry.cn-shenzhen.aliyuncs.com/infrastlabs/docker-libvirtd:v2501-alpine319
-# docker.io/openeuler/openeuler:20.03-lts
-# docker.io/openeuler/openeuler:22.03-lts
-# docker.io/openeuler/openeuler:24.03-lts
-# docker.io/openeuler/openeuler:22.03-lts-sp4
 # docker.io/portainer/agent:2.26.0
 # docker.io/portainer/agent:2.27.0
 
@@ -378,3 +374,16 @@ docker.io/jess/unixbench:latest #x64 62.04 MB|2 years ago`
 docker.io/stefanoltmann/docker-benchmark:latest #x64 155.66 MB|9 years ago`
 docker.io/dynabix/unixbench:latest #x64 200.2 MB|5 years ago`
 
+# 25.09.16 oe,void
+# docker.io/openeuler/openeuler:20.03-lts
+# docker.io/openeuler/openeuler:22.03-lts
+# docker.io/openeuler/openeuler:22.03-lts-sp4
+# docker.io/openeuler/openeuler:24.03-lts
+docker.io/openeuler/openeuler:24.03-lts-sp2
+# https://github.com/void-linux/void-containers
+ghcr.io/void-linux/void-glibc-busybox:latest      #39.6MB #busybox instead of GNU coreutils.
+ghcr.io/void-linux/void-glibc:latest              #64.5MB #uses a noextract file to prevent certain directories from being added
+ghcr.io/void-linux/void-glibc-full:latest         #135MB
+ghcr.io/void-linux/void-musl-busybox:latest       #14.4MB
+ghcr.io/void-linux/void-musl:latest               #40.3MB
+ghcr.io/void-linux/void-musl-full:latest          #81.4MB
