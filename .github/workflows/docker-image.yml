@@ -70,5 +70,4 @@ jobs:
 
           #imgSync
           # sh buildx.sh syncer #imgSync:同下
-          export SYNC_ALI=true
-          bash syncer/run.sh
+          export SYNC_ALI=true; bash syncer/run.sh
