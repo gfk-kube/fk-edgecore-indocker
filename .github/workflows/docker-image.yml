@@ -69,6 +69,6 @@ jobs:
           # sh buildx.sh gh-download
 
           #imgSync
-          # sh buildx.sh syncer #imgSync
-          # export SYNC_ALI=true
+          # sh buildx.sh syncer #imgSync:同下
+          export SYNC_ALI=true
           bash syncer/run.sh
