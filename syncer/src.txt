@@ -379,13 +379,18 @@
 # docker.io/openeuler/openeuler:22.03-lts
 # docker.io/openeuler/openeuler:22.03-lts-sp4
 # docker.io/openeuler/openeuler:24.03-lts
-docker.io/openeuler/openeuler:24.03-lts-sp2
+# docker.io/openeuler/openeuler:24.03-lts-sp2
 # https://github.com/void-linux/void-containers
 # docker.io/openeuler/openeuler:24.03-lts-sp2: registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:openeuler--openeuler---24.03-lts-sp2
 # ghcr.io/void-linux/void-glibc-busybox:latest: registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:void-linux--void-glibc-busybox---latest
-ghcr.io/void-linux/void-glibc-busybox:latest      #39.6MB #busybox instead of GNU coreutils.
-ghcr.io/void-linux/void-glibc:latest              #64.5MB #uses a noextract file to prevent certain directories from being added
-ghcr.io/void-linux/void-glibc-full:latest         #135MB
-ghcr.io/void-linux/void-musl-busybox:latest       #14.4MB
-ghcr.io/void-linux/void-musl:latest               #40.3MB
-ghcr.io/void-linux/void-musl-full:latest          #81.4MB
+# ghcr.io/void-linux/void-glibc-busybox:latest      #39.6MB #busybox instead of GNU coreutils.
+# ghcr.io/void-linux/void-glibc:latest              #64.5MB #uses a noextract file to prevent certain directories from being added
+# ghcr.io/void-linux/void-glibc-full:latest         #135MB
+# ghcr.io/void-linux/void-musl-busybox:latest       #14.4MB
+# ghcr.io/void-linux/void-musl:latest               #40.3MB
+# ghcr.io/void-linux/void-musl-full:latest          #81.4MB
+# 25.09.20
+docker.io/infrastlabs/docker-headless:deb9
+docker.io/infrastlabs/docker-headless:deb9-slim
+docker.io/infrastlabs/docker-headless:deb9-full
+
