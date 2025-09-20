@@ -116,7 +116,7 @@
 # docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
 # docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
 # docker.io/library/busybox:1.36.1
-docker.io/library/debian:8
+# docker.io/library/debian:8
 # docker.io/library/debian:9
 # docker.io/library/debian:10
 # docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
@@ -127,6 +127,8 @@ docker.io/library/debian:8
 # ghcr.io/openwrt/rootfs:armsr-armv8-openwrt-23.05
 # ghcr.io/openwrt/rootfs:arm_cortex-a9_vfpv3-d16-openwrt-23.05
 # debian-slim
+docker.io/library/debian:8-slim
+docker.io/library/debian:9-slim
 # docker.io/library/debian:10-slim
 # docker.io/library/debian:11-slim
 # docker.io/library/debian:12-slim
