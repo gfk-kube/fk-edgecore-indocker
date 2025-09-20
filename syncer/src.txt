@@ -116,6 +116,7 @@
 # docker.io/opensuse/leap:15.0 #x3: x64,arm64,ppc64le
 # docker.io/opensuse/leap:15.6 #x5: x64,arm,arm64,ppc64le,s390x
 # docker.io/library/busybox:1.36.1
+docker.io/library/debian:8
 # docker.io/library/debian:9
 # docker.io/library/debian:10
 # docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
@@ -390,7 +391,7 @@
 # ghcr.io/void-linux/void-musl:latest               #40.3MB
 # ghcr.io/void-linux/void-musl-full:latest          #81.4MB
 # 25.09.20
-docker.io/infrastlabs/docker-headless:deb9
-docker.io/infrastlabs/docker-headless:deb9-slim
-docker.io/infrastlabs/docker-headless:deb9-full
+# docker.io/infrastlabs/docker-headless:deb9
+# docker.io/infrastlabs/docker-headless:deb9-slim
+# docker.io/infrastlabs/docker-headless:deb9-full
 
