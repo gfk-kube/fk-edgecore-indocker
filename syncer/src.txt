@@ -400,6 +400,7 @@
 # docker.io/infrastlabs/docker-headless:deb9-full
 
 # 25.09.25 ibmcom/db2 {amd64,ppc64le,s390x}
+# registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:ibmcom--db2---11.5.8.0
 docker.io/ibmcom/db2:11.5.8.0 #latest
 docker.io/ibmcom/db2:11.5.4.0 #doc-ppc64le
 docker.io/ibmcom/db2:11.5.5.1 #v11.5.5fp1_linuxx64_server_dec.tar.gz
