@@ -135,6 +135,7 @@ docker.io/library/debian:13
 # docker.io/library/debian:10-slim
 # docker.io/library/debian:11-slim
 # docker.io/library/debian:12-slim
+docker.io/library/debian:13-slim
 
 ##diskmark #latest, 1.0.6: @24.4.5
 # docker.io/e7db/diskmark:1.0.6
