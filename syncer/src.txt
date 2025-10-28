@@ -4,6 +4,7 @@
 # docker.io/library/docker:18.09.8
 # docker.io/library/docker:20.10.18 #20.10.18|20.10.18-cli 4月前 46.12 MB
 # docker.io/library/nginx:1.22.0-alpine
+#registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:library--nginx---1.22.0-alpine
 
 # #k3s
 # docker.io/rancher/pause:3.2 #两年前 3.1 #4年前
@@ -178,6 +179,7 @@ docker.io/library/debian:13-slim
 # docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z.hotfix.d7313e455
 # docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z
 # docker.io/minio/minio:RELEASE.2022-03-22T02-05-10Z
+# registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:minio--mc---RELEASE.2025-08-13T08-35-41Z-cpuv1
 # docker.io/minio/mc:RELEASE.2022-05-09T04-08-26Z
 # docker.io/minio/mc:RELEASE.2025-08-13T08-35-41Z
 # docker.io/minio/mc:RELEASE.2025-08-13T08-35-41Z-cpuv1
