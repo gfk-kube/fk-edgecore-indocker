@@ -123,7 +123,7 @@
 # docker.io/library/debian:10
 # docker.io/library/debian:11 #x8: 386,x64,armv5,armv7,arm64,ppc64le,s390x,mips64; unstable:+riscv64
 # docker.io/library/debian:12
-docker.io/library/debian:13
+# docker.io/library/debian:13
 # docker.io/library/fedora:39
 # # distro-openwrt
 # ghcr.io/openwrt/rootfs:x86_64-openwrt-23.05
@@ -136,7 +136,7 @@ docker.io/library/debian:13
 # docker.io/library/debian:10-slim
 # docker.io/library/debian:11-slim
 # docker.io/library/debian:12-slim
-docker.io/library/debian:13-slim
+# docker.io/library/debian:13-slim
 
 ##diskmark #latest, 1.0.6: @24.4.5
 # docker.io/e7db/diskmark:1.0.6
@@ -411,3 +411,6 @@ docker.io/library/debian:13-slim
 # docker.io/ibmcom/db2:11.5.8.0 #latest
 # docker.io/ibmcom/db2:11.5.4.0 #doc-ppc64le
 # docker.io/ibmcom/db2:11.5.5.1 #v11.5.5fp1_linuxx64_server_dec.tar.gz
+
+# 25.10.29
+docker.io/lianwilliam/netdata:v1.21.1
