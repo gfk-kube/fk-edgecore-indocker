@@ -69,18 +69,25 @@
 
 #24.12.04 
 # #gitea
-docker.io/gitea/gitea:1.25.1
-# docker.io/gitea/gitea:1.24.7
-# docker.io/gitea/gitea:1.22.4
+# docker.io/gitea/gitea:1.25.1
+docker.io/gitea/gitea:1.24.7
+docker.io/gitea/gitea:1.23.8
+docker.io/gitea/gitea:1.22.6
+# metaso: Gitea 的 Actions（内置 CI/CD）功能是从 1.19.0 版本 开始引入的。自该版本起，用户只需在 app.ini 中启用 [actions] ENABLED = true 即可使用 Gitea Actions，后续版本（如 1.21）则默认开启
+docker.io/gitea/gitea:1.21.11
+docker.io/gitea/gitea:1.20.6
+docker.io/gitea/gitea:1.29.4
 # docker.io/gitea/gitea:latest
-# # tea_act_runner
-docker.io/gitea/act_runner:0.2.13
+
+## tea_act_runner
+# docker.io/gitea/act_runner:0.2.13
 # docker.io/gitea/act_runner:0.2.13-dind
 # docker.io/gitea/act_runner:latest
-# https://registry.cyou/r/gitea/runner-images/tags?page=6
-docker.io/gitea/runner-images:ubuntu-20.04-slim #ubuntu-20.04-full(15.6G)/ubuntu-20.04-slim(69M)/ubuntu-20.04(512M)
-docker.io/gitea/runner-images:ubuntu-22.04-slim #ubuntu-22.04-full(16GB)/ubuntu-22.04-slim(67M)/ubuntu-22.04(509M)
-docker.io/gitea/runner-images:ubuntu-24.04-slim #ubuntu-24.04-full(15.6G)/ubuntu-24.04-slim(67M)/ubuntu-24.04(537M)
+## https://registry.cyou/r/gitea/runner-images/tags?page=6
+# docker.io/gitea/runner-images:ubuntu-20.04-slim #ubuntu-20.04-full(15.6G)/ubuntu-20.04-slim(69M)/ubuntu-20.04(512M)
+# docker.io/gitea/runner-images:ubuntu-22.04-slim #ubuntu-22.04-full(16GB)/ubuntu-22.04-slim(67M)/ubuntu-22.04(509M)
+# docker.io/gitea/runner-images:ubuntu-24.04-slim #ubuntu-24.04-full(15.6G)/ubuntu-24.04-slim(67M)/ubuntu-24.04(537M)
+# 
 # docker.io/gitea/runner-images:ubuntu-20.04
 # docker.io/gitea/runner-images:ubuntu-22.04
 # # none: ubt24.04
