@@ -69,10 +69,18 @@
 
 #24.12.04 
 # #gitea
+docker.io/gitea/gitea:1.25.1
+# docker.io/gitea/gitea:1.24.7
 # docker.io/gitea/gitea:1.22.4
 # docker.io/gitea/gitea:latest
 # # tea_act_runner
+docker.io/gitea/act_runner:0.2.13
+# docker.io/gitea/act_runner:0.2.13-dind
 # docker.io/gitea/act_runner:latest
+# https://registry.cyou/r/gitea/runner-images/tags?page=6
+docker.io/gitea/runner-images:ubuntu-20.04-slim #ubuntu-20.04-full(15.6G)/ubuntu-20.04-slim(69M)/ubuntu-20.04(512M)
+docker.io/gitea/runner-images:ubuntu-22.04-slim #ubuntu-22.04-full(16GB)/ubuntu-22.04-slim(67M)/ubuntu-22.04(509M)
+docker.io/gitea/runner-images:ubuntu-24.04-slim #ubuntu-24.04-full(15.6G)/ubuntu-24.04-slim(67M)/ubuntu-24.04(537M)
 # docker.io/gitea/runner-images:ubuntu-20.04
 # docker.io/gitea/runner-images:ubuntu-22.04
 # # none: ubt24.04
