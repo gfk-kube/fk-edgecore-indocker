@@ -46,6 +46,8 @@
 # docker.io/library/eclipse-mosquitto:1.6.15
 # #ke-1.15
 # docker.io/kubeedge/installation-package:v1.15.2
+# 251112,sz一体柜-aiec-国创OEE:keadm join
+docker.io/kubeedge/installation-package:v1.13.1
 
 #24.07.01
 # docker.io/cooolin/socks5:latest
@@ -69,14 +71,14 @@
 
 #24.12.04 
 # #gitea
-# docker.io/gitea/gitea:1.25.1
-docker.io/gitea/gitea:1.24.7
-docker.io/gitea/gitea:1.23.8
-docker.io/gitea/gitea:1.22.6
 # metaso: Gitea 的 Actions（内置 CI/CD）功能是从 1.19.0 版本 开始引入的。自该版本起，用户只需在 app.ini 中启用 [actions] ENABLED = true 即可使用 Gitea Actions，后续版本（如 1.21）则默认开启
-docker.io/gitea/gitea:1.21.11
-docker.io/gitea/gitea:1.20.6
-docker.io/gitea/gitea:1.19.4
+# docker.io/gitea/gitea:1.25.1
+# docker.io/gitea/gitea:1.24.7
+# docker.io/gitea/gitea:1.23.8
+# docker.io/gitea/gitea:1.22.6
+# docker.io/gitea/gitea:1.21.11
+# docker.io/gitea/gitea:1.20.6
+# docker.io/gitea/gitea:1.19.4
 # docker.io/gitea/gitea:latest
 
 ## tea_act_runner
