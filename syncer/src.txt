@@ -48,7 +48,7 @@
 # docker.io/kubeedge/installation-package:v1.15.2
 # 251112,sz一体柜-aiec-国创OEE:keadm join
 # docker.io/kubeedge/installation-package:v1.13.1
-docker.io/kubeedge/pause:3.6
+# docker.io/kubeedge/pause:3.6
 
 #24.07.01
 # docker.io/cooolin/socks5:latest
@@ -432,3 +432,4 @@ docker.io/kubeedge/pause:3.6
 
 # 25.10.29
 # docker.io/lianwilliam/netdata:v1.21.1
+docker.io/itsthenetwork/nfs-server-alpine:12
