@@ -433,6 +433,7 @@
 # 25.10.29
 # docker.io/lianwilliam/netdata:v1.21.1
 # docker.io/itsthenetwork/nfs-server-alpine:12
+docker.io/erichough/nfs-server:latest
 # docs-devops-eof
 docker.io/library/node:14.13.1
 # docker.io/library/node:14.13.1-alpine
