@@ -196,11 +196,15 @@
 # docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z.hotfix.8ee531027
 # docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z.hotfix.d7313e455
 # docker.io/minio/minio:RELEASE.2022-05-08T23-50-31Z
-# docker.io/minio/minio:RELEASE.2022-03-22T02-05-10Z
+# docker.io/minio/minio:RELEASE.2022-03-22T02-05-10Z #jdus's
+##mc
 # registry.cn-shenzhen.aliyuncs.com/infrasync/v2025:minio--mc---RELEASE.2025-08-13T08-35-41Z-cpuv1
 # docker.io/minio/mc:RELEASE.2022-05-09T04-08-26Z
 # docker.io/minio/mc:RELEASE.2025-08-13T08-35-41Z
 # docker.io/minio/mc:RELEASE.2025-08-13T08-35-41Z-cpuv1
+##lfs-minio
+docker.io/jasonwhite0/rudolfs:latest #@251122
+
 # docker.io/kubernetesui/dashboard:v2.4.0
 # docker.io/kubernetesui/dashboard:v2.5.1
 # docker.io/kubernetesui/dashboard:v2.7.0
@@ -430,12 +434,12 @@
 # docker.io/ibmcom/db2:11.5.4.0 #doc-ppc64le
 # docker.io/ibmcom/db2:11.5.5.1 #v11.5.5fp1_linuxx64_server_dec.tar.gz
 
-# 25.10.29
+# 25.10.29 nfs,node,nginx
 # docker.io/lianwilliam/netdata:v1.21.1
 # docker.io/itsthenetwork/nfs-server-alpine:12
-docker.io/erichough/nfs-server:latest
+# docker.io/erichough/nfs-server:latest
 # docs-devops-eof
-docker.io/library/node:14.13.1
+# docker.io/library/node:14.13.1
 # docker.io/library/node:14.13.1-alpine
 # docker.io/library/nginx:1.20.1-alpine
-docker.io/library/node:14.20.0
+# docker.io/library/node:14.20.0
