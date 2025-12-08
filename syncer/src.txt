@@ -445,15 +445,17 @@
 # docker.io/library/node:14.20.0
 
 # 25.12.04 sybase, try vers
-#   Finished, 0 sync tasks failed, 4 tasks generate failed
-# docker.io/sybase/sybase-sqlanywhere:latest #[ERR]
-docker.io/ifnazar/sybase_15_7:latest #社区维护版
-# docker.io/saplabs/sybase-ase-15.7:latest #[ERR]
-# docker.io/saplabs/sybase-ase-16.0:latest
-# 开发者 # https://metaso.cn/s/uT03OrN
-docker.io/chernov/sybase:15.7 #包含15.7, 30初始
-docker.io/chernov/sybase:latest
-# docker.io/danielmacgregor/sybase-ubuntu:15.7 #基于ubt 15.7 #[ERR]
-# docker.io/danielmacgregor/sybase-ubuntu:latest
-# docker.io/datagrip/sybase:15.7 #数据库工具集成优化 #[ERR]
-# docker.io/datagrip/sybase:latest
+# #   Finished, 0 sync tasks failed, 4 tasks generate failed
+# # docker.io/sybase/sybase-sqlanywhere:latest #[ERR]
+# docker.io/ifnazar/sybase_15_7:latest #社区维护版
+# # docker.io/saplabs/sybase-ase-15.7:latest #[ERR]
+# # docker.io/saplabs/sybase-ase-16.0:latest
+# # 开发者 # https://metaso.cn/s/uT03OrN
+# docker.io/chernov/sybase:15.7 #包含15.7, 30初始
+# docker.io/chernov/sybase:latest
+# # docker.io/danielmacgregor/sybase-ubuntu:15.7 #基于ubt 15.7 #[ERR]
+# # docker.io/danielmacgregor/sybase-ubuntu:latest
+# # docker.io/datagrip/sybase:15.7 #数据库工具集成优化 #[ERR]
+# # docker.io/datagrip/sybase:latest
+
+docker.io/miktex/miktex:essential
