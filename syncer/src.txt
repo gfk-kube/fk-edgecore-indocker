@@ -460,3 +460,4 @@
 
 # docker.io/miktex/miktex:essential
 docker.io/pandoc/extra:latest
+docker.io/texlive/texlive:latest
