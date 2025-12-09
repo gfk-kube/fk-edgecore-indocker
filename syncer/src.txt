@@ -458,6 +458,8 @@
 # # docker.io/datagrip/sybase:15.7 #数据库工具集成优化 #[ERR]
 # # docker.io/datagrip/sybase:latest
 
+# TeX
 # docker.io/miktex/miktex:essential
-docker.io/pandoc/extra:latest
-docker.io/texlive/texlive:latest
+# docker.io/pandoc/extra:latest
+# docker.io/texlive/texlive:latest
+docker.io/dalibo/pandocker:stable
