@@ -461,5 +461,8 @@
 # TeX
 # docker.io/miktex/miktex:essential
 # docker.io/pandoc/extra:latest
+docker.io/pandoc/extra:3.8.3-ubuntu
+# docker.io/dalibo/pandocker:stable
+# 
 # docker.io/texlive/texlive:latest
-docker.io/dalibo/pandocker:stable
+# ghcr.io/xu-cheng/texlive-full:20251002
