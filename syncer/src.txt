@@ -461,8 +461,9 @@
 # TeX
 # docker.io/miktex/miktex:essential
 # docker.io/pandoc/extra:latest
-docker.io/pandoc/extra:3.8.3-ubuntu
+# docker.io/pandoc/extra:3.8.3-ubuntu
 # docker.io/dalibo/pandocker:stable
 # 
 # docker.io/texlive/texlive:latest
 # ghcr.io/xu-cheng/texlive-full:20251002
+docker.io/kamuiroeru/nginx-digest-auth-with-docker:latest #ngx-v1.23.1
