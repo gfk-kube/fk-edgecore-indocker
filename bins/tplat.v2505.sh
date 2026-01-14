@@ -1,5 +1,25 @@
 #!/bin/bash
 cur=$(cd "$(dirname "$0")"; pwd)
+
+
+# to draft//2026/02-0114-docker-buildx.md
+# - /down/down00_cfssl_x64
+#   - cfssl_1.4.1 > 1.6.5; v165: +arm64
+# - /down/down01_tools
+#   - image-syncer v131> 1.5.5
+#   - registry 2.8.3
+# - /down/down02_containerd
+#   - containerd 1.6.15>> 1.6.32>> 1.7.27
+#   - snapshotter 1.0.5 3820k >> 1.0.8
+#   - cni 1.2.0 38.6M >> 1.5.0 >> 1.7.1
+#   - runc 1.1.4 9210k>> 1.1.12>> 1.2.6
+#   - buildkit 0.12.2 >> 0.13.2>> 0.21.1
+#   - nerdctl 1.1.0 10.3M >> 1.7.6>> 2.1.4
+#   - crictl 1.26.0 21.8M >> 1.30.0>> 1.33.0
+# - /down/down03_k3s
+#   - k3s 1.22.17 48.9M>> v1.23.17>> 1.32.4
+
+
 # export GITHUB=https://ghproxy.com/https://github.com
 # export GITHUB=https://hub.yzuu.cf
 # export GITHUB=https://gh.llkk.cc/https://github.com # 100k; 
