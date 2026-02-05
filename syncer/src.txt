@@ -467,3 +467,6 @@
 # docker.io/texlive/texlive:latest
 # ghcr.io/xu-cheng/texlive-full:20251002
 docker.io/kamuiroeru/nginx-digest-auth-with-docker:latest #ngx-v1.23.1
+
+# 26.02.05
+docker.io/hectorm/xubuntu:latest
