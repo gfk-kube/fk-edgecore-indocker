@@ -469,10 +469,15 @@
 # docker.io/kamuiroeru/nginx-digest-auth-with-docker:latest #ngx-v1.23.1
 
 # 26.02.05
-# docker.io/hectorm/xubuntu:latest
-docker.io/jlesage/baseimage-gui:alpine-3.19-v4.10.7
-docker.io/jlesage/baseimage-gui:alpine-3.23-v4.10.7
-docker.io/jlesage/baseimage-gui:debian-11-v4.10.7
-docker.io/jlesage/baseimage-gui:debian-13-v4.10.7
-docker.io/jlesage/baseimage-gui:ubuntu-16.04-v4.10.7
-docker.io/jlesage/baseimage-gui:ubuntu-24.04-v4.10.7
+# # docker.io/hectorm/xubuntu:latest
+# docker.io/jlesage/baseimage-gui:alpine-3.19-v4.10.7
+# docker.io/jlesage/baseimage-gui:alpine-3.23-v4.10.7
+# docker.io/jlesage/baseimage-gui:debian-11-v4.10.7
+# docker.io/jlesage/baseimage-gui:debian-13-v4.10.7
+# docker.io/jlesage/baseimage-gui:ubuntu-16.04-v4.10.7
+# docker.io/jlesage/baseimage-gui:ubuntu-24.04-v4.10.7
+
+# 26.03.05
+# As of version 3.77.0, the free edition of Nexus Repository is now called Sonatype Nexus Repository Community Edition.
+docker.io/sonatype/nexus3:latest
+docker.io/sonatype/nexus3:3.89.1
