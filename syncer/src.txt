@@ -73,7 +73,8 @@
 #24.12.04 
 # #gitea
 # metaso: Gitea 的 Actions（内置 CI/CD）功能是从 1.19.0 版本 开始引入的。自该版本起，用户只需在 app.ini 中启用 [actions] ENABLED = true 即可使用 Gitea Actions，后续版本（如 1.21）则默认开启
-# docker.io/gitea/gitea:1.25.1
+docker.io/gitea/gitea:1.25.5 #26.3.13
+# docker.io/gitea/gitea:1.25.1 #Nov 5, 2025
 # docker.io/gitea/gitea:1.24.7
 # docker.io/gitea/gitea:1.23.8
 # docker.io/gitea/gitea:1.22.6
@@ -479,5 +480,5 @@
 
 # 26.03.05
 # As of version 3.77.0, the free edition of Nexus Repository is now called Sonatype Nexus Repository Community Edition.
-docker.io/sonatype/nexus3:latest
-docker.io/sonatype/nexus3:3.89.1
+# docker.io/sonatype/nexus3:latest
+# docker.io/sonatype/nexus3:3.89.1
