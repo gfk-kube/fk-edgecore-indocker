@@ -482,4 +482,5 @@
 # As of version 3.77.0, the free edition of Nexus Repository is now called Sonatype Nexus Repository Community Edition.
 # docker.io/sonatype/nexus3:latest
 # docker.io/sonatype/nexus3:3.89.1
-docker.io/snowdreamtech/frpc:0.49.0
+# docker.io/snowdreamtech/frpc:0.49.0
+ghcr.io/nginxinc/nginx-s3-gateway/nginx-oss-s3-gateway:latest
