@@ -512,4 +512,7 @@
 
 # 26.06.05
 ghcr.io/chriswritescode-dev/opencode-manager:latest
-
+ghcr.io/chriswritescode-dev/opencode-manager:0.10.1
+ghcr.io/chriswritescode-dev/opencode-manager:0.9.21
+ghcr.io/chriswritescode-dev/opencode-manager:0.8.31
+ghcr.io/chriswritescode-dev/opencode-manager:0.7.8
