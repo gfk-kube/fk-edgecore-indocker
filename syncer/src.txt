@@ -73,6 +73,8 @@
 #24.12.04 
 # #gitea
 # metaso: Gitea 的 Actions（内置 CI/CD）功能是从 1.19.0 版本 开始引入的。自该版本起，用户只需在 app.ini 中启用 [actions] ENABLED = true 即可使用 Gitea Actions，后续版本（如 1.21）则默认开启
+docker.io/gitea/gitea:1.27.2
+docker.io/gitea/gitea:1.26.4
 # docker.io/gitea/gitea:1.26.1
 # docker.io/gitea/gitea:1.25.5 #26.3.13
 # docker.io/gitea/gitea:1.25.1 #Nov 5, 2025
@@ -511,8 +513,8 @@
 # ghcr.io/nginxinc/nginx-s3-gateway/nginx-oss-s3-gateway:latest
 
 # 26.06.05
-ghcr.io/chriswritescode-dev/opencode-manager:latest
-ghcr.io/chriswritescode-dev/opencode-manager:0.10.1
-ghcr.io/chriswritescode-dev/opencode-manager:0.9.21
-ghcr.io/chriswritescode-dev/opencode-manager:0.8.31
-ghcr.io/chriswritescode-dev/opencode-manager:0.7.8
+# ghcr.io/chriswritescode-dev/opencode-manager:latest
+# ghcr.io/chriswritescode-dev/opencode-manager:0.10.1
+# ghcr.io/chriswritescode-dev/opencode-manager:0.9.21
+# ghcr.io/chriswritescode-dev/opencode-manager:0.8.31
+# ghcr.io/chriswritescode-dev/opencode-manager:0.7.8
