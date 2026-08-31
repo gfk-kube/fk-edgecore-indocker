@@ -73,7 +73,8 @@
 #24.12.04 
 # #gitea
 # metaso: Gitea 的 Actions（内置 CI/CD）功能是从 1.19.0 版本 开始引入的。自该版本起，用户只需在 app.ini 中启用 [actions] ENABLED = true 即可使用 Gitea Actions，后续版本（如 1.21）则默认开启
-docker.io/gitea/gitea:1.27.2
+docker.io/gitea/gitea:1.27.3
+docker.io/gitea/gitea:1.27.2 #err non-x64
 docker.io/gitea/gitea:1.27.1
 docker.io/gitea/gitea:1.26.4
 # docker.io/gitea/gitea:1.26.1
